@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BnB Financial Services Pvt. Ltd. – SEBI Registered Commodity Broker</title>
+  <meta name="description" content="BnB Financial Services Pvt. Ltd. – SEBI-registered Trading Member of MCX since 2010. Expert commodity trading, FPI advisory, and research-backed services. Experience · Expertise · Excellence.">
+  <meta property="og:title" content="BnB Financial Services – Commodity Trading Experts">
+  <meta property="og:description" content="SEBI-registered TCM of MCX since 2010. Experience, Expertise, Excellence.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0A1F44; --navy-mid: #122B5E; --navy-light: #1C3A7A;
+      --gold: #C9A84C; --gold-light: #E8CC7A; --gold-dark: #A07B2A;
+      --white: #FFFFFF; --off-white: #F8F9FC; --gray-100: #F1F3F8;
+      --gray-200: #E2E6EF; --gray-400: #8D96AA; --gray-600: #4A5568; --gray-800: #1A202C;
+      --font-head: 'Inter', sans-serif; --font-body: 'Open Sans', sans-serif;
+      --radius: 8px; --shadow: 0 4px 24px rgba(10,31,68,0.10); --shadow-lg: 0 8px 40px rgba(10,31,68,0.16);
+      --transition: 0.25s ease;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font-body); color: var(--gray-800); background: var(--white); line-height: 1.6; }
+
+    /* ACCESSIBILITY */
+    .skip-link { position: absolute; top: -100%; left: 16px; z-index: 9999; background: var(--gold); color: var(--navy); padding: 10px 20px; font-weight: 700; border-radius: 0 0 var(--radius) var(--radius); text-decoration: none; font-family: var(--font-head); transition: top 0.2s; }
+    .skip-link:focus { top: 0; }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+
+    /* HEADER */
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10,31,68,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(201,168,76,0.2); padding: 0 24px; transition: box-shadow var(--transition); }
+    header.scrolled { box-shadow: var(--shadow-lg); }
+    .nav-container { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 70px; }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+    .logo-mark-img { height: 48px; width: auto; object-fit: contain; display: block; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25)); }
+    .logo-text-wrap { display: flex; flex-direction: column; justify-content: center; line-height: 1.15; }
+    .logo-name { font-family: var(--font-head); font-weight: 800; font-size: 16px; color: #269558; letter-spacing: -0.2px; white-space: nowrap; }
+    .logo-tagline { display: flex; justify-content: space-between; width: 100%; font-family: var(--font-head); font-size: 10px; font-weight: 600; color: #ffffff; letter-spacing: 0.5px; margin-top: 1px; }
+    .logo-dot { color: #269558; }
+    nav[role="navigation"] ul { display: flex; list-style: none; gap: 2px; align-items: center; }
+    nav[role="navigation"] a { color: rgba(255,255,255,0.82); text-decoration: none; font-family: var(--font-head); font-size: 12.5px; font-weight: 600; padding: 7px 11px; border-radius: 6px; transition: color var(--transition), background var(--transition); letter-spacing: 0.3px; white-space: nowrap; }
+    nav[role="navigation"] a:hover, nav[role="navigation"] a[aria-current="page"] { color: var(--gold); background: rgba(201,168,76,0.1); }
+    .nav-login a { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: var(--navy) !important; font-weight: 700 !important; padding: 8px 16px !important; border-radius: var(--radius); }
+    .nav-login a:hover { background: var(--gold-light) !important; }
+    .nav-dropdown { position: relative; }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 4px); left: 0; background: var(--navy); border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; padding: 8px 0; min-width: 160px; z-index: 1000; box-shadow: var(--shadow-lg); opacity: 0; transform: translateY(-4px); transition: opacity 0.2s ease, transform 0.2s ease; pointer-events: none; }
+    .nav-dropdown:hover > .dropdown-menu, .nav-dropdown:focus-within > .dropdown-menu { display: flex; flex-direction: column; gap: 0; opacity: 1; transform: translateY(0); pointer-events: all; }
+    .dropdown-menu a { padding: 8px 16px !important; display: block; border-radius: 0 !important; }
+    .nav-toggle { display: none; background: none; border: 2px solid rgba(201,168,76,0.5); color: var(--white); padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 20px; }
+    @media (max-width: 1050px) {
+      .nav-toggle { display: flex; align-items: center; }
+      nav[role="navigation"] { display: none; position: absolute; top: 70px; left: 0; right: 0; background: var(--navy); padding: 16px; border-bottom: 1px solid rgba(201,168,76,0.2); z-index: 999; }
+      nav[role="navigation"].open { display: block; }
+      nav[role="navigation"] ul { flex-direction: column; gap: 4px; }
+      nav[role="navigation"] a { display: block; }
+      .nav-dropdown > .dropdown-menu { position: static; box-shadow: none; border: none; padding-left: 16px; opacity: 1; transform: none; pointer-events: all; display: none; }
+      .nav-dropdown.mobile-open > .dropdown-menu { display: flex; width: 100%; }
+    }
+
+    /* HERO */
+    #hero { min-height: 100vh; background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 55%, var(--navy-light) 100%); display: flex; align-items: center; position: relative; overflow: hidden; padding: 110px 24px 70px; }
+    .hero-deco { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, transparent 49.8%, rgba(201,168,76,0.06) 50%, transparent 50.2%) 0 0/80px 80px, linear-gradient(0deg, transparent 49.8%, rgba(201,168,76,0.04) 50%, transparent 50.2%) 0 0/80px 80px; }
+    .hero-orb { position: absolute; right: -80px; top: 50%; transform: translateY(-50%); width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%); pointer-events: none; }
+    .hero-container { max-width: 1200px; margin: 0 auto; width: 100%; position: relative; z-index: 2; }
+    .hero-content { max-width: 640px; }
+    .hero-content h1 { font-family: var(--font-head); font-size: clamp(38px,5.5vw,66px); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 20px; letter-spacing: -1.5px; }
+    .hero-content h1 em { font-style: normal; color: var(--gold); display: block; }
+    .hero-content p { font-size: 18px; color: rgba(255,255,255,0.78); line-height: 1.7; margin-bottom: 36px; max-width: 520px; }
+    .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: var(--navy); font-family: var(--font-head); font-weight: 700; padding: 14px 32px; border-radius: var(--radius); border: none; font-size: 15px; cursor: pointer; text-decoration: none; display: inline-block; transition: transform var(--transition), box-shadow var(--transition); box-shadow: 0 4px 20px rgba(201,168,76,0.35); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.5); }
+    .btn-secondary { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.35); font-family: var(--font-head); font-weight: 600; padding: 12px 30px; border-radius: var(--radius); font-size: 15px; cursor: pointer; text-decoration: none; display: inline-block; transition: border-color var(--transition), background var(--transition); }
+    .btn-secondary:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+    .hero-stats { display: flex; gap: 40px; margin-top: 56px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat strong { display: block; font-family: var(--font-head); font-size: 32px; font-weight: 800; color: var(--gold); line-height: 1; }
+    .hero-stat span { font-size: 13px; color: rgba(255,255,255,0.6); font-weight: 500; margin-top: 4px; display: block; }
+    .hero-visual { position: absolute; right: 0; top: 0; bottom: 0; width: 50%; overflow: hidden; opacity: 0.18; }
+    .hero-visual img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* SECTION BASE */
+    section { padding: 80px 24px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .section-title { font-family: var(--font-head); font-size: clamp(28px,3.5vw,42px); font-weight: 800; color: var(--navy); line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 16px; }
+    .section-subtitle { font-size: 17px; color: var(--gray-600); max-width: 600px; line-height: 1.7; }
+    .section-header { margin-bottom: 52px; }
+    .section-divider { width: 52px; height: 4px; border-radius: 2px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); margin-top: 16px; margin-bottom: 16px; }
+
+    /* ABOUT */
+    #about { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .about-img-wrap { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); position: relative; background: var(--gray-100); display: flex; align-items: center; justify-content: center; min-height: 400px; }
+    .about-img-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; max-height: 420px; padding: 24px; }
+    .about-img-badge { position: absolute; bottom: 20px; left: 20px; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: var(--navy); padding: 14px 20px; border-radius: 12px; font-family: var(--font-head); font-weight: 700; }
+    /* Animated Logo */
+    .animated-logo-wrap { width: 100%; height: 420px; display: flex; align-items: center; justify-content: center; padding: 24px; position: relative; }
+    .logo-anim-ring { position: absolute; border-radius: 50%; border: 2px solid rgba(201,168,76,0.25); animation: ringPulse 3s ease-in-out infinite; }
+    .logo-anim-ring:nth-child(1) { width: 180px; height: 180px; animation-delay: 0s; }
+    .logo-anim-ring:nth-child(2) { width: 260px; height: 260px; animation-delay: 0.6s; }
+    .logo-anim-ring:nth-child(3) { width: 340px; height: 340px; animation-delay: 1.2s; }
+    @keyframes ringPulse { 0%,100%{opacity:0.15;transform:scale(1)} 50%{opacity:0.55;transform:scale(1.04)} }
+    .logo-anim-img { position: relative; z-index: 2; width: 180px; height: auto; animation: logoBob 4s ease-in-out infinite; filter: drop-shadow(0 8px 32px rgba(201,168,76,0.35)); }
+    @keyframes logoBob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    .logo-anim-glow { position: absolute; z-index: 1; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%); animation: glowPulse 3s ease-in-out infinite; }
+    @keyframes glowPulse { 0%,100%{opacity:0.6;transform:scale(1)} 50%{opacity:1;transform:scale(1.15)} }
+    .about-img-badge strong { display: block; font-size: 28px; line-height: 1; }
+    .about-img-badge span { font-size: 12px; font-weight: 600; }
+    .about-tabs { display: flex; gap: 0; border-bottom: 2px solid var(--gray-200); margin-bottom: 28px; }
+    .tab-btn { background: none; border: none; padding: 12px 20px; font-family: var(--font-head); font-size: 14px; font-weight: 600; color: var(--gray-400); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: color var(--transition), border-color var(--transition); }
+    .tab-btn.active { color: var(--navy); border-bottom-color: var(--gold); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
+    .tab-panel p { color: var(--gray-600); line-height: 1.8; margin-bottom: 14px; }
+    .check-list { list-style: none; margin-top: 16px; }
+    .check-list li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; color: var(--gray-600); }
+    .check-list li::before { content: '✓'; color: var(--navy); font-weight: 800; font-size: 12px; background: rgba(201,168,76,0.2); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .credential-cards { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+    .cred-card { background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 12px 16px; }
+    .cred-card span { display: block; }
+    .cred-card span:first-child { font-size: 11px; color: var(--gray-400); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+    .cred-card span:last-child { font-size: 14px; font-weight: 700; color: var(--navy); font-family: var(--font-head); margin-top: 2px; }
+
+    /* SERVICES */
+    #services { background: var(--off-white); }
+    .services-intro { max-width: 720px; margin-bottom: 48px; }
+    .services-intro p { color: var(--gray-600); line-height: 1.8; margin-bottom: 10px; }
+    .services-blocks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .service-block { background: var(--white); border-radius: 16px; padding: 36px 28px; border: 1px solid var(--gray-200); box-shadow: var(--shadow); transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition); position: relative; overflow: hidden; }
+    .service-block::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); transform: scaleX(0); transform-origin: left; transition: transform var(--transition); }
+    .service-block:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(201,168,76,0.4); }
+    .service-block:hover::before { transform: scaleX(1); }
+    .service-block-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(10,31,68,0.06); display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 20px; }
+    .service-block h3 { font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .service-block > p { color: var(--gray-600); font-size: 14.5px; line-height: 1.7; margin-bottom: 16px; }
+    .service-list { list-style: none; }
+    .service-list li { display: flex; align-items: flex-start; gap: 10px; color: var(--gray-600); font-size: 13.5px; line-height: 1.6; margin-bottom: 10px; }
+    .service-list li::before { content: '→'; color: var(--gold); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    /* COMMODITIES */
+    #commodities { background: var(--navy); padding: 80px 24px; }
+    #commodities .section-title { color: var(--white); }
+    #commodities .section-label { color: var(--gold-light); }
+    #commodities .section-subtitle { color: rgba(255,255,255,0.72); max-width: 700px; }
+    .commodities-cta { margin-top: 24px; }
+    .commodity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 16px; margin-top: 40px; }
+    .commodity-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 12px; padding: 24px 20px; text-align: center; transition: background var(--transition), border-color var(--transition); }
+    .commodity-card:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
+    .commodity-icon { font-size: 32px; margin-bottom: 10px; display: block; }
+    .commodity-card h4 { font-family: var(--font-head); font-size: 15px; font-weight: 700; color: var(--gold); margin-bottom: 6px; }
+    .commodity-card p { font-size: 13px; color: rgba(255,255,255,0.65); }
+    .btn-outline-gold { background: transparent; color: var(--gold); border: 2px solid var(--gold); font-family: var(--font-head); font-weight: 700; padding: 13px 30px; border-radius: var(--radius); font-size: 15px; cursor: pointer; text-decoration: none; display: inline-block; transition: background var(--transition), color var(--transition); }
+    .btn-outline-gold:hover { background: var(--gold); color: var(--navy); }
+
+    /* FPI */
+    #fpi { background: var(--white); }
+    .fpi-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .fpi-info h2 { font-family: var(--font-head); font-size: clamp(24px,2.8vw,36px); font-weight: 800; color: var(--navy); margin-bottom: 12px; line-height: 1.25; }
+    .fpi-info .fpi-subtitle { font-family: var(--font-head); font-size: 15px; font-weight: 600; color: var(--gold-dark); margin-bottom: 20px; line-height: 1.5; font-style: italic; }
+    .fpi-info p { color: var(--gray-600); line-height: 1.8; margin-bottom: 16px; font-size: 14.5px; }
+    .fpi-card-group { display: flex; flex-direction: column; gap: 14px; }
+    .fpi-card { background: var(--off-white); border: 1px solid var(--gray-200); border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 18px 20px; }
+    .fpi-card h4 { font-family: var(--font-head); font-size: 14.5px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .fpi-card p { font-size: 13.5px; color: var(--gray-600); line-height: 1.6; }
+
+    /* TEAM */
+    #team { background: var(--gray-100); }
+    .team-intro { text-align: center; margin-bottom: 48px; }
+    .team-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 24px; }
+    .team-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 16px; padding: 32px 28px; text-align: center; transition: transform var(--transition), box-shadow var(--transition); }
+    .team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .team-avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), var(--navy-light)); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-size: 26px; font-weight: 700; color: var(--gold); }
+    .team-card h4 { font-family: var(--font-head); font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .team-card .team-role { font-size: 13px; color: var(--gold-dark); font-weight: 700; display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .team-card .team-title { font-size: 12px; color: var(--gray-400); display: block; margin-bottom: 12px; }
+    .team-card p { font-size: 13.5px; color: var(--gray-600); line-height: 1.7; }
+
+    /* DOWNLOADS */
+    #downloads { background: var(--white); }
+    .downloads-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 8px; }
+    /* Accordion card */
+    .download-section { background: var(--off-white); border: 1px solid var(--gray-200); border-radius: 16px; overflow: hidden; transition: box-shadow var(--transition); }
+    .download-section:hover { box-shadow: var(--shadow); }
+    .dl-accordion-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 22px 28px; cursor: pointer; background: var(--off-white); border: none; width: 100%; text-align: left; font-family: var(--font-head); font-size: 17px; font-weight: 700; color: var(--navy); transition: background var(--transition); user-select: none; }
+    .dl-accordion-header:hover { background: var(--gray-100); }
+    .dl-accordion-header .dl-icon { display: flex; align-items: center; flex-shrink: 0; }
+    .dl-accordion-header .dl-title { flex: 1; }
+    .dl-accordion-chevron { width: 22px; height: 22px; border-radius: 50%; background: var(--gray-200); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform 0.3s ease, background 0.2s; }
+    .dl-accordion-chevron svg { width: 12px; height: 12px; fill: var(--navy); transition: fill 0.2s; }
+    .download-section.open .dl-accordion-chevron { transform: rotate(180deg); background: var(--gold); }
+    .download-section.open .dl-accordion-chevron svg { fill: var(--navy); }
+    .dl-accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding: 0 28px; }
+    .download-section.open .dl-accordion-body { max-height: 800px; padding: 0 28px 24px; }
+    .download-link { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); text-decoration: none; color: var(--navy); font-family: var(--font-head); font-size: 13.5px; font-weight: 500; margin-bottom: 8px; transition: border-color var(--transition), background var(--transition); }
+    .download-link:hover { border-color: var(--gold); background: rgba(201,168,76,0.05); }
+    .download-link .dl-badge { background: var(--gold); color: var(--navy); font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 4px; flex-shrink: 0; }
+    .download-vernacular { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); gap: 8px; margin-top: 10px; }
+    .download-vernacular a { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 10px; background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); text-decoration: none; color: var(--navy); font-size: 13px; font-weight: 500; transition: border-color var(--transition), background var(--transition); }
+    .download-vernacular a:hover { border-color: var(--gold); background: rgba(201,168,76,0.06); }
+    .admin-placeholder { border: 2px dashed var(--gray-200); border-radius: var(--radius); padding: 24px; text-align: center; color: var(--gray-400); font-size: 14px; margin-top: 12px; }
+    .admin-placeholder span { display: block; font-size: 28px; margin-bottom: 8px; }
+
+    /* FAQ */
+    #faq { background: var(--gray-100); }
+    .faq-search-wrap { max-width: 560px; margin: 0 auto 36px; position: relative; }
+    .faq-search-wrap input { width: 100%; padding: 14px 48px 14px 18px; border-radius: 50px; border: 2px solid var(--gray-200); background: var(--white); font-family: var(--font-body); font-size: 15px; color: var(--gray-800); transition: border-color var(--transition); }
+    .faq-search-wrap input:focus { outline: none; border-color: var(--gold); }
+    .faq-search-wrap .search-icon { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--gray-400); pointer-events: none; }
+    .faq-no-result { display: none; text-align: center; padding: 32px; color: var(--gray-400); font-size: 15px; }
+    .faq-no-result.show { display: block; }
+    .faq-list { max-width: 780px; margin: 0 auto; }
+    .faq-item { background: var(--white); border-radius: 12px; margin-bottom: 12px; border: 1px solid var(--gray-200); overflow: hidden; transition: box-shadow var(--transition); }
+    .faq-item.hidden { display: none; }
+    .faq-question { width: 100%; background: none; border: none; padding: 22px 24px; text-align: left; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-head); font-size: 15.5px; font-weight: 600; color: var(--navy); transition: background var(--transition); }
+    .faq-question:hover { background: rgba(201,168,76,0.05); }
+    .faq-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--gray-100); display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--navy); flex-shrink: 0; margin-left: 16px; transition: transform 0.3s, background 0.2s; }
+    .faq-question[aria-expanded="true"] .faq-icon { transform: rotate(45deg); background: var(--gold); color: var(--navy); }
+    .faq-answer { padding: 0 24px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
+    .faq-answer.open { padding: 0 24px 20px; max-height: 400px; }
+    .faq-answer p { color: var(--gray-600); line-height: 1.8; font-size: 14.5px; }
+    .faq-cta { text-align: center; margin-top: 36px; }
+    .faq-cta p { color: var(--gray-600); margin-bottom: 16px; font-size: 15px; }
+
+    /* CONTACT */
+    #contact { background: var(--navy); padding: 80px 24px; }
+    #contact .section-title { color: var(--white); }
+    #contact .section-label { color: var(--gold-light); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: stretch; }
+    .contact-info { display: flex; flex-direction: column; }
+    .contact-info p { color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 28px; }
+    .contact-detail { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 20px; }
+    .contact-detail-icon { width: 40px; height: 40px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contact-detail-icon svg { width: 20px; height: 20px; fill: var(--gold); }
+    .contact-detail-text span { display: block; }
+    .contact-detail-text span:first-child { font-size: 12px; color: var(--gold); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+    .contact-detail-text span:last-child { font-size: 15px; color: var(--white); margin-top: 2px; }
+    .contact-form { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 36px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 8px; }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); border-radius: var(--radius); padding: 12px 16px; color: var(--white); font-family: var(--font-body); font-size: 14.5px; transition: border-color var(--transition); }
+    .form-group select option { background: var(--navy); }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--gold); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.35); }
+    .form-disclaimer { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-top: 14px; }
+    .sebi-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25); color: var(--gold); font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 50px; }
+
+    /* FOOTER */
+    footer { background: #050E24; color: rgba(255,255,255,0.6); padding: 56px 24px 0; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; padding-bottom: 40px; }
+    .footer-col h4 { font-family: var(--font-head); font-size: 13px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 18px; }
+    .footer-logo-img { height: 40px; width: auto; object-fit: contain; margin-bottom: 14px; filter: brightness(0) invert(1); opacity: 0.85; }
+    .footer-col p { font-size: 13px; line-height: 1.8; color: rgba(255,255,255,0.55); }
+    .footer-col p a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color var(--transition); }
+    .footer-col p a:hover { color: var(--gold); }
+    .footer-reg { margin-top: 14px; }
+    .footer-reg span { display: block; font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+    .footer-reg strong { color: rgba(255,255,255,0.7); }
+    .footer-links-list { list-style: none; }
+    .footer-links-list li { margin-bottom: 10px; }
+    .footer-links-list a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 13.5px; transition: color var(--transition); display: flex; align-items: center; gap: 8px; }
+    .footer-links-list a:hover { color: var(--gold); }
+    .footer-links-list a::before { content: '›'; color: var(--gold); font-size: 16px; font-weight: 700; flex-shrink: 0; }
+    .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 0; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12.5px; padding: 20px 0; }
+    .footer-bottom p { color: rgba(255,255,255,0.4); }
+
+    /* SCROLLING DISCLAIMER */
+    .footer-scroll-disclaimer { background: rgba(201,168,76,0.05); border-top: 1px solid rgba(201,168,76,0.15); padding: 0; overflow: hidden; }
+    .scroll-disclaimer-track { display: flex; gap: 80px; width: max-content; animation: scrollLeft 60s linear infinite; padding: 14px 0; }
+    .scroll-disclaimer-track:hover { animation-play-state: paused; }
+    .scroll-disclaimer-track span { white-space: nowrap; font-size: 11.5px; color: rgba(255,255,255,0.45); }
+    @keyframes scrollLeft { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+    /* FULL DISCLAIMER SECTION */
+    .footer-full-disclaimer { background: #030B1A; padding: 28px 24px; }
+    .footer-full-disclaimer .container { max-width: 1200px; margin: 0 auto; }
+    .footer-full-disclaimer h5 { font-family: var(--font-head); font-size: 11px; font-weight: 700; color: rgba(201,168,76,0.7); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+    .footer-full-disclaimer p { font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.8; margin-bottom: 8px; }
+    .footer-full-disclaimer ul { list-style: disc; padding-left: 20px; margin-bottom: 8px; }
+    .footer-full-disclaimer ul li { font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.8; }
+
+    /* CHATBOT BUTTON */
+    .chatbot-btn { position: fixed; bottom: 100px; right: 28px; z-index: 999; width: 58px; height: 58px; border-radius: 50%; background: var(--gold); border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(201,168,76,0.4); cursor: pointer; transition: transform var(--transition), box-shadow var(--transition); }
+    .chatbot-btn:hover, .chatbot-btn:focus-visible { transform: scale(1.1); box-shadow: 0 8px 30px rgba(201,168,76,0.6); outline: none; }
+    .chatbot-btn svg { width: 32px; height: 32px; fill: var(--navy); }
+    
+    .chatbot-window { position: fixed; bottom: 170px; right: 28px; width: 340px; max-width: calc(100vw - 56px); height: 450px; background: var(--white); border-radius: 12px; box-shadow: var(--shadow-xl); z-index: 1000; display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px); opacity: 0; pointer-events: none; transition: transform 0.3s, opacity 0.3s; border: 1px solid var(--gray-200); }
+    .chatbot-window.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+    
+    .chat-header { background: var(--navy); color: var(--white); padding: 16px; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-head); }
+    .chat-header h3 { font-size: 16px; font-weight: 700; margin: 0; }
+    .chat-close { background: none; border: none; color: var(--white); font-size: 24px; cursor: pointer; line-height: 1; }
+    
+    .chat-body { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #f9f9fc; }
+    .chat-msg { max-width: 85%; padding: 10px 14px; border-radius: 12px; font-size: 13.5px; line-height: 1.5; color: var(--navy); }
+    .chat-msg.bot { background: var(--white); border: 1px solid var(--gray-200); align-self: flex-start; border-bottom-left-radius: 4px; }
+    .chat-msg.user { background: rgba(201,168,76,0.2); align-self: flex-end; border-bottom-right-radius: 4px; }
+    
+    .chat-faq-options { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+    .chat-faq-btn { background: var(--white); border: 1px solid var(--gold); color: var(--gold-dark); border-radius: 20px; padding: 6px 12px; font-size: 12.5px; cursor: pointer; text-align: left; transition: all 0.2s; font-family: var(--font-body); }
+    .chat-faq-btn:hover, .chat-faq-btn:focus-visible { background: var(--gold); color: var(--white); outline: none; }
+    
+    .chat-input-area { display: flex; padding: 12px 16px; border-top: 1px solid var(--gray-200); background: var(--white); }
+    .chat-input { flex: 1; border: 1px solid var(--gray-200); border-radius: 20px; padding: 8px 12px; font-size: 13.5px; font-family: var(--font-body); outline: none; transition: border-color 0.2s; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send-btn { background: var(--gold); border: none; color: var(--navy); border-radius: 50%; width: 36px; height: 36px; margin-left: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s; }
+    .chat-send-btn:hover, .chat-send-btn:focus-visible { background: var(--gold-dark); outline: none; }
+    .chat-send-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* WHATSAPP BUTTON */
+    .whatsapp-btn { position: fixed; bottom: 28px; right: 28px; z-index: 999; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); text-decoration: none; transition: transform var(--transition), box-shadow var(--transition); }
+    .whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.5); }
+    .whatsapp-btn svg { width: 30px; height: 30px; fill: #fff; }
+    .whatsapp-btn::after { content: 'WhatsApp Support'; position: absolute; right: 68px; background: rgba(0,0,0,0.8); color: #fff; font-size: 12px; font-family: var(--font-head); font-weight: 600; white-space: nowrap; padding: 6px 12px; border-radius: 6px; opacity: 0; transition: opacity 0.2s; pointer-events: none; }
+    .whatsapp-btn:hover::after { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .about-grid, .fpi-inner, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+      .services-blocks { grid-template-columns: 1fr 1fr; }
+      .downloads-grid { grid-template-columns: 1fr; }
+      .footer-cols { grid-template-columns: 1fr; gap: 36px; }
+      .hero-stats { gap: 24px; }
+      .hero-visual { display: none; }
+    }
+    @media (max-width: 600px) {
+      .services-blocks { grid-template-columns: 1fr; }
+      section { padding: 60px 16px; }
+      .hero-cta { flex-direction: column; }
+      .contact-form { padding: 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
+      .scroll-disclaimer-track { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- CHATBOT WIDGET -->
+  <button id="chatbotToggleBtn" class="chatbot-btn" aria-label="Open Chat Support" aria-expanded="false" aria-controls="chatbotWindow">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 5.91 2 10.75c0 2.76 1.48 5.21 3.79 6.8-.2.94-.74 2.22-1.5 3.02a.6.6 0 00.37 1.01c2.14.07 4.14-.98 5.37-2.02.63.09 1.29.14 1.97.14 5.52 0 10-3.91 10-8.75S17.52 2 12 2zm0 15.5c-.6 0-1.18-.04-1.74-.11a.6.6 0 00-.47.16c-1.11.96-2.6 1.7-4.14 1.83.56-.73.97-1.68 1.15-2.58a.6.6 0 00-.18-.54C4.66 14.88 3.2 12.92 3.2 10.75 3.2 6.58 7.15 3.2 12 3.2s8.8 3.38 8.8 7.55-3.94 7.55-8.8 7.55z"/><path d="M7.5 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM12 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM16.5 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
+  </button>
+
+  <div id="chatbotWindow" class="chatbot-window" role="dialog" aria-labelledby="chatbotTitle" aria-hidden="true">
+    <div class="chat-header">
+      <h3 id="chatbotTitle">BnB Support</h3>
+      <button id="chatbotCloseBtn" class="chat-close" aria-label="Close Chat Window">&times;</button>
+    </div>
+    <div class="chat-body" id="chatBody" aria-live="polite">
+      <div class="chat-msg bot">Hello! How can we help you today?</div>
+      <div class="chat-faq-options" id="chatOptions">
+        <button class="chat-faq-btn" onclick="sendChatReply('How to open an account?', 'You can open an account by clicking the OPEN A TRADING ACCOUNT button on our Commodities page, or contacting us at +91 40 4333 4857.')">How to open an account?</button>
+        <button class="chat-faq-btn" onclick="sendChatReply('What are your trading hours?', 'Our trading hours align with MCX market timings: 9:00 AM to 11:30 PM / 11:55 PM IST.')">What are your trading hours?</button>
+        <button class="chat-faq-btn" onclick="sendChatReply('How do I contact support?', 'You can email info@bnbfin.com, call +91 40 4333 4857, or message us on WhatsApp using the button below.')">How do I contact support?</button>
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="chatInput" class="chat-input" placeholder="Type your message..." aria-label="Type your message">
+      <button id="chatSendBtn" class="chat-send-btn" aria-label="Send message">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- WHATSAPP FLOATING BUTTON -->
+  <a href="https://wa.me/914043334857" class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
+     aria-label="Chat with us on WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+  </a>
+
+  <header id="site-header" role="banner">
+    <div class="nav-container">
+      <a href="#hero" class="logo" aria-label="BnB Financial Services – Home">
+        <img src="logo-3d.png" alt="" class="logo-mark-img" aria-hidden="true">
+        <div class="logo-text-wrap">
+          <span class="logo-name">BnB Financial Services Pvt. Ltd.</span>
+          <div class="logo-tagline">
+            <span class="logo-dot">&bull;</span>
+            <span>Experience</span>
+            <span class="logo-dot">&bull;</span>
+            <span>Expertise</span>
+            <span class="logo-dot">&bull;</span>
+            <span>Excellence</span>
+          </div>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open navigation menu" id="nav-toggle-btn">☰</button>
+      <nav id="main-nav" role="navigation" aria-label="Main navigation">
+        <ul>
+          <li><a href="#hero" aria-current="page">HOME</a></li>
+          <li><a href="#about">ABOUT US</a></li>
+          <li class="nav-dropdown">
+            <a href="#services" aria-haspopup="true">SERVICES ▾</a>
+            <ul class="dropdown-menu" aria-label="Services submenu">
+              <li><a href="#fpi">FPI</a></li>
+              <li><a href="#commodities">COMMODITIES</a></li>
+            </ul>
+          </li>
+          <li><a href="#team">OUR TEAM</a></li>
+          <li><a href="#downloads">DOWNLOADS</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">CONTACT</a></li>
+          <li class="nav-login"><a href="#" aria-label="Client Login Portal">LOGIN</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section id="hero" aria-labelledby="hero-heading">
+      <div class="hero-deco" aria-hidden="true"></div>
+      <div class="hero-orb" aria-hidden="true"></div>
+      <div class="hero-visual" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=900&auto=format&fit=crop&q=60" alt="">
+      </div>
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1 id="hero-heading">FOCUS <span style="text-transform:none;font-size:0.75em;font-weight:700;">on</span> <em>What Matters</em></h1>
+          <p>Start your journey with us today and unlock the opportunities that await in the world of commodity investments. We're here to guide you every step of the way.</p>
+          <div class="hero-cta">
+            <a href="#about" class="btn-primary" aria-label="Discover BnB Financial Services">Discover BnB Financial</a>
+            <a href="#services" class="btn-secondary" aria-label="View our services">Our Services</a>
+          </div>
+          <div class="hero-stats" aria-label="Key statistics">
+            <div class="hero-stat"><strong>50+</strong><span>Years Combined Experience</span></div>
+            <div class="hero-stat"><strong>2010</strong><span>MCX Member Since</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT US -->
+    <section id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-img-wrap">
+            <div class="animated-logo-wrap" aria-hidden="true">
+              <div class="logo-anim-ring"></div>
+              <div class="logo-anim-ring"></div>
+              <div class="logo-anim-ring"></div>
+              <div class="logo-anim-glow"></div>
+              <img src="logo-3d.png" alt="BnB Financial Services animated logo" class="logo-anim-img" loading="lazy">
+            </div>
+          </div>
+          <div class="about-content">
+            <p class="section-label">Who We Are</p>
+            <h2 id="about-heading" class="section-title">Committed to Excellence in Commodity Trading</h2>
+            <div class="section-divider" aria-hidden="true"></div>
+            <div class="about-tabs" role="tablist" aria-label="About sections">
+              <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-story" id="tab-story-btn">Our Story</button>
+              <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-philosophy" id="tab-philosophy-btn">Our Philosophy</button>
+              <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-goal" id="tab-goal-btn">Our Goal</button>
+            </div>
+            <div id="tab-story" role="tabpanel" aria-labelledby="tab-story-btn" class="tab-panel active">
+              <p>Founded in 2010, BNB Financial Services Pvt. Ltd. is a registered member of the Multi Commodity Exchange of India (MCX), regulated by the Securities and Exchange Board of India (SEBI).</p>
+              <p>For over a decade, we have been committed to delivering transparent, technology-driven, and research-backed commodity trading services. Our strength lies in a team of experienced market professionals whose combined expertise spans more than 50 years across domestic and international commodity markets, including India, the United States, the United Kingdom, and Malaysia.</p>
+              <p>Beyond broking, our deep involvement in proprietary trading and market research enables us to fulfil our client requirements. At BNB Financial Services, we combine market knowledge, disciplined execution, and a client-first approach to build lasting relationships founded on trust and performance.</p>
+              <div class="credential-cards">
+                <div class="cred-card"><span>SEBI Registration No.</span><span>INZ000057434</span></div>
+                <div class="cred-card"><span>MCX Member ID</span><span>40735</span></div>
+              </div>
+            </div>
+            <div id="tab-philosophy" role="tabpanel" aria-labelledby="tab-philosophy-btn" class="tab-panel" hidden>
+              <p>At BNB Financial Services, we are committed to creating long-term value through in-depth market research, disciplined execution, transparency, and unwavering ethical standards. By continuously enhancing our expertise and embracing innovation, we strive to be a trusted partner in our clients' financial growth.</p>
+            </div>
+            <div id="tab-goal" role="tabpanel" aria-labelledby="tab-goal-btn" class="tab-panel" hidden>
+              <p>Our vision is to become the most trusted and preferred commodity brokerage in South India by delivering exceptional client experiences, research-driven insights, and technology-enabled trading solutions.</p>
+              <p>As we continue to expand our reach and capabilities, we aspire to establish BNB Financial Services among the <strong>Top 5 commodity brokerage firms in India</strong>, setting new benchmarks in service excellence, innovation, integrity, and long-term value creation for our clients and partners.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">What We Offer</p>
+          <h2 id="services-heading" class="section-title">Our Services</h2>
+          <div class="section-divider" aria-hidden="true"></div>
+        </div>
+        <div class="services-intro">
+          <p>At BNB Financial Services, we combine market expertise, advanced technology, and personalized support to deliver a seamless commodity trading experience. Our commitment is to provide reliable, transparent, and efficient services that evolve with the changing needs of our clients.</p>
+          <p>We offer all necessary support required to help you navigate the commodity markets with confidence.</p>
+        </div>
+        <div class="services-blocks">
+          <article class="service-block" aria-labelledby="svc-professional">
+            <div class="service-block-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7L17 3H7L3 7" stroke="#0A1F44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 21v-5a2 2 0 012-2h6a2 2 0 012 2v5" stroke="#0A1F44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 id="svc-professional">Professional Services</h3>
+            <p>Our experienced research and operations teams are dedicated to helping clients through dependable infrastructure and expert guidance.</p>
+            <ul class="service-list" aria-label="Professional services features">
+              <li>Secure, online back-office access available 24×7</li>
+              <li>Comprehensive technical and fundamental market research</li>
+              <li>Robust risk management framework and business continuity systems</li>
+              <li>Reliable trade execution backed by experienced professionals</li>
+              <li>Transparent processes with a strong focus on regulatory compliance</li>
+            </ul>
+          </article>
+          <article class="service-block" aria-labelledby="svc-digital">
+            <div class="service-block-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="3" width="20" height="14" rx="2" stroke="#0A1F44" stroke-width="1.8"/><path d="M8 21h8M12 17v4" stroke="#0A1F44" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <h3 id="svc-digital">Digital Support</h3>
+            <p>We believe trading should be convenient, accessible, and hassle-free. Our digital platforms provide real-time access to your trading information, empowering you to stay connected wherever you are.</p>
+            <ul class="service-list" aria-label="Digital support features">
+              <li>Instant access to account statements and transaction history</li>
+              <li>View trade reports, ledger balances, open positions, and holdings anytime</li>
+              <li>Quick and responsive customer support for account and trading assistance</li>
+              <li>Secure online access across devices</li>
+            </ul>
+          </article>
+          <article class="service-block" aria-labelledby="svc-alerts">
+            <div class="service-block-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" stroke="#0A1F44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 id="svc-alerts">Market Alerts &amp; Updates</h3>
+            <p>Stay informed with timely market intelligence and account notifications that help you respond quickly to changing market conditions.</p>
+            <ul class="service-list" aria-label="Market alerts features">
+              <li>Daily account updates through SMS and digital notifications</li>
+              <li>Real-time commodity price information via our dealing desk</li>
+              <li>Important market alerts and trading updates</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMODITIES -->
+    <section id="commodities" aria-labelledby="commodities-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">Markets We Trade</p>
+          <h2 id="commodities-heading" class="section-title">Commodities on MCX</h2>
+          <div class="section-divider" aria-hidden="true"></div>
+          <p class="section-subtitle">Access India's leading commodity markets through BnB Financial Services. Trade a wide range of commodities backed by advanced trading platforms, research-driven insights, and dedicated customer support.</p>
+          <div class="commodities-cta">
+            <a href="#contact" class="btn-outline-gold" aria-label="Open a trading account – Contact us">Open a Trading Account – Contact Us</a>
+          </div>
+        </div>
+        <div class="commodity-grid" role="list">
+          <div class="commodity-card" role="listitem"><span class="commodity-icon" aria-hidden="true">🥇</span><h4>Bullion</h4><p>Gold, Silver</p></div>
+          <div class="commodity-card" role="listitem"><span class="commodity-icon" aria-hidden="true">⚙️</span><h4>Metals</h4><p>Aluminium, Copper, Zinc, Lead, Nickel</p></div>
+          <div class="commodity-card" role="listitem"><span class="commodity-icon" aria-hidden="true">⚡</span><h4>Energy</h4><p>Brent Crude, Crude Oil, Natural Gas</p></div>
+          <div class="commodity-card" role="listitem"><span class="commodity-icon" aria-hidden="true">🌱</span><h4>Oil &amp; Seeds</h4><p>Refined Soy Oil, Soy Bean</p></div>
+          <div class="commodity-card" role="listitem"><span class="commodity-icon" aria-hidden="true">🌿</span><h4>Agricultural</h4><p>Mentha Oil, Cardamom, Crude Palm Oil</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FPI -->
+    <section id="fpi" aria-labelledby="fpi-heading">
+      <div class="container">
+        <div class="fpi-inner">
+          <div class="fpi-info">
+            <h2 id="fpi-heading">Foreign Portfolio Investment (FPI)</h2>
+            <div class="section-divider" aria-hidden="true"></div>
+            <p class="fpi-subtitle">Access India's Fast-Growing Commodity Markets Through a Regulated Investment Framework</p>
+            <p>BNB Financial Services facilitates foreign investors seeking exposure to Indian commodity derivatives traded on MCX through the Foreign Portfolio Investor (FPI) route. Our experienced research team, institutional trading expertise, and strategic partnerships help global investors participate in one of the world's fastest-growing commodity markets.</p>
+            <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:12px;" aria-label="Enquire about FPI services">Enquire About FPI</a>
+          </div>
+          <div class="fpi-card-group" role="list" aria-label="FPI features">
+            <div class="fpi-card" role="listitem">
+              <h4>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:6px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#C9A84C" stroke-width="2" stroke-linejoin="round"/></svg>
+                SEBI-Regulated FPI Route
+              </h4>
+              <p>Invest in Indian commodity derivatives through a transparent and SEBI-compliant Foreign Portfolio Investor (FPI) framework.</p>
+            </div>
+            <div class="fpi-card" role="listitem">
+              <h4>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:6px;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="17 6 23 6 23 12" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Access to India's Commodity Markets
+              </h4>
+              <p>Gain exposure to commodity futures traded on MCX, India's leading commodity derivatives exchange.</p>
+            </div>
+            <div class="fpi-card" role="listitem">
+              <h4>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="10" stroke="#C9A84C" stroke-width="2"/><line x1="2" y1="12" x2="22" y2="12" stroke="#C9A84C" stroke-width="2"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="#C9A84C" stroke-width="2"/></svg>
+                Portfolio Diversification
+              </h4>
+              <p>Enhance your investment portfolio with an asset class that offers diversification beyond traditional equities and fixed-income securities.</p>
+            </div>
+            <div class="fpi-card" role="listitem">
+              <h4>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:6px;"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="#C9A84C" stroke-width="2"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/></svg>
+                Dedicated Support Desk
+              </h4>
+              <p>Receive comprehensive assistance throughout your investment journey, from onboarding and compliance to ongoing investor support.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUR TEAM -->
+    <section id="team" aria-labelledby="team-heading">
+      <div class="container">
+        <div class="team-intro">
+          <p class="section-label" style="display:block;">Our Leadership</p>
+          <h2 id="team-heading" class="section-title">Our Team</h2>
+          <div class="section-divider" style="margin:16px auto;" aria-hidden="true"></div>
+          <p class="section-subtitle" style="margin:0 auto;text-align:center;max-width:680px;">Our team brings together decades of experience in international commodity markets, combining market expertise, strategic thinking, and a shared commitment to delivering exceptional client service.</p>
+        </div>
+        <div class="team-cards">
+          <div class="team-card">
+            <div class="team-avatar" aria-hidden="true">S</div>
+            <h4>Sunesh Kumar Raj</h4>
+            <span class="team-role">Founder &amp; Director</span>
+            <span class="team-title">Administration &amp; Strategic Planning</span>
+            <p>Over two decades of experience in international commodity markets. Leads the company's administration, strategic planning, and operational support, ensuring seamless business operations.</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar" aria-hidden="true">R</div>
+            <h4>Rajesh L G</h4>
+            <span class="team-role">Founder &amp; Director</span>
+            <span class="team-title">Financial Analyst</span>
+            <p>Financial Analyst with over two decades of experience in international commodity markets. Specializes in technical and fundamental market analysis, investment strategies, and market research.</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar" aria-hidden="true">S</div>
+            <h4>Saud Mohammed Sharaf</h4>
+            <span class="team-role">Business Development</span>
+            <span class="team-title">BBA LL.B. &amp; Master's, London</span>
+            <p>Holds a BBA LL.B. and a Master's degree from London. Passionate about commodity trading and financial markets, with a strong focus on transparency, professionalism, and client relationships.</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar" aria-hidden="true">CR</div>
+            <h4>Client Relations</h4>
+            <span class="team-role">Client Relations</span>
+            <span class="team-title">Master's in Management</span>
+            <p>Holds a Master's degree in management. Passionate about delivering an outstanding client experience by combining personalized service, proactive communication, and a client-first approach.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOADS -->
+    <section id="downloads" aria-labelledby="downloads-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">Resources</p>
+          <h2 id="downloads-heading" class="section-title">Downloads</h2>
+          <div class="section-divider" aria-hidden="true"></div>
+          <p class="section-subtitle">Access important documents, forms, and research materials related to your account and trading activities.</p>
+        </div>
+        <div class="downloads-grid">
+
+          <!-- Section A: Client Agreement Form (English) -->
+          <div class="download-section" id="dl-section-english">
+            <button class="dl-accordion-header" aria-expanded="false" aria-controls="dl-body-english" id="dl-english">
+              <span class="dl-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="#0A1F44" stroke-width="1.8" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke="#0A1F44" stroke-width="1.8" stroke-linejoin="round"/><line x1="16" y1="13" x2="8" y2="13" stroke="#0A1F44" stroke-width="1.8" stroke-linecap="round"/><line x1="16" y1="17" x2="8" y2="17" stroke="#0A1F44" stroke-width="1.8" stroke-linecap="round"/><polyline points="10 9 9 9 8 9" stroke="#0A1F44" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </span>
+              <span class="dl-title">BnB Client Agreement Form</span>
+              <span class="dl-accordion-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="dl-accordion-body" id="dl-body-english" role="region" aria-labelledby="dl-english">
+              <a href="https://www.bnbfin.com/assets/docs/BnB%20Client%20Agreement%20Form.pdf"
+                 class="download-link" target="_blank" rel="noopener noreferrer"
+                 aria-label="Download BnB Client Agreement Form in English (PDF)">
+                <span>Client Agreement Form – English</span>
+                <span class="dl-badge">PDF</span>
+              </a>
+              <a href="https://www.bnbfin.com/assets/docs/BNB_POLICIES.pdf"
+                 class="download-link" target="_blank" rel="noopener noreferrer"
+                 aria-label="Download BnB Policies document (PDF)">
+                <span>BnB Policies Document</span>
+                <span class="dl-badge">PDF</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Section B: Client Agreement Form (Vernacular) -->
+          <div class="download-section" id="dl-section-vernacular">
+            <button class="dl-accordion-header" aria-expanded="false" aria-controls="dl-body-vernacular" id="dl-vernacular">
+              <span class="dl-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" stroke="#0A1F44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="dl-title">Client Agreement – Vernacular Languages</span>
+              <span class="dl-accordion-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="dl-accordion-body" id="dl-body-vernacular" role="region" aria-labelledby="dl-vernacular">
+              <div class="download-vernacular" role="list">
+                <a href="https://www.bnbfin.com/assets/docs/assamese.zip" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="Download Assamese client agreement form">↓ Assamese</a>
+                <a href="https://www.bnbfin.com/assets/docs/bengali.zip" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="Download Bengali client agreement form">↓ Bengali</a>
+                <a href="https://www.bnbfin.com/assets/docs/gujarati.zip" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="Download Gujarati client agreement form">↓ Gujarati</a>
+                <a href="https://www.bnbfin.com/assets/docs/hindi.zip" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="Download Hindi client agreement form">↓ Hindi</a>
+                <a href="https://www.bnbfin.com/assets/docs/kannada.zip" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="Download Kannada client agreement form">↓ Kannada</a>
+                <a href="https://www.bnbfin.com/assets/docs/kashmiri.zip" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="Download Kashmiri client agreement form">↓ Kashmiri</a>
+                <a href="https://www.bnbfin.com/assets/docs/konkani.zip" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="Download Konkani client agreement form">↓ Konkani</a>
+                <a href="https://www.bnbfin.com/assets/docs/malayalam.zip" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="Download Malayalam client agreement form">↓ Malayalam</a>
+                <a href="https://www.bnbfin.com/assets/docs/marathi.zip" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="Download Marathi client agreement form">↓ Marathi</a>
+                <a href="https://www.bnbfin.com/assets/docs/oriya.zip" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="Download Odia client agreement form">↓ Odia</a>
+                <a href="https://www.bnbfin.com/assets/docs/punjabi.zip" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="Download Punjabi client agreement form">↓ Punjabi</a>
+                <a href="https://www.bnbfin.com/assets/docs/sindhi.zip" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="Download Sindhi client agreement form">↓ Sindhi</a>
+                <a href="https://www.bnbfin.com/assets/docs/tamil.zip" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="Download Tamil client agreement form">↓ Tamil</a>
+                <a href="https://www.bnbfin.com/assets/docs/telugu.zip" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="Download Telugu client agreement form">↓ Telugu</a>
+                <a href="https://www.bnbfin.com/assets/docs/urdu.zip" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="Download Urdu client agreement form">↓ Urdu</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section C: Knowledge Base -->
+          <div class="download-section" id="dl-section-knowledge">
+            <button class="dl-accordion-header" aria-expanded="false" aria-controls="dl-body-knowledge" id="dl-knowledge">
+              <span class="dl-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 19.5A2.5 2.5 0 016.5 17H20" stroke="#0A1F44" stroke-width="1.8" stroke-linecap="round"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" stroke="#0A1F44" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="dl-title">Knowledge Base</span>
+              <span class="dl-accordion-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="dl-accordion-body" id="dl-body-knowledge" role="region" aria-labelledby="dl-knowledge">
+              <div class="admin-placeholder" role="region" aria-label="Knowledge base documents – coming soon">
+                <span aria-hidden="true">📂</span>
+                <p>Knowledge base documents will be listed here.</p>
+                <p style="font-size:12px;margin-top:8px;color:#B0B8CC;">Admin: Add, modify or delete documents from the admin console.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section D: Research Reports -->
+          <div class="download-section" id="dl-section-research">
+            <button class="dl-accordion-header" aria-expanded="false" aria-controls="dl-body-research" id="dl-research">
+              <span class="dl-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><line x1="18" y1="20" x2="18" y2="10" stroke="#0A1F44" stroke-width="1.8" stroke-linecap="round"/><line x1="12" y1="20" x2="12" y2="4" stroke="#0A1F44" stroke-width="1.8" stroke-linecap="round"/><line x1="6" y1="20" x2="6" y2="14" stroke="#0A1F44" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </span>
+              <span class="dl-title">Research Reports</span>
+              <span class="dl-accordion-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </button>
+            <div class="dl-accordion-body" id="dl-body-research" role="region" aria-labelledby="dl-research">
+              <div class="admin-placeholder" role="region" aria-label="Research reports – coming soon">
+                <span aria-hidden="true">📈</span>
+                <p>Research reports will be listed here.</p>
+                <p style="font-size:12px;margin-top:8px;color:#B0B8CC;">Admin: Add, modify or delete documents from the admin console.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header" style="text-align:center;">
+          <p class="section-label" style="display:block;">Common Questions</p>
+          <h2 id="faq-heading" class="section-title" style="margin:0 auto;">Frequently Asked Questions</h2>
+          <div class="section-divider" style="margin:16px auto;" aria-hidden="true"></div>
+        </div>
+        <div class="faq-search-wrap" role="search">
+          <label for="faq-search" class="skip-link" style="position:absolute;left:-9999px;">Search FAQs</label>
+          <input type="search" id="faq-search" name="faq-search" placeholder="Search questions..." aria-label="Search frequently asked questions" autocomplete="off">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+        </div>
+        <p class="faq-no-result" id="faq-no-result" role="status" aria-live="polite">No answers found for your query, please contact support team.</p>
+        <div class="faq-list" id="faq-list" aria-label="Frequently asked questions list">
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">What is a Commodity Exchange?<span class="faq-icon" aria-hidden="true">+</span></button>
+            <div id="faq-a1" class="faq-answer" role="region" aria-labelledby="faq-q1"><p>A commodity exchange is an association, company, or body corporate that organises futures trading in commodities and is registered with SEBI (formerly the Forward Market Commission).</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">Which are the major commodity exchanges in India?<span class="faq-icon" aria-hidden="true">+</span></button>
+            <div id="faq-a2" class="faq-answer" role="region" aria-labelledby="faq-q2"><p>There are 24 commodity exchanges in India. The two national-level exchanges are: <strong>MCX (Multi Commodity Exchange of India, Mumbai)</strong> and <strong>NCDEX (National Commodity and Derivative Exchange, Mumbai)</strong>.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">Which commodities can I trade on MCX?<span class="faq-icon" aria-hidden="true">+</span></button>
+            <div id="faq-a3" class="faq-answer" role="region" aria-labelledby="faq-q3"><p><strong>Bullion:</strong> Gold, Silver · <strong>Metals:</strong> Aluminium, Copper, Zinc, Lead, Nickel · <strong>Energy:</strong> Brent Crude, Crude Oil, Natural Gas · <strong>Oil &amp; Seeds:</strong> Refined Soy Oil, Soy Bean · <strong>Agricultural:</strong> Mentha Oil, Cardamom, Crude Palm Oil</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">Who can invest in commodities?<span class="faq-icon" aria-hidden="true">+</span></button>
+            <div id="faq-a4" class="faq-answer" role="region" aria-labelledby="faq-q4"><p>Commodity markets are open to individual retail investors, traders, hedgers, and institutional investors. Anyone with an account at a registered broker like BnB Financial can participate.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">How is BnB Financial regulated?<span class="faq-icon" aria-hidden="true">+</span></button>
+            <div id="faq-a5" class="faq-answer" role="region" aria-labelledby="faq-q5"><p>BnB Financial is registered with SEBI as a Trading cum Clearing Member of MCX. <strong>SEBI Code: INZ000057434 · MCX Member ID: 40735</strong>. Grievances can be filed through <strong>SCORES</strong> at scores.gov.in.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a6" id="faq-q6">What is a futures contract?<span class="faq-icon" aria-hidden="true">+</span></button>
+            <div id="faq-a6" class="faq-answer" role="region" aria-labelledby="faq-q6"><p>A futures contract is a standardized agreement to buy or sell a commodity at a predetermined price at a specified date in the future. These contracts are traded on commodity exchanges like MCX and are used for both hedging and speculation.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a7" id="faq-q7">What is hedging in commodity markets?<span class="faq-icon" aria-hidden="true">+</span></button>
+            <div id="faq-a7" class="faq-answer" role="region" aria-labelledby="faq-q7"><p>Hedging is a risk management strategy where commodity traders or producers lock in a future price to protect themselves against adverse price movements. For example, a gold jeweller may sell gold futures to hedge against a potential fall in gold prices.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a8" id="faq-q8">What is margin in commodity trading?<span class="faq-icon" aria-hidden="true">+</span></button>
+            <div id="faq-a8" class="faq-answer" role="region" aria-labelledby="faq-q8"><p>Margin is the initial deposit required to enter into a futures contract. It is a percentage of the total contract value and acts as a performance bond to ensure that both parties fulfil their obligations. MCX sets the margin requirements for each commodity.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a9" id="faq-q9">How do I open a trading account with BnB Financial?<span class="faq-icon" aria-hidden="true">+</span></button>
+            <div id="faq-a9" class="faq-answer" role="region" aria-labelledby="faq-q9"><p>You can open a trading account by contacting our team through the Contact Us form or calling us directly. You will need to complete KYC (Know Your Customer) documentation including PAN card, Aadhaar, bank account details, and proof of address. Our team will guide you through the entire process.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a10" id="faq-q10">What documents are required to open a commodity trading account?<span class="faq-icon" aria-hidden="true">+</span></button>
+            <div id="faq-a10" class="faq-answer" role="region" aria-labelledby="faq-q10"><p>Documents required include: PAN Card, Aadhaar Card / Passport / Voter ID (Identity Proof), Bank Statement / Cancelled Cheque (Bank Proof), Recent passport-size photograph, and a signed Client Agreement Form. You can download the agreement form from our Downloads section.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a11" id="faq-q11">What are MCX trading hours?<span class="faq-icon" aria-hidden="true">+</span></button>
+            <div id="faq-a11" class="faq-answer" role="region" aria-labelledby="faq-q11"><p>MCX trading sessions are: <strong>Morning session:</strong> 9:00 AM – 11:30 PM (Monday to Friday). The exact timings may vary for specific commodities and during daylight saving time changes in international markets. Trading is not conducted on MCX trading holidays.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a12" id="faq-q12">How can I file a grievance?<span class="faq-icon" aria-hidden="true">+</span></button>
+            <div id="faq-a12" class="faq-answer" role="region" aria-labelledby="faq-q12"><p>You can file a grievance by: (1) Emailing us at <strong>grievance@bnbfin.com</strong>, (2) Using the SEBI SCORES portal at <a href="https://scores.gov.in" target="_blank" rel="noopener noreferrer" aria-label="SEBI SCORES grievance portal">scores.gov.in</a>, or (3) Contacting MCX's Investor Services Centre. We are committed to resolving all grievances promptly and transparently.</p></div>
+          </div>
+
+        </div>
+        <div class="faq-cta">
+          <p>Didn't find what you were looking for? Our team is ready to help.</p>
+          <a href="#contact" class="btn-primary" aria-label="Contact us for further assistance">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">Get In Touch</p>
+          <h2 id="contact-heading" class="section-title">Ready to Start Trading?</h2>
+          <div class="section-divider" aria-hidden="true"></div>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <p>Connect with BnB Financial Services today. Our expert team is ready to guide you through the world of commodity trading.</p>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <span>Phone</span>
+                <span><a href="tel:+914043334857" style="color:inherit;text-decoration:none;" aria-label="Call BnB Financial">+91 40 4333 4857</a></span>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="2"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="currentColor" stroke-width="2"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <span>Website</span>
+                <span><a href="https://www.bnbfin.com" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;" aria-label="Visit BnB Financial website">www.bnbfin.com</a></span>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <span>Address</span>
+                <span>Level 1, Spacion Towers, Next to Westin Hotel, Raheja Mind Space, Hi-Tech City, Madhapur, Hyderabad, Telangana – 500 081</span>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <span>Email</span>
+                <span><a href="mailto:info@bnbfin.com" style="color:inherit;text-decoration:none;" aria-label="Email BnB Financial">info@bnbfin.com</a></span>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <span>SEBI Registration</span>
+                <span>INZ000057434 · MCX: 40735</span>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form">
+            <form aria-label="Contact enquiry form" novalidate id="contact-form">
+              <div class="form-group">
+                <label for="cn">Full Name <span aria-hidden="true" style="color:var(--gold)">*</span></label>
+                <input type="text" id="cn" name="name" placeholder="Your full name" required autocomplete="name" aria-required="true">
+              </div>
+              <div class="form-group">
+                <label for="ce">Email Address <span aria-hidden="true" style="color:var(--gold)">*</span></label>
+                <input type="email" id="ce" name="email" placeholder="you@example.com" required autocomplete="email" aria-required="true">
+              </div>
+              <div class="form-group">
+                <label for="cp">Phone Number <span aria-hidden="true" style="color:var(--gold)">*</span></label>
+                <input type="tel" id="cp" name="phone" placeholder="+91 XXXXX XXXXX" required autocomplete="tel" aria-required="true">
+              </div>
+              <div class="form-group">
+                <label for="cs">Interested In</label>
+                <select id="cs" name="service" aria-label="Select a service you are interested in">
+                  <option value="">Select a service...</option>
+                  <option>Commodity Trading</option>
+                  <option>FPI Advisory</option>
+                  <option>Technical Research</option>
+                  <option>Open a Trading Account</option>
+                  <option>General Enquiry</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="cm">Message</label>
+                <textarea id="cm" name="message" placeholder="Tell us about your investment goals..." aria-label="Your message"></textarea>
+              </div>
+              <button type="submit" class="btn-primary" style="width:100%;text-align:center;" aria-label="Send your contact message">Send Message</button>
+              <p class="form-disclaimer" role="note">By submitting this form, you consent to be contacted by our team. We respect your privacy and will never share your details with third parties.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-cols">
+        <!-- Left: Company Info -->
+        <div class="footer-col">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <img src="logo-3d.png" alt="" style="height:38px;width:auto;object-fit:contain;filter:drop-shadow(0 1px 4px rgba(0,0,0,0.3));" aria-hidden="true">
+            <div style="line-height:1.2;">
+              <div style="font-family:var(--font-head);font-weight:800;font-size:15px;color:#269558;">BnB Financial Services Pvt. Ltd.</div>
+              <div style="display:flex;justify-content:space-between;width:100%;font-size:10px;color:#ffffff;font-weight:600;letter-spacing:0.5px;margin-top:2px;">
+                <span style="color:#269558;">•</span>
+                <span>Experience</span>
+                <span style="color:#269558;">•</span>
+                <span>Expertise</span>
+                <span style="color:#269558;">•</span>
+                <span>Excellence</span>
+              </div>
+            </div>
+          </div>
+          <p>Level 1, Spacion Towers, Next to Westin Hotel,<br>
+             Raheja Mind Space, Hi-Tech City, Madhapur,<br>
+             Hyderabad, Telangana – 500 081, India</p>
+          <div class="footer-reg">
+            <span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" style="display:inline;vertical-align:middle;margin-right:4px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="tel:+914043334857" style="color:inherit;text-decoration:none;">+91 40 4333 4857</a>
+            </span>
+            <span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" style="display:inline;vertical-align:middle;margin-right:4px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linejoin="round"/></svg>
+              <a href="mailto:info@bnbfin.com" style="color:inherit;text-decoration:none;">info@bnbfin.com</a>
+            </span>
+            <span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" style="display:inline;vertical-align:middle;margin-right:4px;"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linejoin="round"/><line x1="12" y1="9" x2="12" y2="13" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="17" x2="12.01" y2="17" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round"/></svg>
+              Grievances: <a href="mailto:grievance@bnbfin.com" style="color:inherit;text-decoration:none;">grievance@bnbfin.com</a>
+            </span>
+            <span style="margin-top:10px;display:block;"><strong>CIN:</strong> U67120TG2010PTC068745</span>
+            <span><strong>SEBI Reg. No.:</strong> INZ000057434</span>
+            <span><strong>MCX Member ID:</strong> 40735</span>
+          </div>
+          <p style="margin-top:14px;font-size:12px;">
+            <a href="#" aria-label="View sitemap">Sitemap</a> ·
+            <a href="#" aria-label="View privacy policy">Privacy Policy</a>
+          </p>
+        </div>
+
+        <!-- Middle: Quick Links -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="#hero" aria-label="Go to Home section">Home</a></li>
+            <li><a href="#about" aria-label="Go to About Us section">About Us</a></li>
+            <li><a href="#services" aria-label="Go to Services section">Services</a></li>
+            <li><a href="#fpi" aria-label="Go to FPI section">FPI</a></li>
+            <li><a href="#commodities" aria-label="Go to Commodities section">Commodities</a></li>
+            <li><a href="#team" aria-label="Go to Our Team section">Our Team</a></li>
+            <li><a href="#downloads" aria-label="Go to Downloads section">Downloads</a></li>
+            <li><a href="#faq" aria-label="Go to FAQ section">FAQ</a></li>
+            <li><a href="#contact" aria-label="Go to Contact section">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Right: Regulatory Links -->
+        <div class="footer-col">
+          <h4>Regulatory &amp; Investor</h4>
+          <ul class="footer-links-list">
+            <li><a href="https://www.bnbfin.com/Trading_Holidays.html" target="_blank" rel="noopener noreferrer" aria-label="View MCX Trading Holidays">Trading Holidays</a></li>
+            <li><a href="https://www.bnbfin.com/Escalation_Matrix.html" target="_blank" rel="noopener noreferrer" aria-label="View Escalation Matrix">Escalation Matrix</a></li>
+            <li><a href="https://www.bnbfin.com/Investor_Accessibility_Audio.html" target="_blank" rel="noopener noreferrer" aria-label="Investor Accessibility Audio Information">Investor Accessibility – Audio</a></li>
+            <li><a href="https://www.bnbfin.com/Investor_Accessibility_Video.html" target="_blank" rel="noopener noreferrer" aria-label="Investor Accessibility Video Information">Investor Accessibility – Video</a></li>
+            <li><a href="#" aria-label="View General Disclaimer">General Disclaimer</a></li>
+            <li><a href="#" aria-label="View Terms and Conditions">Terms &amp; Conditions</a></li>
+            <li><a href="#" aria-label="View Privacy Policy">Privacy Policy</a></li>
+            <li><a href="#" aria-label="View Accessibility Statement">Accessibility Statement</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="footer-divider">
+
+      <div class="footer-bottom">
+        <p>© 2026 BnB Financial Services Pvt. Ltd. All rights reserved.</p>
+        <p>SEBI: INZ000057434 · MCX Member: 40735</p>
+      </div>
+    </div>
+
+    <!-- SCROLLING DISCLAIMER -->
+    <div class="footer-scroll-disclaimer" role="note" aria-label="Regulatory disclaimer">
+      <div class="scroll-disclaimer-track" aria-hidden="true">
+        <span>⚠️ Disclaimer: Trading Futures, Options on Futures, and Foreign Exchange involves substantial risk of loss and may not be suitable for all investors. You should carefully consider whether trading is suitable for you in light of your circumstances, knowledge, and financial resources. You may lose all or more of your initial investment. Opinions, market data, and recommendations are subject to change at any time.</span>
+        <span>⚠️ Keep Your Password/Pin and OTPs private &amp; confidential to avoid any misuse or unauthorised trades. Please ensure that you do not share it with anyone.</span>
+        <span>⚠️ Beware of fraudulent entities claiming to be BnB Financial Services Pvt Ltd. Our official website is bnbfin.com. Do not make payment to any third-party bank account.</span>
+        <span>⚠️ Disclaimer: Trading Futures, Options on Futures, and Foreign Exchange involves substantial risk of loss and may not be suitable for all investors. You should carefully consider whether trading is suitable for you in light of your circumstances, knowledge, and financial resources. You may lose all or more of your initial investment. Opinions, market data, and recommendations are subject to change at any time.</span>
+        <span>⚠️ Keep Your Password/Pin and OTPs private &amp; confidential to avoid any misuse or unauthorised trades. Please ensure that you do not share it with anyone.</span>
+        <span>⚠️ Beware of fraudulent entities claiming to be BnB Financial Services Pvt Ltd. Our official website is bnbfin.com. Do not make payment to any third-party bank account.</span>
+      </div>
+    </div>
+
+    <!-- FULL DISCLAIMER -->
+    <div class="footer-full-disclaimer">
+      <div class="container">
+        <h5>Regulatory Disclaimer</h5>
+        <p><strong>Disclaimer:</strong> Trading Futures, Options on Futures, and Foreign Exchange involves substantial risk of loss and may not be suitable for all investors. You should carefully consider whether trading is suitable for you in light of your circumstances, knowledge, and financial resources. You may lose all or more of your initial investment. Opinions, market data, and recommendations are subject to change at any time. The information contained on this site and any communications from this site or our company does not constitute a solicitation to buy or sell by any individual or firm and/or its affiliates, and is not to be available to individuals in a jurisdiction where such availability would be contrary to local regulation or law.</p>
+        <h5 style="margin-top:14px;">Cautionary Message</h5>
+        <ul>
+          <li>Sharing of trading credentials – login id &amp; passwords including OTPs: Keep Your Password/Pin and OTPs private &amp; confidential to avoid any misuse or unauthorised trades. Please ensure that you do not share it with anyone.</li>
+          <li>Trading in leveraged products like options without proper understanding, which could lead to losses.</li>
+          <li>Writing / selling options or trading in option strategies based on tips, without basic knowledge &amp; understanding of the product and its risks.</li>
+          <li>Dealing in unsolicited tips through WhatsApp, Telegram, YouTube, Facebook, SMS, calls, etc.</li>
+          <li>Trading in "Options" based on recommendations from unauthorised / unregistered investment advisors and influencers.</li>
+        </ul>
+        <p style="margin-top:10px;"><strong>Beware of Fraudulent Entities:</strong> This is to inform you our official website is bnbfin.com. Please be advised that any person or business claiming to be "BnB Financial Services Pvt Ltd" or using a similar name/logo without our official website domain is not associated with us. Do not make payment to any third-person bank account. Payments for our services should be made only if bank account is in the name of BnB Financial Services Private Limited.</p>
+        <h5 style="margin-top:14px;">Privacy Policy</h5>
+        <p>This privacy statement is applicable to www.bnbfin.com<br>
+www.bnbfin.com does not collect personal information about individuals except when such individuals specifically provide such information on a voluntary basis.<br>
+www.bnbfin.com is and attempts to be to sensitive to your privacy on the Internet. Whenever possible, we will attempt to treat the information about you it receives on the Internet with care deemed reasonable under the circumstances. The website uses information provided by you (if any) to measure the use of our site and to improve the content of our site. The personal information we may collect is used only by us to respond to your inquiry. At times cookies may be used to provide you with certain information. A cookie is a tiny element of data that a web site can send to your browser, which may then be stored on your hard drive so we can recognize you when you return. You may set your browser to notify you when you receive a cookie.<br>
+Note: Also that our website may contain links to other sites. While we try to link only to sites that have respect for privacy, we are not responsible for the content or the privacy practices employed by other sites.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // NAV TOGGLE
+    const toggleBtn = document.getElementById('nav-toggle-btn');
+    const mainNav = document.getElementById('main-nav');
+    toggleBtn.addEventListener('click', () => {
+      const open = mainNav.classList.toggle('open');
+      toggleBtn.setAttribute('aria-expanded', open);
+      toggleBtn.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+      toggleBtn.textContent = open ? '✕' : '☰';
+    });
+    mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mainNav.classList.remove('open');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      toggleBtn.textContent = '☰';
+    }));
+
+    // MOBILE: Services dropdown toggle on click
+    document.querySelectorAll('.nav-dropdown > a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (window.innerWidth <= 1050) {
+          e.preventDefault();
+          const dropdown = link.closest('.nav-dropdown');
+          dropdown.classList.toggle('mobile-open');
+        }
+      });
+    });
+
+    // DOWNLOADS ACCORDION
+    document.querySelectorAll('.dl-accordion-header').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const section = btn.closest('.download-section');
+        const isOpen = section.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.download-section').forEach(s => {
+          s.classList.remove('open');
+          s.querySelector('.dl-accordion-header').setAttribute('aria-expanded', 'false');
+        });
+        // Toggle clicked
+        if (!isOpen) {
+          section.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // SCROLLED HEADER
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50), {passive:true});
+
+    // TABS (now 3 tabs: story, philosophy, goal)
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+        btn.classList.add('active'); btn.setAttribute('aria-selected','true');
+        document.querySelectorAll('.tab-panel').forEach(p => { p.classList.remove('active'); p.hidden=true; });
+        const t = document.getElementById(btn.getAttribute('aria-controls'));
+        t.classList.add('active'); t.hidden=false;
+      });
+      btn.addEventListener('keydown', e => {
+        if (e.key==='ArrowRight'||e.key==='ArrowLeft') {
+          e.preventDefault();
+          const all=[...tabBtns]; const idx=all.indexOf(btn);
+          all[(e.key==='ArrowRight'?(idx+1)%all.length:(idx-1+all.length)%all.length)].focus();
+        }
+      });
+    });
+
+    // FAQ ACCORDION
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded')==='true';
+        document.querySelectorAll('.faq-question').forEach(b => {
+          b.setAttribute('aria-expanded','false');
+          document.getElementById(b.getAttribute('aria-controls')).classList.remove('open');
+        });
+        if (!expanded) {
+          btn.setAttribute('aria-expanded','true');
+          document.getElementById(btn.getAttribute('aria-controls')).classList.add('open');
+        }
+      });
+    });
+
+    // FAQ SEARCH
+    const faqSearch = document.getElementById('faq-search');
+    const faqNoResult = document.getElementById('faq-no-result');
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqSearch.addEventListener('input', () => {
+      const query = faqSearch.value.toLowerCase().trim();
+      let visibleCount = 0;
+      faqItems.forEach(item => {
+        const questionText = item.querySelector('.faq-question').textContent.toLowerCase();
+        const answerText = item.querySelector('.faq-answer').textContent.toLowerCase();
+        if (!query || questionText.includes(query) || answerText.includes(query)) {
+          item.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          item.classList.add('hidden');
+          // Close any open accordion within hidden items
+          const btn = item.querySelector('.faq-question');
+          btn.setAttribute('aria-expanded','false');
+          item.querySelector('.faq-answer').classList.remove('open');
+        }
+      });
+      if (query && visibleCount === 0) {
+        faqNoResult.classList.add('show');
+      } else {
+        faqNoResult.classList.remove('show');
+      }
+    });
+
+    // ACTIVE NAV ON SCROLL
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    sections.forEach(s => new IntersectionObserver(entries => entries.forEach(e => {
+      if(e.isIntersecting){
+        navLinks.forEach(l=>l.removeAttribute('aria-current'));
+        const lnk=document.querySelector(`nav a[href="#${e.target.id}"]`);
+        if(lnk) lnk.setAttribute('aria-current','page');
+      }
+    }),{threshold:0.35}).observe(s));
+
+    // LOGO FALLBACK - show text logo if image fails
+    document.querySelectorAll('.logo-img').forEach(img => {
+      img.addEventListener('error', function() {
+        this.style.display = 'none';
+        const fallback = this.nextElementSibling;
+        if (fallback && fallback.classList.contains('logo-fallback')) {
+          fallback.style.display = 'flex';
+        }
+      });
+    });
+
+    // CHATBOT LOGIC
+    const chatbotToggleBtn = document.getElementById('chatbotToggleBtn');
+    const chatbotCloseBtn = document.getElementById('chatbotCloseBtn');
+    const chatbotWindow = document.getElementById('chatbotWindow');
+    const chatBody = document.getElementById('chatBody');
+    const chatOptions = document.getElementById('chatOptions');
+
+    function toggleChat() {
+      const isOpen = chatbotWindow.classList.contains('open');
+      if (isOpen) {
+        chatbotWindow.classList.remove('open');
+        chatbotWindow.setAttribute('aria-hidden', 'true');
+        chatbotToggleBtn.setAttribute('aria-expanded', 'false');
+        chatbotToggleBtn.focus();
+      } else {
+        chatbotWindow.classList.add('open');
+        chatbotWindow.setAttribute('aria-hidden', 'false');
+        chatbotToggleBtn.setAttribute('aria-expanded', 'true');
+        chatbotCloseBtn.focus();
+      }
+    }
+
+    chatbotToggleBtn.addEventListener('click', toggleChat);
+    chatbotCloseBtn.addEventListener('click', toggleChat);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && chatbotWindow.classList.contains('open')) {
+        toggleChat();
+      }
+    });
+
+    window.sendChatReply = function(question, answer) {
+      chatOptions.style.display = 'none';
+      const userMsg = document.createElement('div');
+      userMsg.className = 'chat-msg user';
+      userMsg.textContent = question;
+      chatBody.appendChild(userMsg);
+      chatBody.scrollTop = chatBody.scrollHeight;
+      
+      setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'chat-msg bot';
+        botMsg.textContent = answer;
+        chatBody.appendChild(botMsg);
+        chatBody.scrollTop = chatBody.scrollHeight;
+        
+        setTimeout(() => {
+          chatOptions.style.display = 'flex';
+          chatBody.appendChild(chatOptions);
+          chatBody.scrollTop = chatBody.scrollHeight;
+        }, 1000);
+      }, 500);
+    };
+
+    const chatInput = document.getElementById('chatInput');
+    const chatSendBtn = document.getElementById('chatSendBtn');
+
+    function handleSendCustomMessage() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      
+      const userMsg = document.createElement('div');
+      userMsg.className = 'chat-msg user';
+      userMsg.textContent = text;
+      chatBody.appendChild(userMsg);
+      chatInput.value = '';
+      chatBody.scrollTop = chatBody.scrollHeight;
+      
+      setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'chat-msg bot';
+        botMsg.textContent = "Thanks for your message! Our team will get back to you shortly, or you can use the options above.";
+        chatBody.appendChild(botMsg);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }, 600);
+    }
+
+    chatSendBtn.addEventListener('click', handleSendCustomMessage);
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') handleSendCustomMessage();
+    });
+  </script>
+</body>
+</html>
