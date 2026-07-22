@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - BnB Financial Services</title>
+  <style>
+    :root {
+      --navy: #1B2945; --navy-light: #2A3B5C; --gold: #C9A84C; --gold-light: #E0C879;
+      --gray-100: #F8FAFC; --gray-200: #E2E8F0; --gray-800: #1E293B; --white: #FFFFFF;
+      --font-body: 'Inter', sans-serif; --radius: 8px;
+    }
+    body { font-family: var(--font-body); background-color: var(--gray-100); color: var(--gray-800); margin: 0; padding: 0; }
+    
+    .login-container { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+    .login-box { background: var(--white); padding: 40px; border-radius: var(--radius); box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
+    .login-box h2 { color: var(--navy); margin-bottom: 24px; }
+    .input-group { margin-bottom: 16px; text-align: left; }
+    .input-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; }
+    .input-group input { width: 100%; padding: 12px; border: 1px solid var(--gray-200); border-radius: var(--radius); font-size: 16px; box-sizing: border-box; }
+    
+    .btn-primary { background: var(--navy); color: var(--white); border: none; padding: 10px 20px; border-radius: var(--radius); cursor: pointer; font-weight: 600; transition: opacity 0.2s; }
+    .btn-primary:hover { opacity: 0.9; }
+    .btn-secondary { background: var(--gray-200); color: var(--gray-800); border: none; padding: 10px 20px; border-radius: var(--radius); cursor: pointer; font-weight: 600; transition: background 0.2s; }
+    .btn-secondary:hover { background: #cbd5e1; }
+    .btn-danger { background: #dc2626; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
+    .btn-danger:hover { background: #b91c1c; }
+    .btn-edit { background: #2563eb; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
+    .btn-edit:hover { background: #1d4ed8; }
+
+    #error-msg { color: #dc2626; margin-top: 12px; font-size: 14px; display: none; }
+
+    #dashboard { display: none; }
+    .header { background: var(--navy); color: var(--gold); padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .header h1 { margin: 0; font-size: 20px; }
+    .logout-btn { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 6px 16px; border-radius: 4px; cursor: pointer; }
+
+    .container { padding: 32px; max-width: 1200px; margin: 0 auto; }
+    .section { background: var(--white); padding: 24px; border-radius: var(--radius); margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    .section h2 { margin-top: 0; color: var(--navy); border-bottom: 2px solid var(--gray-100); padding-bottom: 12px; margin-bottom: 20px; }
+    
+    .admin-list { list-style: none; padding: 0; margin: 0; }
+    .admin-list li { display: flex; justify-content: space-between; align-items: flex-start; padding: 16px; border: 1px solid var(--gray-200); border-radius: var(--radius); margin-bottom: 12px; background: var(--gray-100); }
+    
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-grid.full { grid-template-columns: 1fr; }
+    .form-control { display: flex; flex-direction: column; gap: 6px; }
+    .form-control label { font-size: 13px; font-weight: 600; color: var(--gray-800); }
+    .form-control input, .form-control select, .form-control textarea { padding: 10px; border: 1px solid var(--gray-200); border-radius: 6px; font-family: inherit; }
+    .form-control textarea { resize: vertical; min-height: 80px; }
+    
+    .save-msg { color: #16a34a; font-weight: 600; margin-left: 12px; opacity: 0; transition: opacity 0.3s; }
+    .save-msg.show { opacity: 1; }
+
+    /* Editable Tables */
+    .data-grid-wrap { width: 100%; overflow-x: auto; margin-bottom: 24px; }
+    .data-grid { width: 100%; border-collapse: collapse; min-width: 800px; }
+    .data-grid th { background: var(--navy); color: var(--white); padding: 10px; text-align: left; font-size: 13px; font-weight: 500; }
+    .data-grid td { padding: 4px; border: 1px solid var(--gray-200); }
+    .data-grid input { width: 100%; padding: 8px; border: 1px solid transparent; border-radius: 4px; box-sizing: border-box; font-family: inherit; font-size: 14px; }
+    .data-grid input:focus { border-color: var(--gold); outline: none; background: #fffdf5; }
+    .data-grid input.readonly-col { background: var(--gray-100); font-weight: 600; color: var(--gray-800); }
+    
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN SCREEN -->
+  <div class="login-container" id="loginScreen">
+    <div class="login-box">
+      <h2>BnB Admin Console</h2>
+      <div class="input-group">
+        <label>Admin Password</label>
+        <input type="password" id="adminPw" placeholder="Enter password...">
+      </div>
+      <button class="btn-primary" id="loginBtn" style="width:100%;">Login</button>
+      <div id="error-msg">Incorrect password. Please try again.</div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard">
+    <div class="header">
+      <h1>BnB Content Management System (CMS)</h1>
+      <button class="logout-btn" id="logoutBtn">Logout</button>
+    </div>
+    
+    <div class="container">
+      
+      <!-- KNOWLEDGE BASE -->
+      <div class="section">
+        <h2>Knowledge Base Posts</h2>
+        <div style="background: var(--gray-100); padding: 16px; border-radius: 8px; margin-bottom: 24px; border: 1px solid var(--gray-200);">
+          <h3 style="margin-top:0; font-size: 16px;" id="kbFormTitle">Create New Post</h3>
+          <div class="form-grid">
+            <div class="form-control">
+              <label>Title</label>
+              <input type="text" id="kbTitle" placeholder="e.g. Master Circular on ODR">
+            </div>
+            <div class="form-control">
+              <label>Category</label>
+              <select id="kbCategory">
+                <option>Regulatory</option>
+                <option>Knowledge Base</option>
+                <option>Research Reports</option>
+              </select>
+            </div>
+            <div class="form-control">
+              <label>Document (Paste Link OR Upload File)</label>
+              <input type="url" id="kbUrl" placeholder="Paste URL here...">
+              <input type="file" id="kbFile" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.csv" style="padding:4px; font-size:12px;">
+            </div>
+            <div class="form-control">
+              <label>Thumbnail (Paste Link OR Upload Image)</label>
+              <input type="url" id="kbThumb" placeholder="Paste image URL here...">
+              <input type="file" id="kbThumbFile" accept="image/*" style="padding:4px; font-size:12px;">
+            </div>
+          </div>
+          <div class="form-grid full">
+            <div class="form-control">
+              <label>Short Description *</label>
+              <textarea id="kbDesc" placeholder="Brief summary of the document..."></textarea>
+            </div>
+          </div>
+          <div style="display:flex; gap:12px; margin-top:12px;">
+            <button class="btn-primary" id="saveKbBtn">Publish Post</button>
+            <button class="btn-secondary" id="cancelKbBtn" style="display:none;">Cancel Edit</button>
+          </div>
+        </div>
+        <ul class="admin-list" id="pdfList"></ul>
+      </div>
+
+      <!-- FAQ CRUD -->
+      <div class="section">
+        <h2>Manage FAQs</h2>
+        <div style="background: var(--gray-100); padding: 16px; border-radius: 8px; margin-bottom: 24px; border: 1px solid var(--gray-200);">
+          <h3 style="margin-top:0; font-size: 16px;" id="faqFormTitle">Add New FAQ</h3>
+          <div class="form-grid full">
+            <div class="form-control">
+              <label>Question</label>
+              <input type="text" id="faqQ" placeholder="e.g. How do I open an account?">
+            </div>
+            <div class="form-control">
+              <label>Answer</label>
+              <textarea id="faqA" placeholder="Your answer here..."></textarea>
+            </div>
+          </div>
+          <div style="display:flex; gap:12px; margin-top:12px;">
+            <button class="btn-primary" id="saveFaqBtn">Save FAQ</button>
+            <button class="btn-secondary" id="cancelFaqBtn" style="display:none;">Cancel Edit</button>
+          </div>
+        </div>
+        <ul class="admin-list" id="faqList"></ul>
+      </div>
+
+      <div class="section">
+        <h2>Disclosure of Complaints Data</h2>
+        <p style="font-size: 14px; color: var(--gray-600); margin-bottom: 20px;">Update the numbers directly in the tables below. The system will automatically build the JSON data and sync it to the website.</p>
+        
+        <div style="background: var(--gray-100); padding: 16px; border-radius: 8px; margin-bottom: 24px; border: 1px solid var(--gray-200);">
+          <label style="font-weight:700; font-size:14px; color:var(--navy); display:block; margin-bottom:8px;">Month Ending Subtitle Text (Dynamic)</label>
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <span style="font-size:14px; color:var(--gray-800); font-weight:600;">Data for every month ending</span>
+            <input type="text" id="monthEndingInput" placeholder="e.g. June 2026" style="padding:8px 12px; border:1px solid var(--gray-200); border-radius:6px; font-size:14px; font-weight:700; color:var(--navy); flex:1; min-width:200px; max-width:320px;">
+          </div>
+        </div>
+        
+        <h3 style="font-size: 16px; margin-bottom: 8px;">Summary Table</h3>
+        <div class="data-grid-wrap">
+          <table class="data-grid" id="summaryGrid">
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Carried Fwd</th>
+                <th>Received</th>
+                <th>Total</th>
+                <th>Resolved</th>
+                <th>Pending</th>
+                <th>Pending < 3M</th>
+                <th>Pending > 3M</th>
+                <th>Avg Resol. Days</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        
+        <div style="display:flex; justify-space-between; align-items:center; margin-top:32px; margin-bottom:12px; flex-wrap:wrap; gap:12px;">
+          <h3 style="font-size: 16px; margin:0;">Monthly Trend</h3>
+          <button class="btn-primary" id="addMonthlyRowBtn" style="display:flex; align-items:center; gap:6px; font-size:13px; padding:6px 14px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+            Add Monthly Row
+          </button>
+        </div>
+        <div class="data-grid-wrap">
+          <table class="data-grid" id="monthlyGrid">
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Carried Fwd</th>
+                <th>Received</th>
+                <th>Resolved</th>
+                <th>Pending</th>
+                <th style="width:80px; text-align:center;">Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:32px; margin-bottom:12px; flex-wrap:wrap; gap:12px;">
+          <h3 style="font-size: 16px; margin:0;">Annual Trend</h3>
+          <button class="btn-primary" id="addAnnualRowBtn" style="display:flex; align-items:center; gap:6px; font-size:13px; padding:6px 14px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+            Add Annual Row
+          </button>
+        </div>
+        <div class="data-grid-wrap">
+          <table class="data-grid" id="annualGrid">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Carried Fwd</th>
+                <th>Received</th>
+                <th>Resolved</th>
+                <th>Pending</th>
+                <th style="width:80px; text-align:center;">Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div style="display:flex; align-items:center; margin-top:24px;">
+          <button class="btn-primary" id="saveComplaintsBtn">Save All Complaint Data</button>
+          <span class="save-msg" id="complaintsMsg">Data synced successfully!</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    let token = sessionStorage.getItem('admin_token') || '';
+    const loginScreen = document.getElementById('loginScreen');
+    const dashboard = document.getElementById('dashboard');
+    
+    if (token) showDashboard();
+
+    document.getElementById('loginBtn').addEventListener('click', () => {
+      token = document.getElementById('adminPw').value;
+      fetch('/api/pdfs', { headers: { 'x-admin-password': token }})
+        .then(res => {
+          if (res.ok) {
+            sessionStorage.setItem('admin_token', token);
+            document.getElementById('error-msg').style.display = 'none';
+            showDashboard();
+          } else {
+            document.getElementById('error-msg').style.display = 'block';
+          }
+        });
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      sessionStorage.removeItem('admin_token'); token = '';
+      loginScreen.style.display = 'flex'; dashboard.style.display = 'none';
+    });
+
+    function showDashboard() {
+      loginScreen.style.display = 'none';
+      dashboard.style.display = 'block';
+      loadData();
+    }
+
+    // STATE
+    let pdfs = []; let faqs = []; let complaints = { summary: [], monthly: [], annual: [] };
+    let editingKbIdx = -1; let editingFaqIdx = -1;
+
+    async function loadData() {
+      pdfs = await fetch('/api/pdfs').then(r => r.json());
+      faqs = await fetch('/api/faqs').then(r => r.json());
+      complaints = await fetch('/api/complaints').then(r => r.json());
+      renderPdfs(); renderFaqs(); renderComplaintGrids();
+    }
+
+    async function saveApi(endpoint, data) {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-admin-password': token },
+        body: JSON.stringify(data)
+      });
+      if (res.status === 401) { alert("Session expired."); document.getElementById('logoutBtn').click(); return false; }
+      return res.ok;
+    }
+
+    // --- KNOWLEDGE BASE ---
+    function renderPdfs() {
+      const ul = document.getElementById('pdfList'); ul.innerHTML = '';
+      pdfs.forEach((p, i) => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <div style="display:flex; gap:16px;">
+            ${p.thumbnail ? `<img src="${p.thumbnail}" style="width:80px; height:60px; object-fit:cover; border-radius:4px;">` : `<div style="width:80px; height:60px; background:var(--gray-200); border-radius:4px; display:flex; align-items:center; justify-content:center; font-size:10px; color:var(--gray-600);">No Thumb</div>`}
+            <div>
+              <div style="font-weight:600; font-size:15px; margin-bottom:4px;">${p.title} <span style="font-size:12px; color:var(--gold); font-weight:700;">[${p.category}]</span></div>
+              <div style="font-size:13px; color:var(--gray-600); margin-bottom:4px;">${p.description || 'No description provided.'}</div>
+              <a href="${p.url}" target="_blank" style="font-size:12px; color:#2563eb;">${p.url}</a>
+            </div>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button class="btn-edit" onclick="editKb(${i})">Edit</button>
+            <button class="btn-danger" onclick="deleteKb(${i})">Delete</button>
+          </div>
+        `;
+        ul.appendChild(li);
+      });
+    }
+
+    window.editKb = function(i) {
+      editingKbIdx = i;
+      const p = pdfs[i];
+      document.getElementById('kbTitle').value = p.title || '';
+      document.getElementById('kbCategory').value = p.category || 'Regulatory';
+      document.getElementById('kbUrl').value = p.url || '';
+      document.getElementById('kbThumb').value = p.thumbnail || '';
+      document.getElementById('kbDesc').value = p.description || '';
+      
+      document.getElementById('kbFormTitle').textContent = 'Edit Post';
+      document.getElementById('saveKbBtn').textContent = 'Update Post';
+      document.getElementById('cancelKbBtn').style.display = 'block';
+      document.getElementById('kbTitle').focus();
+    };
+
+    document.getElementById('cancelKbBtn').addEventListener('click', () => {
+      editingKbIdx = -1;
+      document.getElementById('kbTitle').value = ''; document.getElementById('kbUrl').value = '';
+      document.getElementById('kbThumb').value = ''; document.getElementById('kbDesc').value = '';
+      document.getElementById('kbFile').value = ''; document.getElementById('kbThumbFile').value = '';
+      document.getElementById('kbFormTitle').textContent = 'Create New Post';
+      document.getElementById('saveKbBtn').textContent = 'Publish Post';
+      document.getElementById('cancelKbBtn').style.display = 'none';
+    });
+
+    
+    async function uploadFile(file) {
+      const fd = new FormData();
+      fd.append('file', file);
+      // We pass the password in the body since it's FormData, or via headers. Our server looks for it in headers or body.
+      fd.append('x-admin-password', token);
+      
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        headers: { 'x-admin-password': token },
+        body: fd
+      });
+      if (!res.ok) throw new Error("Upload failed");
+      const data = await res.json();
+      return data.url;
+    }
+
+    document.getElementById('saveKbBtn').addEventListener('click', async () => {
+      const title = document.getElementById('kbTitle').value.trim();
+      let url = document.getElementById('kbUrl').value.trim();
+      let thumbnail = document.getElementById('kbThumb').value.trim();
+      const kbFile = document.getElementById('kbFile').files[0];
+      const kbThumbFile = document.getElementById('kbThumbFile').files[0];
+      
+      if (!title || !document.getElementById('kbDesc').value.trim()) return alert('Title and Short Description are mandatory fields.');
+      // URL and File are now optional
+      
+      document.getElementById('saveKbBtn').textContent = 'Uploading...';
+      document.getElementById('saveKbBtn').disabled = true;
+
+      try {
+        if (kbFile) url = await uploadFile(kbFile);
+        if (kbThumbFile) thumbnail = await uploadFile(kbThumbFile);
+
+        const payload = {
+          title, url,
+          category: document.getElementById('kbCategory').value,
+          thumbnail: thumbnail,
+          description: document.getElementById('kbDesc').value.trim()
+        };
+
+        if (editingKbIdx >= 0) pdfs[editingKbIdx] = payload;
+        else pdfs.push(payload);
+
+        if (await saveApi('/api/pdfs', pdfs)) {
+          document.getElementById('cancelKbBtn').click();
+          renderPdfs();
+        }
+      } catch (err) {
+        console.error(err);
+        alert("An error occurred during upload.");
+      } finally {
+        document.getElementById('saveKbBtn').textContent = editingKbIdx >= 0 ? 'Update Post' : 'Publish Post';
+        document.getElementById('saveKbBtn').disabled = false;
+      }
+    });
+window.deleteKb = async function(i) {
+      if(!confirm("Delete this post permanently?")) return;
+      pdfs.splice(i, 1);
+      if(await saveApi('/api/pdfs', pdfs)) renderPdfs();
+    };
+
+    // --- FAQ CRUD ---
+    function renderFaqs() {
+      const ul = document.getElementById('faqList'); ul.innerHTML = '';
+      faqs.forEach((f, i) => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <div><div style="font-weight:600; font-size:15px; margin-bottom:4px;">Q: ${f.q}</div><div style="font-size:14px; color:var(--gray-600);">A: ${f.a}</div></div>
+          <div style="display:flex; gap:8px;">
+            <button class="btn-edit" onclick="editFaq(${i})">Edit</button>
+            <button class="btn-danger" onclick="deleteFaq(${i})">Delete</button>
+          </div>`;
+        ul.appendChild(li);
+      });
+    }
+
+    window.editFaq = function(i) {
+      editingFaqIdx = i;
+      document.getElementById('faqQ').value = faqs[i].q;
+      document.getElementById('faqA').value = faqs[i].a;
+      document.getElementById('faqFormTitle').textContent = 'Edit FAQ';
+      document.getElementById('saveFaqBtn').textContent = 'Update FAQ';
+      document.getElementById('cancelFaqBtn').style.display = 'block';
+      document.getElementById('faqQ').focus();
+    };
+
+    document.getElementById('cancelFaqBtn').addEventListener('click', () => {
+      editingFaqIdx = -1;
+      document.getElementById('faqQ').value = ''; document.getElementById('faqA').value = '';
+      document.getElementById('faqFormTitle').textContent = 'Add New FAQ';
+      document.getElementById('saveFaqBtn').textContent = 'Save FAQ';
+      document.getElementById('cancelFaqBtn').style.display = 'none';
+    });
+
+    document.getElementById('saveFaqBtn').addEventListener('click', async () => {
+      const q = document.getElementById('faqQ').value.trim();
+      const a = document.getElementById('faqA').value.trim();
+      if (!q || !a) return alert('Question and Answer required.');
+      
+      if (editingFaqIdx >= 0) faqs[editingFaqIdx] = { q, a };
+      else faqs.push({ q, a });
+
+      if (await saveApi('/api/faqs', faqs)) {
+        document.getElementById('cancelFaqBtn').click();
+        renderFaqs();
+      }
+    });
+
+    window.deleteFaq = async function(i) {
+      if(!confirm("Delete this FAQ?")) return;
+      faqs.splice(i, 1);
+      if(await saveApi('/api/faqs', faqs)) renderFaqs();
+    };
+
+    // --- COMPLAINTS DATA GRIDS ---
+    function syncGridData() {
+      const mInput = document.getElementById('monthEndingInput');
+      if (mInput) complaints.monthEnding = mInput.value.trim() || 'June 2026';
+
+      const sumRows = document.querySelectorAll('#summaryGrid tbody tr[data-idx]');
+      if (sumRows.length > 0) {
+        complaints.summary = Array.from(sumRows).map(tr => ({
+          label: tr.querySelector('.readonly-col').value,
+          cf: Number(tr.querySelector('.sum-cf').value) || 0,
+          recv: Number(tr.querySelector('.sum-recv').value) || 0,
+          total: Number(tr.querySelector('.sum-tot').value) || 0,
+          resolved: Number(tr.querySelector('.sum-res').value) || 0,
+          pending: Number(tr.querySelector('.sum-pen').value) || 0,
+          lt3: Number(tr.querySelector('.sum-lt3').value) || 0,
+          gt3: Number(tr.querySelector('.sum-gt3').value) || 0,
+          avgDays: Number(tr.querySelector('.sum-avg').value) || 0
+        }));
+      }
+
+      const monRows = document.querySelectorAll('#monthlyGrid tbody tr[data-idx]');
+      if (monRows.length > 0) {
+        complaints.monthly = Array.from(monRows).map(tr => ({
+          month: tr.querySelector('.mon-month').value.trim(),
+          cf: Number(tr.querySelector('.mon-cf').value) || 0,
+          recv: Number(tr.querySelector('.mon-recv').value) || 0,
+          resolved: Number(tr.querySelector('.mon-res').value) || 0,
+          pending: Number(tr.querySelector('.mon-pen').value) || 0
+        }));
+      }
+
+      const annRows = document.querySelectorAll('#annualGrid tbody tr[data-idx]');
+      if (annRows.length > 0) {
+        complaints.annual = Array.from(annRows).map(tr => ({
+          year: tr.querySelector('.ann-year').value.trim(),
+          cf: Number(tr.querySelector('.ann-cf').value) || 0,
+          recv: Number(tr.querySelector('.ann-recv').value) || 0,
+          resolved: Number(tr.querySelector('.ann-res').value) || 0,
+          pending: Number(tr.querySelector('.ann-pen').value) || 0
+        }));
+      }
+    }
+
+    function renderComplaintGrids() {
+      const mInput = document.getElementById('monthEndingInput');
+      if (mInput) mInput.value = complaints.monthEnding || 'June 2026';
+
+      // Summary
+      const sumTbody = document.querySelector('#summaryGrid tbody'); sumTbody.innerHTML = '';
+      (complaints.summary || []).forEach((r, i) => {
+        sumTbody.innerHTML += `<tr data-idx="${i}">
+          <td><input type="text" class="readonly-col" value="${r.label}" readonly></td>
+          <td><input type="number" class="sum-cf" value="${r.cf}"></td>
+          <td><input type="number" class="sum-recv" value="${r.recv}"></td>
+          <td><input type="number" class="sum-tot" value="${r.total}"></td>
+          <td><input type="number" class="sum-res" value="${r.resolved}"></td>
+          <td><input type="number" class="sum-pen" value="${r.pending}"></td>
+          <td><input type="number" class="sum-lt3" value="${r.lt3}"></td>
+          <td><input type="number" class="sum-gt3" value="${r.gt3}"></td>
+          <td><input type="number" class="sum-avg" value="${r.avgDays}"></td>
+        </tr>`;
+      });
+
+      // Monthly
+      const monTbody = document.querySelector('#monthlyGrid tbody'); monTbody.innerHTML = '';
+      (complaints.monthly || []).forEach((r, i) => {
+        monTbody.innerHTML += `<tr data-idx="${i}">
+          <td><input type="text" class="mon-month" value="${r.month}" placeholder="e.g. April-2025"></td>
+          <td><input type="number" class="mon-cf" value="${r.cf}"></td>
+          <td><input type="number" class="mon-recv" value="${r.recv}"></td>
+          <td><input type="number" class="mon-res" value="${r.resolved}"></td>
+          <td><input type="number" class="mon-pen" value="${r.pending}"></td>
+          <td style="text-align:center;"><button class="btn-danger" onclick="deleteMonthlyRow(${i})" style="font-size:11px; padding:4px 8px;">Delete</button></td>
+        </tr>`;
+      });
+      if ((complaints.monthly || []).length === 0) {
+        monTbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px; color:var(--gray-600); font-size:14px;">No monthly entries. Click "Add Monthly Row" above to add one.</td></tr>';
+      }
+
+      // Annual
+      const annTbody = document.querySelector('#annualGrid tbody'); annTbody.innerHTML = '';
+      (complaints.annual || []).forEach((r, i) => {
+        annTbody.innerHTML += `<tr data-idx="${i}">
+          <td><input type="text" class="ann-year" value="${r.year}" placeholder="e.g. 2025-26"></td>
+          <td><input type="number" class="ann-cf" value="${r.cf}"></td>
+          <td><input type="number" class="ann-recv" value="${r.recv}"></td>
+          <td><input type="number" class="ann-res" value="${r.resolved}"></td>
+          <td><input type="number" class="ann-pen" value="${r.pending}"></td>
+          <td style="text-align:center;"><button class="btn-danger" onclick="deleteAnnualRow(${i})" style="font-size:11px; padding:4px 8px;">Delete</button></td>
+        </tr>`;
+      });
+      if ((complaints.annual || []).length === 0) {
+        annTbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px; color:var(--gray-600); font-size:14px;">No annual entries. Click "Add Annual Row" above to add one.</td></tr>';
+      }
+    }
+
+    // Add Monthly Row
+    document.getElementById('addMonthlyRowBtn').addEventListener('click', () => {
+      syncGridData();
+      if (!complaints.monthly) complaints.monthly = [];
+      complaints.monthly.push({ month: '', cf: 0, recv: 0, resolved: 0, pending: 0 });
+      renderComplaintGrids();
+    });
+
+    // Delete Monthly Row
+    window.deleteMonthlyRow = function(i) {
+      if (!confirm("Delete this monthly row?")) return;
+      syncGridData();
+      complaints.monthly.splice(i, 1);
+      renderComplaintGrids();
+    };
+
+    // Add Annual Row
+    document.getElementById('addAnnualRowBtn').addEventListener('click', () => {
+      syncGridData();
+      if (!complaints.annual) complaints.annual = [];
+      complaints.annual.push({ year: '', cf: 0, recv: 0, resolved: 0, pending: 0 });
+      renderComplaintGrids();
+    });
+
+    // Delete Annual Row
+    window.deleteAnnualRow = function(i) {
+      if (!confirm("Delete this annual row?")) return;
+      syncGridData();
+      complaints.annual.splice(i, 1);
+      renderComplaintGrids();
+    };
+
+    document.getElementById('saveComplaintsBtn').addEventListener('click', async () => {
+      syncGridData();
+      if (await saveApi('/api/complaints', complaints)) {
+        const msg = document.getElementById('complaintsMsg');
+        msg.classList.add('show');
+        setTimeout(() => msg.classList.remove('show'), 2000);
+      }
+    });
+
+
+  </script>
+</body>
+</html>

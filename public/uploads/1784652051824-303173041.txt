@@ -1,0 +1,29 @@
+Saikiran Maddirala 
+Hyderabad | smaddirala23@gmail.com | 9930663231 |linkedin.com/in/ Saikiran Maddirala  github.com/NorMods2
+Objective 
+I am a proactive problem-solver and a self-taught technical professional with a passion for understanding technology. My entrepreneurial drive has led me to build and manage a diverse portfolio of online platforms. From running a successful e-commerce brand to overseeing monetization-focused websites, I leverage available resources to create and maintain impactful online presences
+
+Education 
+Guru Nanak Institute of Technology, Bachelors in Computer Science Nov 2022 – May 2026 • GPA: 8.0/10.0 
+• Coursework: Object-Oriented Programming (Java) , Database Management  Systems, SQL
+Projects 
+InterviewPilot - AI Interview Platform
+Developed a full-stack web application using Node.js and a JavaScript-based frontend (HTML/CSS/GSAP).
+Integrated the Mistral 7B LLM to generate dynamic interview questions and feedback.
+Studgram : An AI Solution for Students Performance
+Project focused on enhancing academic performance through AI
+Designed and developed 'Studgram' at the HackArena hackathon, a project that utilized AI to maximize student performance in academics
+ ShyamSales - Digital Product Catalog
+Developed a catalog website for browsing and price-checking digital game accounts.
+Built a responsive frontend using HTML, CSS, and JavaScript to display product listings.
+Used Node.js and mySQL to create a backend management panel for the owner to update product prices and availability.
+Skills 
+Languages: Java, SQL 
+
+Certifications
+
+Java (Basic) – HackerRank
+SQL (Basic) – HackerRank
+Java – Simplilearn
+SQL – Simplilearn
+Oracle Java Explorer/Beginner Badge (not a certification, but noteworthy and recognized)

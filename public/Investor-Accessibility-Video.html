@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investor Accessibility Video – BnB Financial Services Pvt. Ltd.</title>
+  <meta name="description" content="Investor Accessibility Video Information – BnB Financial Services Pvt. Ltd. SEBI-registered commodity broker.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0A1F44; --navy-mid: #122B5E; --navy-light: #1C3A7A;
+      --gold: #C9A84C; --gold-light: #E8CC7A; --gold-dark: #A07B2A;
+      --white: #FFFFFF; --off-white: #F8F9FC; --gray-100: #F1F3F8;
+      --gray-200: #E2E6EF; --gray-400: #8D96AA; --gray-600: #4A5568; --gray-800: #1A202C;
+      --font-head: 'Inter', sans-serif; --font-body: 'Open Sans', sans-serif;
+      --radius: 8px; --shadow: 0 4px 24px rgba(10,31,68,0.10); --shadow-lg: 0 8px 40px rgba(10,31,68,0.16);
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font-body); color: var(--gray-800); background: var(--white); line-height: 1.6; }
+    .skip-link { position: absolute; top: -100%; left: 16px; z-index: 9999; background: var(--gold); color: var(--navy); padding: 10px 20px; font-weight: 700; border-radius: 0 0 var(--radius) var(--radius); text-decoration: none; font-family: var(--font-head); transition: top 0.2s; }
+    .skip-link:focus { top: 0; }
+
+    /* HEADER */
+    header { background: var(--navy); border-bottom: 1px solid rgba(201,168,76,0.2); padding: 0 24px; }
+    .nav-container { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 70px; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .logo-mark-img { height: 38px; width: auto; object-fit: contain; display: block; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25)); }
+    .logo-text-block { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; transform: translateY(-5px); }
+    .logo-name { font-family: var(--font-head); font-weight: 800; font-size: 16px; color: #269558; letter-spacing: -0.2px; white-space: nowrap; line-height: 1.2; }
+    .logo-tagline { display: flex; justify-content: space-between; width: 100%; align-items: center; font-family: var(--font-head); font-size: 9.5px; font-weight: 600; color: #ffffff; letter-spacing: 1.5px; text-transform: uppercase; }
+    .back-link { font-family: var(--font-head); font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.8); text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius); transition: all 0.2s; }
+    .back-link:hover { color: var(--gold); border-color: rgba(201,168,76,0.5); }
+
+    /* HERO */
+    .page-hero { background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 55%, var(--navy-light) 100%); padding: 56px 24px 40px; }
+    .page-hero-content { max-width: 900px; margin: 0 auto; text-align: center; }
+    .page-label { font-family: var(--font-head); font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .page-title { font-family: var(--font-head); font-size: clamp(24px,4vw,40px); font-weight: 800; color: var(--white); line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 12px; }
+    .page-subtitle { font-size: 15px; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto; }
+
+    /* CONTENT */
+    main { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
+    .video-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); margin-bottom: 36px; }
+    .video-wrap { background: #000; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
+    .video-wrap video { width: 100%; height: 100%; object-fit: contain; }
+    .video-info { padding: 20px 24px; }
+    .video-info h2 { font-family: var(--font-head); font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .video-info p { font-size: 13.5px; color: var(--gray-600); line-height: 1.7; text-align: left; }
+    .info-box { background: var(--off-white); border: 1px solid var(--gray-200); border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 20px 24px; margin-top: 28px; }
+    .info-box h3 { font-family: var(--font-head); font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .info-box p { font-size: 13.5px; color: var(--gray-600); line-height: 1.7; text-align: left; }
+    .info-box a { color: var(--gold-dark); text-decoration: none; font-weight: 600; }
+    .info-box a:hover { text-decoration: underline; }
+    .btn-back { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: var(--navy); font-family: var(--font-head); font-weight: 700; padding: 12px 24px; border-radius: var(--radius); border: none; font-size: 14px; cursor: pointer; text-decoration: none; margin-top: 24px; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(201,168,76,0.3); }
+    .btn-back:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.5); }
+
+    /* FOOTER */
+    footer { background: #050E24; color: rgba(255,255,255,0.5); padding: 24px; text-align: center; font-size: 12.5px; }
+    footer a { color: var(--gold); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header role="banner">
+    <div class="nav-container">
+      <a href="index.html" class="logo" aria-label="BnB Financial Services – Home">
+        <img src="logo-new.png" alt="" class="logo-mark-img" aria-hidden="true">
+        <div class="logo-text-block">
+          <span class="logo-name">BnB Financial Services Pvt. Ltd.</span>
+                    <span class="logo-tagline">
+            <span style="color:#269558;">•</span>
+            <span>EXPERIENCE</span>
+            <span style="color:#269558;">•</span>
+            <span>EXPERTISE</span>
+            <span style="color:#269558;">•</span>
+            <span>EXCELLENCE</span>
+          </span>
+        </div>
+      </a>
+      <a href="index.html" class="back-link" aria-label="Return to homepage">← Back to Home</a>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <p class="page-label">Regulatory · Investor Accessibility</p>
+      <h1 class="page-title">Investor Accessibility Video Information</h1>
+      <p class="page-subtitle">BnB Financial Services Pvt. Ltd. – SEBI-Registered Trading cum Clearing Member of MCX</p>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <div class="video-card">
+      <div class="video-wrap">
+        <video controls preload="metadata" aria-label="Investor Accessibility Video from BnB Financial Services">
+          <source src="VID-20260712-WA0020.mp4" type="video/mp4">
+          <p>Your browser does not support HTML5 video. <a href="VID-20260712-WA0020.mp4" download>Download the video</a> to watch it.</p>
+        </video>
+      </div>
+      <div class="video-info">
+        <h2>Investor Accessibility – Awareness Video</h2>
+        <p>This video provides important information for investors regarding accessibility features, grievance redressal mechanisms, and key investor protection measures as mandated by SEBI. BnB Financial Services Pvt. Ltd. is committed to ensuring all investors have easy access to the information and support they need.</p>
+      </div>
+    </div>
+
+
+
+
+    <div class="info-box" style="margin-top:16px;">
+      <h3>Related Resources</h3>
+      <p>
+        <a href="https://investor.sebi.gov.in" target="_blank" rel="noopener noreferrer">Investor Charter (SEBI)</a> ·
+        <a href="https://scores.sebi.gov.in" target="_blank" rel="noopener noreferrer">SCORES Portal</a> ·
+        <a href="https://smartodr.in/login" target="_blank" rel="noopener noreferrer">SMARTODR</a> ·
+        <a href="Investor-Accessibility-Audio.html">Investor Accessibility Audio</a> ·
+        <a href="contact.html">Contact / Escalation Matrix</a>
+      </p>
+    </div>
+
+    <a href="index.html" class="btn-back" aria-label="Return to homepage">← Return to Homepage</a>
+  </main>
+
+  <footer role="contentinfo">
+    <p>© 2026 BnB Financial Services Pvt. Ltd. · SEBI Reg. No.: INZ000057434 · MCX Member ID: 40735</p>
+    <p style="margin-top:6px;"><a href="index.html">Home</a> · <a href="contact.html">Contact</a> · <a href="terms.html">Terms &amp; Conditions</a> · <a href="privacy.html">Privacy Policy</a></p>
+  </footer>
+</body>
+</html>

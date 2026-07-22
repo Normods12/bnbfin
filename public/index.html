@@ -33,12 +33,11 @@
     header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10,31,68,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(201,168,76,0.2); padding: 0 24px; transition: box-shadow var(--transition); }
     header.scrolled { box-shadow: var(--shadow-lg); }
     .nav-container { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 70px; }
-    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
-    .logo-mark-img { height: 48px; width: auto; object-fit: contain; display: block; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25)); }
-    .logo-text-wrap { display: flex; flex-direction: column; justify-content: center; line-height: 1.15; }
-    .logo-name { font-family: var(--font-head); font-weight: 800; font-size: 16px; color: #269558; letter-spacing: -0.2px; white-space: nowrap; }
-    .logo-tagline { display: flex; justify-content: space-between; width: 100%; font-family: var(--font-head); font-size: 10px; font-weight: 600; color: #ffffff; letter-spacing: 0.5px; margin-top: 1px; }
-    .logo-dot { color: #269558; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .logo-mark-img { height: 38px; width: auto; object-fit: contain; display: block; flex-shrink: 0; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25)); }
+    .logo-text-block { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; transform: translateY(-1px); }
+    .logo-name { font-family: var(--font-head); font-weight: 800; font-size: 16px; color: #269558; letter-spacing: -0.2px; white-space: nowrap; line-height: 1.2; margin-top: 2px; }
+    .logo-tagline { display: flex; justify-content: space-between; width: 100%; align-items: center; font-family: var(--font-head); font-size: 9.5px; font-weight: 600; color: #ffffff; letter-spacing: 1.5px; text-transform: uppercase; white-space: nowrap; margin-top: -2px; }
     nav[role="navigation"] ul { display: flex; list-style: none; gap: 2px; align-items: center; }
     nav[role="navigation"] a { color: rgba(255,255,255,0.82); text-decoration: none; font-family: var(--font-head); font-size: 12.5px; font-weight: 600; padding: 7px 11px; border-radius: 6px; transition: color var(--transition), background var(--transition); letter-spacing: 0.3px; white-space: nowrap; }
     nav[role="navigation"] a:hover, nav[role="navigation"] a[aria-current="page"] { color: var(--gold); background: rgba(201,168,76,0.1); }
@@ -46,8 +45,8 @@
     .nav-login a:hover { background: var(--gold-light) !important; }
     .nav-dropdown { position: relative; }
     .dropdown-menu { display: none; position: absolute; top: calc(100% + 4px); left: 0; background: var(--navy); border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; padding: 8px 0; min-width: 160px; z-index: 1000; box-shadow: var(--shadow-lg); opacity: 0; transform: translateY(-4px); transition: opacity 0.2s ease, transform 0.2s ease; pointer-events: none; }
-    .nav-dropdown:hover > .dropdown-menu, .nav-dropdown:focus-within > .dropdown-menu { display: flex; flex-direction: column; gap: 0; opacity: 1; transform: translateY(0); pointer-events: all; }
-    .dropdown-menu a { padding: 8px 16px !important; display: block; border-radius: 0 !important; }
+    .nav-dropdown:hover > .dropdown-menu, .nav-dropdown:focus-within > .dropdown-menu { display: flex; flex-direction: column; gap: 0; opacity: 1; transform: translateY(0); pointer-events: all; align-items: stretch; }
+    .dropdown-menu a { display: block; padding: 10px 20px !important; border-radius: 0 !important; color: rgba(255,255,255,0.85) !important; background: transparent !important; text-align: left; }
     .nav-toggle { display: none; background: none; border: 2px solid rgba(201,168,76,0.5); color: var(--white); padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 20px; }
     @media (max-width: 1050px) {
       .nav-toggle { display: flex; align-items: center; }
@@ -82,6 +81,7 @@
     /* SECTION BASE */
     section { padding: 80px 24px; }
     .container { max-width: 1200px; margin: 0 auto; }
+    p { text-align: justify; }
     .section-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
     .section-title { font-family: var(--font-head); font-size: clamp(28px,3.5vw,42px); font-weight: 800; color: var(--navy); line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 16px; }
     .section-subtitle { font-size: 17px; color: var(--gray-600); max-width: 600px; line-height: 1.7; }
@@ -91,18 +91,21 @@
     /* ABOUT */
     #about { background: var(--white); }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-    .about-img-wrap { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); position: relative; background: var(--gray-100); display: flex; align-items: center; justify-content: center; min-height: 400px; }
+
+
+    .about-img-wrap { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); position: relative; background: var(--gray-100); display: flex; align-items: center; justify-content: center; height: 460px; flex-shrink: 0; }
     .about-img-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; max-height: 420px; padding: 24px; }
     .about-img-badge { position: absolute; bottom: 20px; left: 20px; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: var(--navy); padding: 14px 20px; border-radius: 12px; font-family: var(--font-head); font-weight: 700; }
-    /* Animated Logo */
-    .animated-logo-wrap { width: 100%; height: 420px; display: flex; align-items: center; justify-content: center; padding: 24px; position: relative; }
+    /* Animated Logo - Static size, no resize */
+    .animated-logo-wrap { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; position: relative; gap: 20px; }
     .logo-anim-ring { position: absolute; border-radius: 50%; border: 2px solid rgba(201,168,76,0.25); animation: ringPulse 3s ease-in-out infinite; }
     .logo-anim-ring:nth-child(1) { width: 180px; height: 180px; animation-delay: 0s; }
     .logo-anim-ring:nth-child(2) { width: 260px; height: 260px; animation-delay: 0.6s; }
     .logo-anim-ring:nth-child(3) { width: 340px; height: 340px; animation-delay: 1.2s; }
     @keyframes ringPulse { 0%,100%{opacity:0.15;transform:scale(1)} 50%{opacity:0.55;transform:scale(1.04)} }
-    .logo-anim-img { position: relative; z-index: 2; width: 180px; height: auto; animation: logoBob 4s ease-in-out infinite; filter: drop-shadow(0 8px 32px rgba(201,168,76,0.35)); }
+    .logo-anim-img { position: relative; z-index: 2; width: 180px; height: 180px; object-fit: contain; animation: logoBob 4s ease-in-out infinite; filter: drop-shadow(0 8px 32px rgba(201,168,76,0.35)); flex-shrink: 0; }
     @keyframes logoBob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    @keyframes taglineFadeIn { 0%{opacity:0;transform:translateY(8px)} 100%{opacity:1;transform:translateY(0)} }
     .logo-anim-glow { position: absolute; z-index: 1; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%); animation: glowPulse 3s ease-in-out infinite; }
     @keyframes glowPulse { 0%,100%{opacity:0.6;transform:scale(1)} 50%{opacity:1;transform:scale(1.15)} }
     .about-img-badge strong { display: block; font-size: 28px; line-height: 1; }
@@ -132,7 +135,8 @@
     .service-block::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); transform: scaleX(0); transform-origin: left; transition: transform var(--transition); }
     .service-block:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(201,168,76,0.4); }
     .service-block:hover::before { transform: scaleX(1); }
-    .service-block-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(10,31,68,0.06); display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 20px; }
+    .service-block-icon { width: 72px; height: 72px; border-radius: 16px; background: rgba(10,31,68,0.06); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+    .service-block-icon svg { width: 34px; height: 34px; }
     .service-block h3 { font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
     .service-block > p { color: var(--gray-600); font-size: 14.5px; line-height: 1.7; margin-bottom: 16px; }
     .service-list { list-style: none; }
@@ -146,11 +150,16 @@
     #commodities .section-subtitle { color: rgba(255,255,255,0.72); max-width: 700px; }
     .commodities-cta { margin-top: 24px; }
     .commodity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 16px; margin-top: 40px; }
-    .commodity-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 12px; padding: 24px 20px; text-align: center; transition: background var(--transition), border-color var(--transition); }
-    .commodity-card:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
+    .commodity-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 12px; padding: 24px 20px; text-align: center; transition: background var(--transition), border-color var(--transition), transform var(--transition); cursor: pointer; }
+    .commodity-card:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); transform: translateY(-2px); }
     .commodity-icon { font-size: 32px; margin-bottom: 10px; display: block; }
-    .commodity-card h4 { font-family: var(--font-head); font-size: 15px; font-weight: 700; color: var(--gold); margin-bottom: 6px; }
-    .commodity-card p { font-size: 13px; color: rgba(255,255,255,0.65); }
+    .commodity-card h4 { display: flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-head); font-size: 15px; font-weight: 700; color: var(--gold); margin-bottom: 6px; }
+    .commodity-card h4::after { content: '▼'; font-size: 9px; opacity: 0.5; transition: transform 0.3s ease, opacity 0.3s ease; }
+    .commodity-card:hover h4::after { opacity: 1; }
+    .commodity-card.expanded h4::after { transform: rotate(180deg); opacity: 1; }
+    .commodity-details { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, margin-top 0.3s; opacity: 0; }
+    .commodity-card.expanded .commodity-details { max-height: 80px; margin-top: 10px; opacity: 1; }
+    .commodity-details p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.4; margin: 0; text-align: center; }
     .btn-outline-gold { background: transparent; color: var(--gold); border: 2px solid var(--gold); font-family: var(--font-head); font-weight: 700; padding: 13px 30px; border-radius: var(--radius); font-size: 15px; cursor: pointer; text-decoration: none; display: inline-block; transition: background var(--transition), color var(--transition); }
     .btn-outline-gold:hover { background: var(--gold); color: var(--navy); }
 
@@ -167,15 +176,16 @@
 
     /* TEAM */
     #team { background: var(--gray-100); }
-    .team-intro { text-align: center; margin-bottom: 48px; }
-    .team-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 24px; }
-    .team-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 16px; padding: 32px 28px; text-align: center; transition: transform var(--transition), box-shadow var(--transition); }
+    .team-intro { text-align: left; margin-bottom: 48px; }
+    .team-intro .section-subtitle { margin: 0; max-width: 680px; text-align: left; }
+    .team-intro .section-divider { margin-left: 0; }
+    .team-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 24px; align-items: start; }
+    .team-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 16px; padding: 32px 28px; text-align: left; transition: transform var(--transition), box-shadow var(--transition); display: flex; flex-direction: column; }
     .team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-    .team-avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), var(--navy-light)); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-size: 26px; font-weight: 700; color: var(--gold); }
-    .team-card h4 { font-family: var(--font-head); font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
-    .team-card .team-role { font-size: 13px; color: var(--gold-dark); font-weight: 700; display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .team-card .team-title { font-size: 12px; color: var(--gray-400); display: block; margin-bottom: 12px; }
-    .team-card p { font-size: 13.5px; color: var(--gray-600); line-height: 1.7; }
+    .team-avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), var(--navy-light)); margin: 0 0 16px; display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-size: 26px; font-weight: 700; color: var(--gold); flex-shrink: 0; }
+    .team-card h4 { font-family: var(--font-head); font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 6px; min-height: 2.6em; }
+    .team-card .team-role { font-size: 12px; color: var(--gold-dark); font-weight: 700; display: block; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; min-height: 2.8em; }
+    .team-card p { font-size: 13.5px; color: var(--gray-600); line-height: 1.7; text-align: justify; flex: 1; }
 
     /* DOWNLOADS */
     #downloads { background: var(--white); }
@@ -204,7 +214,7 @@
 
     /* FAQ */
     #faq { background: var(--gray-100); }
-    .faq-search-wrap { max-width: 560px; margin: 0 auto 36px; position: relative; }
+    .faq-search-wrap { max-width: 560px; margin: 0 0 36px; position: relative; }
     .faq-search-wrap input { width: 100%; padding: 14px 48px 14px 18px; border-radius: 50px; border: 2px solid var(--gray-200); background: var(--white); font-family: var(--font-body); font-size: 15px; color: var(--gray-800); transition: border-color var(--transition); }
     .faq-search-wrap input:focus { outline: none; border-color: var(--gold); }
     .faq-search-wrap .search-icon { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--gray-400); pointer-events: none; }
@@ -227,7 +237,8 @@
     #contact { background: var(--navy); padding: 80px 24px; }
     #contact .section-title { color: var(--white); }
     #contact .section-label { color: var(--gold-light); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: stretch; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .contact-form-wrapper { padding-top: 0; }
     .contact-info { display: flex; flex-direction: column; }
     .contact-info p { color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 28px; }
     .contact-detail { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 20px; }
@@ -247,10 +258,41 @@
     .form-disclaimer { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-top: 14px; }
     .sebi-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25); color: var(--gold); font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 50px; }
 
+    /* ADMIN MODAL */
+    .admin-overlay { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.75); backdrop-filter:blur(4px); align-items:center; justify-content:center; }
+    .admin-overlay.open { display:flex; }
+    .admin-modal { background:var(--white); border-radius:16px; padding:36px; width:100%; max-width:680px; max-height:90vh; overflow-y:auto; box-shadow:0 24px 80px rgba(0,0,0,0.35); }
+    .admin-modal h2 { font-family:var(--font-head); font-size:22px; font-weight:800; color:var(--navy); margin-bottom:6px; }
+    .admin-modal .admin-sub { font-size:13px; color:var(--gray-400); margin-bottom:24px; }
+    .admin-login-form { display:flex; flex-direction:column; gap:14px; }
+    .admin-login-form label { font-size:13px; font-weight:600; color:var(--gray-600); }
+    .admin-pw-wrap { position:relative; }
+    .admin-pw-wrap input { width:100%; padding:11px 42px 11px 14px; border:1.5px solid var(--gray-200); border-radius:8px; font-size:15px; font-family:var(--font-body); transition:border-color 0.2s; }
+    .admin-pw-wrap input:focus { outline:none; border-color:var(--gold); }
+    .admin-pw-toggle { position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; color:var(--gray-400); font-size:18px; }
+    .admin-err { color:#dc2626; font-size:13px; display:none; }
+    .admin-section { margin-top:24px; border-top:1px solid var(--gray-200); padding-top:20px; }
+    .admin-section h3 { font-family:var(--font-head); font-size:16px; font-weight:700; color:var(--navy); margin-bottom:14px; }
+    .admin-row { display:flex; gap:10px; margin-bottom:10px; }
+    .admin-row input, .admin-row select { flex:1; padding:9px 12px; border:1.5px solid var(--gray-200); border-radius:7px; font-size:13.5px; font-family:var(--font-body); }
+    .admin-row input:focus, .admin-row select:focus { outline:none; border-color:var(--gold); }
+    .admin-list { list-style:none; margin-top:10px; }
+    .admin-list li { display:flex; justify-content:space-between; align-items:center; padding:8px 12px; background:var(--gray-100); border-radius:7px; font-size:13px; margin-bottom:6px; }
+    .admin-list li button { background:none; border:none; color:#dc2626; cursor:pointer; font-size:18px; line-height:1; }
+    .admin-close-bar { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+    .admin-logout { background:none; border:1.5px solid var(--gray-200); border-radius:7px; padding:6px 14px; font-size:13px; font-family:var(--font-head); font-weight:600; color:var(--gray-600); cursor:pointer; }
+    .admin-logout:hover { border-color:var(--navy); color:var(--navy); }
+
     /* FOOTER */
     footer { background: #050E24; color: rgba(255,255,255,0.6); padding: 56px 24px 0; }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-reg { margin-top: 18px; font-size: 13.5px; color: rgba(255,255,255,0.75); }
+    .footer-reg span { display: block; margin-bottom: 10px; line-height: 1.5; }
     .footer-cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; padding-bottom: 40px; }
+    .footer-investor-notice { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 0; padding: 20px 0 16px; font-size: 12.5px; color: rgba(255,255,255,0.6); line-height: 1.8; text-align: justify; }
+    .footer-investor-notice p { margin-bottom: 8px; }
+    .footer-investor-notice ol { padding-left: 18px; margin: 6px 0 8px; }
+    .footer-investor-notice ol li { margin-bottom: 4px; }
     .footer-col h4 { font-family: var(--font-head); font-size: 13px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 18px; }
     .footer-logo-img { height: 40px; width: auto; object-fit: contain; margin-bottom: 14px; filter: brightness(0) invert(1); opacity: 0.85; }
     .footer-col p { font-size: 13px; line-height: 1.8; color: rgba(255,255,255,0.55); }
@@ -268,11 +310,11 @@
     .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12.5px; padding: 20px 0; }
     .footer-bottom p { color: rgba(255,255,255,0.4); }
 
-    /* SCROLLING DISCLAIMER */
-    .footer-scroll-disclaimer { background: rgba(201,168,76,0.05); border-top: 1px solid rgba(201,168,76,0.15); padding: 0; overflow: hidden; }
-    .scroll-disclaimer-track { display: flex; gap: 80px; width: max-content; animation: scrollLeft 60s linear infinite; padding: 14px 0; }
+        /* SCROLLING DISCLAIMER */
+    .footer-scroll-disclaimer { background: rgba(201,168,76,0.08); border-top: 2px solid rgba(201,168,76,0.3); padding: 0; overflow: hidden; }
+    .scroll-disclaimer-track { display: flex; gap: 80px; width: max-content; animation: scrollLeft 60s linear infinite; padding: 12px 0; }
     .scroll-disclaimer-track:hover { animation-play-state: paused; }
-    .scroll-disclaimer-track span { white-space: nowrap; font-size: 11.5px; color: rgba(255,255,255,0.45); }
+    .scroll-disclaimer-track span { white-space: nowrap; font-size: 13px; color: rgba(255,255,255,0.85); font-family: var(--font-head); font-weight: 500; }
     @keyframes scrollLeft { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
     /* FULL DISCLAIMER SECTION */
@@ -311,12 +353,7 @@
     .chat-send-btn:hover, .chat-send-btn:focus-visible { background: var(--gold-dark); outline: none; }
     .chat-send-btn svg { width: 16px; height: 16px; fill: currentColor; }
 
-    /* WHATSAPP BUTTON */
-    .whatsapp-btn { position: fixed; bottom: 28px; right: 28px; z-index: 999; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); text-decoration: none; transition: transform var(--transition), box-shadow var(--transition); }
-    .whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.5); }
-    .whatsapp-btn svg { width: 30px; height: 30px; fill: #fff; }
-    .whatsapp-btn::after { content: 'WhatsApp Support'; position: absolute; right: 68px; background: rgba(0,0,0,0.8); color: #fff; font-size: 12px; font-family: var(--font-head); font-weight: 600; white-space: nowrap; padding: 6px 12px; border-radius: 6px; opacity: 0; transition: opacity 0.2s; pointer-events: none; }
-    .whatsapp-btn:hover::after { opacity: 1; }
+
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
@@ -328,10 +365,20 @@
       .hero-visual { display: none; }
     }
     @media (max-width: 600px) {
-      .services-blocks { grid-template-columns: 1fr; }
-      section { padding: 60px 16px; }
-      .hero-cta { flex-direction: column; }
-      .contact-form { padding: 24px; }
+        .services-blocks, .team-cards, .fpi-card-group { grid-template-columns: 1fr !important; }
+        section { padding: 60px 16px !important; }
+        .hero-cta { flex-direction: column; width: 100%; }
+        .hero-cta .btn-primary, .hero-cta .btn-secondary { width: 100%; text-align: center; }
+        .contact-form { padding: 24px; }
+        .footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
+        .footer-bottom p { text-align: center; width: 100%; justify-content: center; display: flex; }
+        .chatbot-btn { bottom: 80px; right: 16px; width: 50px; height: 50px; }
+        .chatbot-btn svg { width: 24px; height: 24px; }
+        .chatbot-window { bottom: 140px; right: 16px; width: calc(100vw - 32px); height: 400px; }
+        .table-responsive { width: 100%; overflow-x: auto; margin-bottom: 24px; }
+        .logo-name { font-size: 14px !important; }
+        .logo-tagline { font-size: 8px !important; letter-spacing: 1px !important; }
+        .logo-mark-img { height: 32px !important; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, ::before, ::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -369,28 +416,22 @@
     </div>
   </div>
 
-  <!-- WHATSAPP FLOATING BUTTON -->
-  <a href="https://wa.me/914043334857" class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
-     aria-label="Chat with us on WhatsApp">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-    </svg>
-  </a>
+
 
   <header id="site-header" role="banner">
     <div class="nav-container">
       <a href="#hero" class="logo" aria-label="BnB Financial Services – Home">
-        <img src="logo-3d.png" alt="" class="logo-mark-img" aria-hidden="true">
-        <div class="logo-text-wrap">
+        <img src="logo-new.png" alt="" class="logo-mark-img" aria-hidden="true">
+        <div class="logo-text-block">
           <span class="logo-name">BnB Financial Services Pvt. Ltd.</span>
-          <div class="logo-tagline">
-            <span class="logo-dot">&bull;</span>
-            <span>Experience</span>
-            <span class="logo-dot">&bull;</span>
-            <span>Expertise</span>
-            <span class="logo-dot">&bull;</span>
-            <span>Excellence</span>
-          </div>
+                    <span class="logo-tagline">
+            <span style="color:#269558;">•</span>
+            <span>EXPERIENCE</span>
+            <span style="color:#269558;">•</span>
+            <span>EXPERTISE</span>
+            <span style="color:#269558;">•</span>
+            <span>EXCELLENCE</span>
+          </span>
         </div>
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open navigation menu" id="nav-toggle-btn">☰</button>
@@ -401,15 +442,15 @@
           <li class="nav-dropdown">
             <a href="#services" aria-haspopup="true">SERVICES ▾</a>
             <ul class="dropdown-menu" aria-label="Services submenu">
-              <li><a href="#fpi">FPI</a></li>
               <li><a href="#commodities">COMMODITIES</a></li>
+              <li><a href="#fpi">FPI</a></li>
             </ul>
           </li>
           <li><a href="#team">OUR TEAM</a></li>
           <li><a href="#downloads">DOWNLOADS</a></li>
           <li><a href="#faq">FAQ</a></li>
-          <li><a href="#contact">CONTACT</a></li>
-          <li class="nav-login"><a href="#" aria-label="Client Login Portal">LOGIN</a></li>
+          <li><a href="contact.html" aria-label="Contact BnB Financial Services">CONTACT</a></li>
+          <li class="nav-login"><a href="http://bo.bnbfin.com:8037/" target="_blank" rel="noopener noreferrer" aria-label="Client Login Portal">LOGIN</a></li>
         </ul>
       </nav>
     </div>
@@ -450,7 +491,10 @@
               <div class="logo-anim-ring"></div>
               <div class="logo-anim-ring"></div>
               <div class="logo-anim-glow"></div>
-              <img src="logo-3d.png" alt="BnB Financial Services animated logo" class="logo-anim-img" loading="lazy">
+              <img src="logo-new.png" alt="BnB Financial Services animated logo" class="logo-anim-img" loading="lazy">
+              <div style="text-align:center;position:relative;z-index:3;">
+                <p class="about-tagline-anim" style="font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:0;animation:taglineFadeIn 2s ease 0.5s forwards;">Experience · Expertise · Excellence</p>
+              </div>
             </div>
           </div>
           <div class="about-content">
@@ -500,11 +544,10 @@
             <div class="service-block-icon" aria-hidden="true">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7L17 3H7L3 7" stroke="#0A1F44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 21v-5a2 2 0 012-2h6a2 2 0 012 2v5" stroke="#0A1F44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3 id="svc-professional">Professional Services</h3>
-            <p>Our experienced research and operations teams are dedicated to helping clients through dependable infrastructure and expert guidance.</p>
+            <h3 id="svc-professional">Trading Operations &amp; Support</h3>
+            <p>Our experienced operations teams are dedicated to helping clients through dependable infrastructure and expert guidance.</p>
             <ul class="service-list" aria-label="Professional services features">
               <li>Secure, online back-office access available 24×7</li>
-              <li>Comprehensive technical and fundamental market research</li>
               <li>Robust risk management framework and business continuity systems</li>
               <li>Reliable trade execution backed by experienced professionals</li>
               <li>Transparent processes with a strong focus on regulatory compliance</li>
@@ -514,7 +557,7 @@
             <div class="service-block-icon" aria-hidden="true">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="3" width="20" height="14" rx="2" stroke="#0A1F44" stroke-width="1.8"/><path d="M8 21h8M12 17v4" stroke="#0A1F44" stroke-width="1.8" stroke-linecap="round"/></svg>
             </div>
-            <h3 id="svc-digital">Digital Support</h3>
+            <h3 id="svc-digital">Digital Trading Platform</h3>
             <p>We believe trading should be convenient, accessible, and hassle-free. Our digital platforms provide real-time access to your trading information, empowering you to stay connected wherever you are.</p>
             <ul class="service-list" aria-label="Digital support features">
               <li>Instant access to account statements and transaction history</li>
@@ -527,7 +570,7 @@
             <div class="service-block-icon" aria-hidden="true">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" stroke="#0A1F44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3 id="svc-alerts">Market Alerts &amp; Updates</h3>
+            <h3 id="svc-alerts">Market Intelligence &amp; Alerts</h3>
             <p>Stay informed with timely market intelligence and account notifications that help you respond quickly to changing market conditions.</p>
             <ul class="service-list" aria-label="Market alerts features">
               <li>Daily account updates through SMS and digital notifications</li>
@@ -548,15 +591,14 @@
           <div class="section-divider" aria-hidden="true"></div>
           <p class="section-subtitle">Access India's leading commodity markets through BnB Financial Services. Trade a wide range of commodities backed by advanced trading platforms, research-driven insights, and dedicated customer support.</p>
           <div class="commodities-cta">
-            <a href="#contact" class="btn-outline-gold" aria-label="Open a trading account – Contact us">Open a Trading Account – Contact Us</a>
+            <a href="#get-in-touch-form" class="btn-outline-gold" aria-label="Open a trading account">Open a Trading Account</a>
           </div>
         </div>
         <div class="commodity-grid" role="list">
-          <div class="commodity-card" role="listitem"><span class="commodity-icon" aria-hidden="true">🥇</span><h4>Bullion</h4><p>Gold, Silver</p></div>
-          <div class="commodity-card" role="listitem"><span class="commodity-icon" aria-hidden="true">⚙️</span><h4>Metals</h4><p>Aluminium, Copper, Zinc, Lead, Nickel</p></div>
-          <div class="commodity-card" role="listitem"><span class="commodity-icon" aria-hidden="true">⚡</span><h4>Energy</h4><p>Brent Crude, Crude Oil, Natural Gas</p></div>
-          <div class="commodity-card" role="listitem"><span class="commodity-icon" aria-hidden="true">🌱</span><h4>Oil &amp; Seeds</h4><p>Refined Soy Oil, Soy Bean</p></div>
-          <div class="commodity-card" role="listitem"><span class="commodity-icon" aria-hidden="true">🌿</span><h4>Agricultural</h4><p>Mentha Oil, Cardamom, Crude Palm Oil</p></div>
+          <div class="commodity-card" tabindex="0" role="button" aria-expanded="false"><span class="commodity-icon" aria-hidden="true">🥇</span><h4>Bullion</h4><div class="commodity-details"><p>Gold, Silver</p></div></div>
+          <div class="commodity-card" tabindex="0" role="button" aria-expanded="false"><span class="commodity-icon" aria-hidden="true">⚙️</span><h4>Metals</h4><div class="commodity-details"><p>Aluminium, Copper, Lead, Nickel, Zinc</p></div></div>
+          <div class="commodity-card" tabindex="0" role="button" aria-expanded="false"><span class="commodity-icon" aria-hidden="true">⚡</span><h4>Energy</h4><div class="commodity-details"><p>Crude Oil, Natural Gas</p></div></div>
+          <div class="commodity-card" tabindex="0" role="button" aria-expanded="false"><span class="commodity-icon" aria-hidden="true">🌿</span><h4>Agricultural</h4><div class="commodity-details"><p>Cardamom, Cotton, CPO, Mentha Oil</p></div></div>
         </div>
       </div>
     </section>
@@ -575,28 +617,28 @@
           <div class="fpi-card-group" role="list" aria-label="FPI features">
             <div class="fpi-card" role="listitem">
               <h4>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:6px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#C9A84C" stroke-width="2" stroke-linejoin="round"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:8px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#C9A84C" stroke-width="2" stroke-linejoin="round"/></svg>
                 SEBI-Regulated FPI Route
               </h4>
               <p>Invest in Indian commodity derivatives through a transparent and SEBI-compliant Foreign Portfolio Investor (FPI) framework.</p>
             </div>
             <div class="fpi-card" role="listitem">
               <h4>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:6px;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="17 6 23 6 23 12" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:8px;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="17 6 23 6 23 12" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 Access to India's Commodity Markets
               </h4>
               <p>Gain exposure to commodity futures traded on MCX, India's leading commodity derivatives exchange.</p>
             </div>
             <div class="fpi-card" role="listitem">
               <h4>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="10" stroke="#C9A84C" stroke-width="2"/><line x1="2" y1="12" x2="22" y2="12" stroke="#C9A84C" stroke-width="2"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="#C9A84C" stroke-width="2"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:8px;"><circle cx="12" cy="12" r="10" stroke="#C9A84C" stroke-width="2"/><line x1="2" y1="12" x2="22" y2="12" stroke="#C9A84C" stroke-width="2"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="#C9A84C" stroke-width="2"/></svg>
                 Portfolio Diversification
               </h4>
               <p>Enhance your investment portfolio with an asset class that offers diversification beyond traditional equities and fixed-income securities.</p>
             </div>
             <div class="fpi-card" role="listitem">
               <h4>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:6px;"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="#C9A84C" stroke-width="2"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:8px;"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="#C9A84C" stroke-width="2"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/></svg>
                 Dedicated Support Desk
               </h4>
               <p>Receive comprehensive assistance throughout your investment journey, from onboarding and compliance to ongoing investor support.</p>
@@ -612,43 +654,71 @@
         <div class="team-intro">
           <p class="section-label" style="display:block;">Our Leadership</p>
           <h2 id="team-heading" class="section-title">Our Team</h2>
-          <div class="section-divider" style="margin:16px auto;" aria-hidden="true"></div>
-          <p class="section-subtitle" style="margin:0 auto;text-align:center;max-width:680px;">Our team brings together decades of experience in international commodity markets, combining market expertise, strategic thinking, and a shared commitment to delivering exceptional client service.</p>
+          <div class="section-divider" aria-hidden="true"></div>
+          <p class="section-subtitle">Our leadership team combines decades of experience in international commodity markets, investment strategies and financial services. Guided by expertise, integrity, and a client-centric approach, they are committed to delivering strategic insights and long-term value to every client.</p>
         </div>
         <div class="team-cards">
           <div class="team-card">
             <div class="team-avatar" aria-hidden="true">S</div>
             <h4>Sunesh Kumar Raj</h4>
-            <span class="team-role">Founder &amp; Director</span>
-            <span class="team-title">Administration &amp; Strategic Planning</span>
-            <p>Over two decades of experience in international commodity markets. Leads the company's administration, strategic planning, and operational support, ensuring seamless business operations.</p>
+            <span class="team-role">Corporate Administration &amp; Planning</span>
+            <p>Brings over three decades of experience in international commodity markets. Leads the company's day to day administrative functions and operational activities, ensuring efficient execution and seamless coordination across departments. He plays a key role in driving sustainable growth, operational excellence, and long-term business success.</p>
           </div>
           <div class="team-card">
             <div class="team-avatar" aria-hidden="true">R</div>
             <h4>Rajesh L G</h4>
-            <span class="team-role">Founder &amp; Director</span>
-            <span class="team-title">Financial Analyst</span>
-            <p>Financial Analyst with over two decades of experience in international commodity markets. Specializes in technical and fundamental market analysis, investment strategies, and market research.</p>
+            <span class="team-role">Compliance &amp; Strategy</span>
+            <p>With over three decades of experience in the international commodities market, he specializes in technical and fundamental market analysis. He leads the company's compliance and strategic initiatives, ensuring adherence to regulatory standards while providing valuable investment strategies, risk assessment and portfolio guidance to clients.</p>
           </div>
           <div class="team-card">
             <div class="team-avatar" aria-hidden="true">S</div>
             <h4>Saud Mohammed Sharaf</h4>
-            <span class="team-role">Business Development</span>
-            <span class="team-title">BBA LL.B. &amp; Master's, London</span>
-            <p>Holds a BBA LL.B. and a Master's degree from London. Passionate about commodity trading and financial markets, with a strong focus on transparency, professionalism, and client relationships.</p>
+            <span class="team-role">Marketing &amp; Administration</span>
+            <p>Brings expertise in marketing and administrative operations, with a strong focus on corporate governance and organizational management. He specializes in driving strategic marketing initiatives, streamlining business operations, and supporting sustainable growth through effective administration and operational excellence.</p>
           </div>
           <div class="team-card">
-            <div class="team-avatar" aria-hidden="true">CR</div>
-            <h4>Client Relations</h4>
-            <span class="team-role">Client Relations</span>
-            <span class="team-title">Master's in Management</span>
-            <p>Holds a Master's degree in management. Passionate about delivering an outstanding client experience by combining personalized service, proactive communication, and a client-first approach.</p>
+            <div class="team-avatar" aria-hidden="true">M</div>
+            <h4>Mirza Masood Ahmed Baig</h4>
+            <span class="team-role">Business Development &amp; Investor Relations</span>
+            <p>Brings over sixteen years of experience across business development, investor relations, legal affairs, and wealth management. He specializes in cultivating strategic investor partnerships, driving business growth, facilitating foreign portfolio investments, and creating long-term value through strong stakeholder engagement and market expertise.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- DOWNLOADS -->
+    
+    
+    <section id="insights-reports" aria-labelledby="insights-heading" style="background:var(--gray-100);">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">Announcements</p>
+          <h2 id="insights-heading" class="section-title">Insights & Reports</h2>
+          <div class="section-divider" aria-hidden="true"></div>
+          <p class="section-subtitle">Explore our latest announcements, market reports, and regulatory updates designed to keep you informed.</p>
+        </div>
+        <style>
+          .kb-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px; }
+          .kb-card { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; text-decoration: none; border: 1px solid var(--gray-200); }
+          .kb-card:hover { transform: translateY(-5px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); border-color: var(--gold-light); }
+          .kb-thumb { width: 100%; height: 200px; object-fit: cover; background: var(--navy); }
+          .kb-thumb-placeholder { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--navy), var(--navy-light)); color: var(--gold); }
+          .kb-content { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
+          .kb-category { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-bottom: 12px; }
+          .kb-title { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 12px; margin-top: 0; line-height: 1.4; }
+          .kb-desc { font-size: 14px; color: var(--gray-600); line-height: 1.6; margin-bottom: 24px; flex-grow: 1; }
+          .kb-link { font-size: 13px; font-weight: 700; color: var(--navy); display: flex; align-items: center; gap: 6px; }
+          .kb-link svg { width: 16px; height: 16px; fill: currentColor; }
+          .kb-card:hover .kb-link { color: var(--gold); }
+          @media (max-width: 900px) { .kb-grid { grid-template-columns: repeat(2, 1fr); } }
+          @media (max-width: 600px) { .kb-grid { grid-template-columns: 1fr; } }
+        </style>
+        <div class="kb-grid" id="insightsGrid">
+          <!-- Dynamic Cards go here -->
+        </div>
+      </div>
+    </section>
+
     <section id="downloads" aria-labelledby="downloads-heading">
       <div class="container">
         <div class="section-header">
@@ -732,24 +802,6 @@
             </div>
           </div>
 
-          <!-- Section D: Research Reports -->
-          <div class="download-section" id="dl-section-research">
-            <button class="dl-accordion-header" aria-expanded="false" aria-controls="dl-body-research" id="dl-research">
-              <span class="dl-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><line x1="18" y1="20" x2="18" y2="10" stroke="#0A1F44" stroke-width="1.8" stroke-linecap="round"/><line x1="12" y1="20" x2="12" y2="4" stroke="#0A1F44" stroke-width="1.8" stroke-linecap="round"/><line x1="6" y1="20" x2="6" y2="14" stroke="#0A1F44" stroke-width="1.8" stroke-linecap="round"/></svg>
-              </span>
-              <span class="dl-title">Research Reports</span>
-              <span class="dl-accordion-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
-            </button>
-            <div class="dl-accordion-body" id="dl-body-research" role="region" aria-labelledby="dl-research">
-              <div class="admin-placeholder" role="region" aria-label="Research reports – coming soon">
-                <span aria-hidden="true">📈</span>
-                <p>Research reports will be listed here.</p>
-                <p style="font-size:12px;margin-top:8px;color:#B0B8CC;">Admin: Add, modify or delete documents from the admin console.</p>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
@@ -757,10 +809,10 @@
     <!-- FAQ -->
     <section id="faq" aria-labelledby="faq-heading">
       <div class="container">
-        <div class="section-header" style="text-align:center;">
+        <div class="section-header">
           <p class="section-label" style="display:block;">Common Questions</p>
-          <h2 id="faq-heading" class="section-title" style="margin:0 auto;">Frequently Asked Questions</h2>
-          <div class="section-divider" style="margin:16px auto;" aria-hidden="true"></div>
+          <h2 id="faq-heading" class="section-title">Frequently Asked Questions</h2>
+          <div class="section-divider" aria-hidden="true"></div>
         </div>
         <div class="faq-search-wrap" role="search">
           <label for="faq-search" class="skip-link" style="position:absolute;left:-9999px;">Search FAQs</label>
@@ -769,68 +821,7 @@
         </div>
         <p class="faq-no-result" id="faq-no-result" role="status" aria-live="polite">No answers found for your query, please contact support team.</p>
         <div class="faq-list" id="faq-list" aria-label="Frequently asked questions list">
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">What is a Commodity Exchange?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div id="faq-a1" class="faq-answer" role="region" aria-labelledby="faq-q1"><p>A commodity exchange is an association, company, or body corporate that organises futures trading in commodities and is registered with SEBI (formerly the Forward Market Commission).</p></div>
           </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">Which are the major commodity exchanges in India?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div id="faq-a2" class="faq-answer" role="region" aria-labelledby="faq-q2"><p>There are 24 commodity exchanges in India. The two national-level exchanges are: <strong>MCX (Multi Commodity Exchange of India, Mumbai)</strong> and <strong>NCDEX (National Commodity and Derivative Exchange, Mumbai)</strong>.</p></div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">Which commodities can I trade on MCX?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div id="faq-a3" class="faq-answer" role="region" aria-labelledby="faq-q3"><p><strong>Bullion:</strong> Gold, Silver · <strong>Metals:</strong> Aluminium, Copper, Zinc, Lead, Nickel · <strong>Energy:</strong> Brent Crude, Crude Oil, Natural Gas · <strong>Oil &amp; Seeds:</strong> Refined Soy Oil, Soy Bean · <strong>Agricultural:</strong> Mentha Oil, Cardamom, Crude Palm Oil</p></div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">Who can invest in commodities?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div id="faq-a4" class="faq-answer" role="region" aria-labelledby="faq-q4"><p>Commodity markets are open to individual retail investors, traders, hedgers, and institutional investors. Anyone with an account at a registered broker like BnB Financial can participate.</p></div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">How is BnB Financial regulated?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div id="faq-a5" class="faq-answer" role="region" aria-labelledby="faq-q5"><p>BnB Financial is registered with SEBI as a Trading cum Clearing Member of MCX. <strong>SEBI Code: INZ000057434 · MCX Member ID: 40735</strong>. Grievances can be filed through <strong>SCORES</strong> at scores.gov.in.</p></div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq-a6" id="faq-q6">What is a futures contract?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div id="faq-a6" class="faq-answer" role="region" aria-labelledby="faq-q6"><p>A futures contract is a standardized agreement to buy or sell a commodity at a predetermined price at a specified date in the future. These contracts are traded on commodity exchanges like MCX and are used for both hedging and speculation.</p></div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq-a7" id="faq-q7">What is hedging in commodity markets?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div id="faq-a7" class="faq-answer" role="region" aria-labelledby="faq-q7"><p>Hedging is a risk management strategy where commodity traders or producers lock in a future price to protect themselves against adverse price movements. For example, a gold jeweller may sell gold futures to hedge against a potential fall in gold prices.</p></div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq-a8" id="faq-q8">What is margin in commodity trading?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div id="faq-a8" class="faq-answer" role="region" aria-labelledby="faq-q8"><p>Margin is the initial deposit required to enter into a futures contract. It is a percentage of the total contract value and acts as a performance bond to ensure that both parties fulfil their obligations. MCX sets the margin requirements for each commodity.</p></div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq-a9" id="faq-q9">How do I open a trading account with BnB Financial?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div id="faq-a9" class="faq-answer" role="region" aria-labelledby="faq-q9"><p>You can open a trading account by contacting our team through the Contact Us form or calling us directly. You will need to complete KYC (Know Your Customer) documentation including PAN card, Aadhaar, bank account details, and proof of address. Our team will guide you through the entire process.</p></div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq-a10" id="faq-q10">What documents are required to open a commodity trading account?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div id="faq-a10" class="faq-answer" role="region" aria-labelledby="faq-q10"><p>Documents required include: PAN Card, Aadhaar Card / Passport / Voter ID (Identity Proof), Bank Statement / Cancelled Cheque (Bank Proof), Recent passport-size photograph, and a signed Client Agreement Form. You can download the agreement form from our Downloads section.</p></div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq-a11" id="faq-q11">What are MCX trading hours?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div id="faq-a11" class="faq-answer" role="region" aria-labelledby="faq-q11"><p>MCX trading sessions are: <strong>Morning session:</strong> 9:00 AM – 11:30 PM (Monday to Friday). The exact timings may vary for specific commodities and during daylight saving time changes in international markets. Trading is not conducted on MCX trading holidays.</p></div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq-a12" id="faq-q12">How can I file a grievance?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div id="faq-a12" class="faq-answer" role="region" aria-labelledby="faq-q12"><p>You can file a grievance by: (1) Emailing us at <strong>grievance@bnbfin.com</strong>, (2) Using the SEBI SCORES portal at <a href="https://scores.gov.in" target="_blank" rel="noopener noreferrer" aria-label="SEBI SCORES grievance portal">scores.gov.in</a>, or (3) Contacting MCX's Investor Services Centre. We are committed to resolving all grievances promptly and transparently.</p></div>
-          </div>
-
-        </div>
         <div class="faq-cta">
           <p>Didn't find what you were looking for? Our team is ready to help.</p>
           <a href="#contact" class="btn-primary" aria-label="Contact us for further assistance">Contact Us</a>
@@ -841,14 +832,12 @@
     <!-- CONTACT -->
     <section id="contact" aria-labelledby="contact-heading">
       <div class="container">
-        <div class="section-header">
-          <p class="section-label">Get In Touch</p>
-          <h2 id="contact-heading" class="section-title">Ready to Start Trading?</h2>
-          <div class="section-divider" aria-hidden="true"></div>
-        </div>
         <div class="contact-grid">
           <div class="contact-info">
-            <p>Connect with BnB Financial Services today. Our expert team is ready to guide you through the world of commodity trading.</p>
+            <p class="section-label">Get In Touch</p>
+            <h2 id="contact-heading" class="section-title">Ready to Start Trading?</h2>
+            <div class="section-divider" aria-hidden="true"></div>
+            <p style="margin-top:16px;">Connect with BnB Financial Services today. Our expert team is ready to guide you through the world of commodity trading.</p>
             <div class="contact-detail">
               <div class="contact-detail-icon">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -873,7 +862,7 @@
               </div>
               <div class="contact-detail-text">
                 <span>Address</span>
-                <span>Level 1, Spacion Towers, Next to Westin Hotel, Raheja Mind Space, Hi-Tech City, Madhapur, Hyderabad, Telangana – 500 081</span>
+                <span style="text-align: justify; display: block;">Level 1, Spacion Towers, Next to Westin Hotel, Raheja Mind Space, Hi-Tech City, Madhapur, Hyderabad, Telangana – 500 081</span>
               </div>
             </div>
             <div class="contact-detail">
@@ -895,8 +884,9 @@
               </div>
             </div>
           </div>
-          <div class="contact-form">
-            <form aria-label="Contact enquiry form" novalidate id="contact-form">
+          <div class="contact-form" id="get-in-touch-form">
+            <h3 style="font-family:var(--font-head);font-size:18px;font-weight:700;color:var(--white);margin-bottom:20px;">Get In Touch Form</h3>
+            <form aria-label="Get In Touch Form" novalidate id="contact-form">
               <div class="form-group">
                 <label for="cn">Full Name <span aria-hidden="true" style="color:var(--gold)">*</span></label>
                 <input type="text" id="cn" name="name" placeholder="Your full name" required autocomplete="name" aria-required="true">
@@ -914,8 +904,7 @@
                 <select id="cs" name="service" aria-label="Select a service you are interested in">
                   <option value="">Select a service...</option>
                   <option>Commodity Trading</option>
-                  <option>FPI Advisory</option>
-                  <option>Technical Research</option>
+                  <option>Foreign Portfolio Investment</option>
                   <option>Open a Trading Account</option>
                   <option>General Enquiry</option>
                 </select>
@@ -941,22 +930,30 @@
         <!-- Left: Company Info -->
         <div class="footer-col">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-            <img src="logo-3d.png" alt="" style="height:38px;width:auto;object-fit:contain;filter:drop-shadow(0 1px 4px rgba(0,0,0,0.3));" aria-hidden="true">
+            <img src="logo-new.png" alt="" style="height:38px;width:auto;object-fit:contain;filter:drop-shadow(0 1px 4px rgba(0,0,0,0.3));" aria-hidden="true">
             <div style="line-height:1.2;">
               <div style="font-family:var(--font-head);font-weight:800;font-size:15px;color:#269558;">BnB Financial Services Pvt. Ltd.</div>
               <div style="display:flex;justify-content:space-between;width:100%;font-size:10px;color:#ffffff;font-weight:600;letter-spacing:0.5px;margin-top:2px;">
                 <span style="color:#269558;">•</span>
-                <span>Experience</span>
+                <span>EXPERIENCE</span>
                 <span style="color:#269558;">•</span>
-                <span>Expertise</span>
+                <span>EXPERTISE</span>
                 <span style="color:#269558;">•</span>
-                <span>Excellence</span>
+                <span>EXCELLENCE</span>
               </div>
             </div>
           </div>
-          <p>Level 1, Spacion Towers, Next to Westin Hotel,<br>
-             Raheja Mind Space, Hi-Tech City, Madhapur,<br>
-             Hyderabad, Telangana – 500 081, India</p>
+          <div class="footer-investor-notice">
+            <p>We are grateful for your support as we navigate the trading landscape. Your insights shape our progress and enhance our offerings. Thank you for being an invaluable part of our journey.</p>
+            <p><strong>Attention Investors :-</strong></p>
+            <ol>
+              <li>Stock Brokers can accept securities as margin from clients only by way of pledge in the depository system w.e.f. September 01, 2020.</li>
+              <li>Update your email id and mobile number with your stock broker / depository participant and receive OTP directly from depository on your email id and/or mobile number to create pledge.</li>
+              <li>Check your securities / MF / bonds in the consolidated account statement issued by NSDL/CDSL every month.</li>
+            </ol>
+            <p><em>Issued in the interest of Investors</em></p>
+          </div>
+          <p style="text-align: justify;">Level 1, Spacion Towers, Next to Westin Hotel, Raheja Mind Space, <span style="white-space: nowrap;">Hi-Tech City</span>, Madhapur, Hyderabad, Telangana – 500 081, India</p>
           <div class="footer-reg">
             <span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" style="display:inline;vertical-align:middle;margin-right:4px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -966,18 +963,10 @@
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" style="display:inline;vertical-align:middle;margin-right:4px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linejoin="round"/></svg>
               <a href="mailto:info@bnbfin.com" style="color:inherit;text-decoration:none;">info@bnbfin.com</a>
             </span>
-            <span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" style="display:inline;vertical-align:middle;margin-right:4px;"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linejoin="round"/><line x1="12" y1="9" x2="12" y2="13" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="17" x2="12.01" y2="17" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round"/></svg>
-              Grievances: <a href="mailto:grievance@bnbfin.com" style="color:inherit;text-decoration:none;">grievance@bnbfin.com</a>
-            </span>
-            <span style="margin-top:10px;display:block;"><strong>CIN:</strong> U67120TG2010PTC068745</span>
+            <span style="margin-top:10px;display:block;"><strong>CIN:</strong> U67110TG2010PTC069597</span>
             <span><strong>SEBI Reg. No.:</strong> INZ000057434</span>
             <span><strong>MCX Member ID:</strong> 40735</span>
           </div>
-          <p style="margin-top:14px;font-size:12px;">
-            <a href="#" aria-label="View sitemap">Sitemap</a> ·
-            <a href="#" aria-label="View privacy policy">Privacy Policy</a>
-          </p>
         </div>
 
         <!-- Middle: Quick Links -->
@@ -1000,14 +989,17 @@
         <div class="footer-col">
           <h4>Regulatory &amp; Investor</h4>
           <ul class="footer-links-list">
-            <li><a href="https://www.bnbfin.com/Trading_Holidays.html" target="_blank" rel="noopener noreferrer" aria-label="View MCX Trading Holidays">Trading Holidays</a></li>
-            <li><a href="https://www.bnbfin.com/Escalation_Matrix.html" target="_blank" rel="noopener noreferrer" aria-label="View Escalation Matrix">Escalation Matrix</a></li>
-            <li><a href="https://www.bnbfin.com/Investor_Accessibility_Audio.html" target="_blank" rel="noopener noreferrer" aria-label="Investor Accessibility Audio Information">Investor Accessibility – Audio</a></li>
-            <li><a href="https://www.bnbfin.com/Investor_Accessibility_Video.html" target="_blank" rel="noopener noreferrer" aria-label="Investor Accessibility Video Information">Investor Accessibility – Video</a></li>
-            <li><a href="#" aria-label="View General Disclaimer">General Disclaimer</a></li>
-            <li><a href="#" aria-label="View Terms and Conditions">Terms &amp; Conditions</a></li>
-            <li><a href="#" aria-label="View Privacy Policy">Privacy Policy</a></li>
-            <li><a href="#" aria-label="View Accessibility Statement">Accessibility Statement</a></li>
+            <li><a href="https://smartodr.in/login" target="_blank" rel="noopener noreferrer" aria-label="SMARTODR Dispute Resolution Portal">SMARTODR</a></li>
+            <li><a href="https://scores.sebi.gov.in" target="_blank" rel="noopener noreferrer" aria-label="SEBI SCORES Complaint Portal">SCORES</a></li>
+            <li><a href="InvestorCharter.pdf" target="_blank" rel="noopener noreferrer" aria-label="SEBI Investor Charter">Investor Charter</a></li>
+            <li><a href="SEBIMasterCircularforODR.pdf" target="_blank" rel="noopener noreferrer" aria-label="SEBI Master Circular for SMARTODR">SEBI Master Circular for SMARTODR</a></li>
+            <li><a href="Trading_Holidays.html" aria-label="View MCX Trading Holidays">Trading Holidays</a></li>
+            <li><a href="escalation-matrix.html" aria-label="View Escalation Matrix">Escalation Matrix</a></li>
+            <li><a href="disclosure-of-complaints.html" aria-label="View Disclosure of Complaints">Disclosure of Complaints</a></li>
+            <li><a href="Investor-Accessibility-Audio.html" aria-label="Investor Accessibility Audio Information">Investor Accessibility Audio Information</a></li>
+            <li><a href="Investor-Accessibility-Video.html" target="_blank" rel="noopener noreferrer" aria-label="Investor Accessibility Video Information">Investor Accessibility Video Information</a></li>
+            <li><a href="terms.html" aria-label="View Terms and Conditions">Terms &amp; Conditions</a></li>
+            <li><a href="privacy.html" aria-label="View Privacy Policy">Privacy Policy</a></li>
           </ul>
         </div>
       </div>
@@ -1017,18 +1009,6 @@
       <div class="footer-bottom">
         <p>© 2026 BnB Financial Services Pvt. Ltd. All rights reserved.</p>
         <p>SEBI: INZ000057434 · MCX Member: 40735</p>
-      </div>
-    </div>
-
-    <!-- SCROLLING DISCLAIMER -->
-    <div class="footer-scroll-disclaimer" role="note" aria-label="Regulatory disclaimer">
-      <div class="scroll-disclaimer-track" aria-hidden="true">
-        <span>⚠️ Disclaimer: Trading Futures, Options on Futures, and Foreign Exchange involves substantial risk of loss and may not be suitable for all investors. You should carefully consider whether trading is suitable for you in light of your circumstances, knowledge, and financial resources. You may lose all or more of your initial investment. Opinions, market data, and recommendations are subject to change at any time.</span>
-        <span>⚠️ Keep Your Password/Pin and OTPs private &amp; confidential to avoid any misuse or unauthorised trades. Please ensure that you do not share it with anyone.</span>
-        <span>⚠️ Beware of fraudulent entities claiming to be BnB Financial Services Pvt Ltd. Our official website is bnbfin.com. Do not make payment to any third-party bank account.</span>
-        <span>⚠️ Disclaimer: Trading Futures, Options on Futures, and Foreign Exchange involves substantial risk of loss and may not be suitable for all investors. You should carefully consider whether trading is suitable for you in light of your circumstances, knowledge, and financial resources. You may lose all or more of your initial investment. Opinions, market data, and recommendations are subject to change at any time.</span>
-        <span>⚠️ Keep Your Password/Pin and OTPs private &amp; confidential to avoid any misuse or unauthorised trades. Please ensure that you do not share it with anyone.</span>
-        <span>⚠️ Beware of fraudulent entities claiming to be BnB Financial Services Pvt Ltd. Our official website is bnbfin.com. Do not make payment to any third-party bank account.</span>
       </div>
     </div>
 
@@ -1053,7 +1033,24 @@ www.bnbfin.com is and attempts to be to sensitive to your privacy on the Interne
 Note: Also that our website may contain links to other sites. While we try to link only to sites that have respect for privacy, we are not responsible for the content or the privacy practices employed by other sites.</p>
       </div>
     </div>
+  
+
+    <!-- SCROLLING DISCLAIMER – very bottom of page (Item 9) -->
+        <div class="footer-scroll-disclaimer" role="note" aria-label="Regulatory disclaimer">
+      <div class="scroll-disclaimer-track" aria-hidden="true">
+        <span>⚠️ Disclaimer: Trading Futures, Options on Futures, and Foreign Exchange involves substantial risk of loss and may not be suitable for all investors. Opinions, market data, and recommendations are subject to change at any time.</span>
+        <span>⚠️ Keep Your Password/Pin and OTPs private &amp; confidential to avoid any misuse or unauthorised trades. Please ensure that you do not share it with anyone.</span>
+        <span>⚠️ Beware of fraudulent entities claiming to be BnB Financial Services Pvt Ltd. Our official website is bnbfin.com. Do not make payment to any third-party bank account.</span>
+        <span>⚠️ Disclaimer: Trading Futures, Options on Futures, and Foreign Exchange involves substantial risk of loss and may not be suitable for all investors. Opinions, market data, and recommendations are subject to change at any time.</span>
+        <span>⚠️ Keep Your Password/Pin and OTPs private &amp; confidential to avoid any misuse or unauthorised trades. Please ensure that you do not share it with anyone.</span>
+        <span>⚠️ Beware of fraudulent entities claiming to be BnB Financial Services Pvt Ltd. Our official website is bnbfin.com. Do not make payment to any third-party bank account.</span>
+      </div>
+    </div>
   </footer>
+
+  <!-- ADMIN OVERLAY -->
+  
+  </div>
 
   <script>
     // NAV TOGGLE
@@ -1070,6 +1067,19 @@ Note: Also that our website may contain links to other sites. While we try to li
       toggleBtn.setAttribute('aria-expanded', 'false');
       toggleBtn.textContent = '☰';
     }));
+
+    document.querySelectorAll('.nav-dropdown').forEach(el => {
+      el.addEventListener('mouseleave', () => {
+        if (document.activeElement && el.contains(document.activeElement)) {
+          document.activeElement.blur();
+        }
+      });
+    });
+    document.querySelectorAll('.dropdown-menu a').forEach(a => {
+      a.addEventListener('click', () => {
+        a.blur();
+      });
+    });
 
     // MOBILE: Services dropdown toggle on click
     document.querySelectorAll('.nav-dropdown > a').forEach(link => {
@@ -1121,6 +1131,17 @@ Note: Also that our website may contain links to other sites. While we try to li
           all[(e.key==='ArrowRight'?(idx+1)%all.length:(idx-1+all.length)%all.length)].focus();
         }
       });
+    });
+
+    // COMMODITY CARDS EXPAND
+    document.querySelectorAll('.commodity-card').forEach(card => {
+      const toggle = () => {
+        const isExpanded = card.classList.contains('expanded');
+        document.querySelectorAll('.commodity-card').forEach(c => { c.classList.remove('expanded'); c.setAttribute('aria-expanded','false'); });
+        if (!isExpanded) { card.classList.add('expanded'); card.setAttribute('aria-expanded','true'); }
+      };
+      card.addEventListener('click', toggle);
+      card.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); toggle(); } });
     });
 
     // FAQ ACCORDION
@@ -1269,6 +1290,97 @@ Note: Also that our website may contain links to other sites. While we try to li
     chatInput.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') handleSendCustomMessage();
     });
+
+    
+    
+    
+    
+    // DYNAMIC DATA FETCH (Node.js API)
+    async function loadDynamicData() {
+      try {
+        // Fetch FAQs
+        const faqs = await fetch('/api/faqs').then(r => r.json());
+        const faqList = document.getElementById('faq-list');
+        if (faqs && faqs.length > 0 && faqList) {
+          faqs.forEach((f, i) => {
+            const idx = 100 + i;
+            const item = document.createElement('div');
+            item.className = 'faq-item';
+            item.innerHTML = `<button class="faq-question" aria-expanded="false" aria-controls="faq-dyn-a${idx}" id="faq-dyn-q${idx}">${f.q}<span class="faq-icon" aria-hidden="true">+</span></button><div id="faq-dyn-a${idx}" class="faq-answer" role="region" aria-labelledby="faq-dyn-q${idx}"><p>${f.a}</p></div>`;
+            faqList.appendChild(item);
+            
+            item.querySelector('.faq-question').addEventListener('click', function() {
+              const exp = this.getAttribute('aria-expanded') === 'true';
+              document.querySelectorAll('.faq-question').forEach(b => {
+                b.setAttribute('aria-expanded', 'false');
+                document.getElementById(b.getAttribute('aria-controls')).classList.remove('open');
+              });
+              if (!exp) {
+                this.setAttribute('aria-expanded', 'true');
+                document.getElementById(this.getAttribute('aria-controls')).classList.add('open');
+              }
+            });
+          });
+        }
+
+        // Fetch Knowledge Base (PDFs/Posts)
+        const pdfs = await fetch('/api/pdfs').then(r => r.json());
+        const kbBody = document.getElementById('dl-body-knowledge');
+        const insightsGrid = document.getElementById('insightsGrid');
+        
+        if (pdfs && pdfs.length > 0) {
+          const kbItems = pdfs.filter(p => p.category === 'Knowledge Base');
+          const otherItems = pdfs.filter(p => p.category !== 'Knowledge Base');
+          
+          if (kbBody) {
+            kbBody.innerHTML = '';
+            if (kbItems.length > 0) {
+              kbItems.forEach(p => {
+                // All posts link to post.html
+                kbBody.innerHTML += `<a href="post.html?title=${encodeURIComponent(p.title)}" class="download-link"><span>${p.title}</span></a>`;
+              });
+            } else {
+              kbBody.innerHTML = '<p style="padding: 12px; color: var(--gray-600); font-size: 14px;">No documents available in the Knowledge Base.</p>';
+            }
+          }
+          
+          if (insightsGrid) {
+            insightsGrid.innerHTML = '';
+            if (otherItems.length > 0) {
+              otherItems.forEach(p => {
+                let thumbHtml = p.thumbnail 
+                  ? `<img src="${p.thumbnail}" alt="" class="kb-thumb" loading="lazy">` 
+                  : `<div class="kb-thumb-placeholder"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>`;
+                
+                let linkHtml = `<div class="kb-link">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`;
+                
+                insightsGrid.innerHTML += `
+                  <a href="post.html?title=${encodeURIComponent(p.title)}" class="kb-card">
+                    ${thumbHtml}
+                    <div class="kb-content">
+                      <div class="kb-category">${p.category || 'Update'}</div>
+                      <h3 class="kb-title">${p.title}</h3>
+                      ${p.description ? `<div class="kb-desc">${p.description}</div>` : '<div class="kb-desc"></div>'}
+                      ${linkHtml}
+                    </div>
+                  </a>
+                `;
+              });
+            } else {
+              insightsGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--gray-600);">No articles published yet.</p>';
+            }
+          }
+        }
+      } catch (err) {
+        console.error("Failed to load dynamic data:", err);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', loadDynamicData);
   </script>
 </body>
+
+
+
+
+
 </html>

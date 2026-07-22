@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us – BnB Financial Services Pvt. Ltd.</title>
+  <meta name="description" content="Contact BnB Financial Services – SEBI-registered Trading Member of MCX. Phone, email, address and investor escalation matrix for grievance redressal.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0A1F44; --navy-mid: #122B5E; --navy-light: #1C3A7A;
+      --gold: #C9A84C; --gold-light: #E8CC7A; --gold-dark: #A07B2A;
+      --white: #FFFFFF; --off-white: #F8F9FC; --gray-100: #F1F3F8;
+      --gray-200: #E2E6EF; --gray-400: #8D96AA; --gray-600: #4A5568; --gray-800: #1A202C;
+      --font-head: 'Inter', sans-serif; --font-body: 'Open Sans', sans-serif;
+      --radius: 8px; --shadow: 0 4px 24px rgba(10,31,68,0.10); --shadow-lg: 0 8px 40px rgba(10,31,68,0.16);
+      --transition: 0.25s ease;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font-body); color: var(--gray-800); background: var(--white); line-height: 1.6; }
+    .skip-link { position: absolute; top: -100%; left: 16px; z-index: 9999; background: var(--gold); color: var(--navy); padding: 10px 20px; font-weight: 700; border-radius: 0 0 var(--radius) var(--radius); text-decoration: none; font-family: var(--font-head); transition: top 0.2s; }
+    /* ── CHATBOT ── */
+    .chatbot-btn { position: fixed; bottom: 32px; right: 28px; z-index: 999; width: 58px; height: 58px; border-radius: 50%; background: var(--gold); border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(201,168,76,0.4); cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .chatbot-btn:hover, .chatbot-btn:focus-visible { transform: scale(1.1); box-shadow: 0 8px 30px rgba(201,168,76,0.6); outline: none; }
+    .chatbot-btn svg { width: 32px; height: 32px; fill: var(--navy); }
+    .chatbot-window { position: fixed; bottom: 102px; right: 28px; width: 340px; max-width: calc(100vw - 56px); height: 450px; background: var(--white); border-radius: 12px; box-shadow: 0 8px 40px rgba(10,31,68,0.16); z-index: 1000; display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px); opacity: 0; pointer-events: none; transition: transform 0.3s, opacity 0.3s; border: 1px solid var(--gray-200); }
+    .chatbot-window.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+    .chat-header { background: var(--navy); color: var(--white); padding: 16px; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-head); }
+    .chat-header h3 { font-size: 16px; font-weight: 700; margin: 0; }
+    .chat-close { background: none; border: none; color: var(--white); font-size: 24px; cursor: pointer; line-height: 1; }
+    .chat-body { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #f9f9fc; }
+    .chat-msg { max-width: 85%; padding: 10px 14px; border-radius: 12px; font-size: 13.5px; line-height: 1.5; color: var(--navy); }
+    .chat-msg.bot { background: var(--white); border: 1px solid var(--gray-200); align-self: flex-start; border-bottom-left-radius: 4px; }
+    .chat-msg.user { background: rgba(201,168,76,0.2); align-self: flex-end; border-bottom-right-radius: 4px; }
+    .chat-faq-options { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+    .chat-faq-btn { background: var(--white); border: 1px solid var(--gold); color: var(--gold-dark); border-radius: 20px; padding: 6px 12px; font-size: 12.5px; cursor: pointer; text-align: left; transition: all 0.2s; font-family: var(--font-body); }
+    .chat-faq-btn:hover, .chat-faq-btn:focus-visible { background: var(--gold); color: var(--white); outline: none; }
+    .chat-input-area { display: flex; padding: 12px 16px; border-top: 1px solid var(--gray-200); background: var(--white); }
+    .chat-input { flex: 1; border: 1px solid var(--gray-200); border-radius: 20px; padding: 8px 12px; font-size: 13.5px; font-family: var(--font-body); outline: none; transition: border-color 0.2s; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send-btn { background: var(--gold); border: none; color: var(--navy); border-radius: 50%; width: 36px; height: 36px; margin-left: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s; }
+    .chat-send-btn:hover, .chat-send-btn:focus-visible { background: var(--gold-dark); outline: none; }
+    .chat-send-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* ── HEADER ── */
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10,31,68,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(201,168,76,0.2); padding: 0 24px; transition: box-shadow var(--transition); }
+    header.scrolled { box-shadow: var(--shadow-lg); }
+    .nav-container { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 70px; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .logo-mark-img { height: 38px; width: auto; object-fit: contain; display: block; flex-shrink: 0; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25)); }
+    .logo-text-block { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; transform: translateY(-1px); }
+    .logo-name { font-family: var(--font-head); font-weight: 800; font-size: 16px; color: #269558; letter-spacing: -0.2px; white-space: nowrap; line-height: 1.2; margin-top: 2px; }
+    .logo-tagline { display: flex; justify-content: space-between; width: 100%; align-items: center; font-family: var(--font-head); font-size: 9.5px; font-weight: 600; color: #ffffff; letter-spacing: 1.5px; text-transform: uppercase; white-space: nowrap; margin-top: -2px; }
+    nav[role="navigation"] ul { display: flex; list-style: none; gap: 2px; align-items: center; }
+    nav[role="navigation"] a { color: rgba(255,255,255,0.82); text-decoration: none; font-family: var(--font-head); font-size: 12.5px; font-weight: 600; padding: 7px 11px; border-radius: 6px; transition: color var(--transition), background var(--transition); letter-spacing: 0.3px; white-space: nowrap; }
+    nav[role="navigation"] a:hover, nav[role="navigation"] a[aria-current="page"] { color: var(--gold); background: rgba(201,168,76,0.1); }
+    .nav-login a { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: var(--navy) !important; font-weight: 700 !important; padding: 8px 16px !important; border-radius: var(--radius); }
+    .nav-dropdown { position: relative; }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 4px); left: 0; background: var(--navy); border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; padding: 8px 0; min-width: 160px; z-index: 1000; box-shadow: var(--shadow-lg); opacity: 0; transform: translateY(-4px); transition: opacity 0.2s, transform 0.2s; pointer-events: none; }
+    .nav-dropdown:hover > .dropdown-menu, .nav-dropdown:focus-within > .dropdown-menu { display: flex; flex-direction: column; opacity: 1; transform: translateY(0); pointer-events: all; align-items: stretch; }
+    .dropdown-menu a { display: block; padding: 10px 20px !important; border-radius: 0 !important; color: rgba(255,255,255,0.85) !important; background: transparent !important; text-align: left; }
+    .nav-toggle { display: none; background: none; border: 2px solid rgba(201,168,76,0.5); color: var(--white); padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 20px; }
+    @media (max-width: 1050px) {
+      .nav-toggle { display: flex; align-items: center; }
+      nav[role="navigation"] { display: none; position: absolute; top: 70px; left: 0; right: 0; background: var(--navy); padding: 16px; border-bottom: 1px solid rgba(201,168,76,0.2); z-index: 999; }
+      nav[role="navigation"].open { display: block; }
+      nav[role="navigation"] ul { flex-direction: column; gap: 4px; }
+      nav[role="navigation"] a { display: block; }
+      .nav-dropdown > .dropdown-menu { position: static; box-shadow: none; border: none; padding-left: 16px; opacity: 1; transform: none; pointer-events: all; display: none; }
+      .nav-dropdown.mobile-open > .dropdown-menu { display: flex; width: 100%; }
+    }
+
+    /* ── PAGE HERO ── */
+    .page-hero { min-height: 200px; background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 55%, var(--navy-light) 100%); display: flex; align-items: flex-end; padding: 100px 24px 40px; position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 49.8%, rgba(201,168,76,0.06) 50%, transparent 50.2%) 0 0/80px 80px, linear-gradient(0deg, transparent 49.8%, rgba(201,168,76,0.04) 50%, transparent 50.2%) 0 0/80px 80px; pointer-events: none; }
+    .page-hero-content { max-width: 1200px; margin: 0 auto; width: 100%; position: relative; z-index: 2; }
+    .page-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .page-title { font-family: var(--font-head); font-size: clamp(28px,4vw,48px); font-weight: 800; color: var(--white); line-height: 1.15; letter-spacing: -1px; }
+
+    /* ── MAIN ── */
+    main { padding: 56px 24px 80px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .section-title { font-family: var(--font-head); font-size: clamp(20px,2.5vw,30px); font-weight: 800; color: var(--navy); line-height: 1.2; letter-spacing: -0.3px; margin-bottom: 14px; }
+    .section-divider { width: 48px; height: 4px; border-radius: 2px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); margin-bottom: 28px; }
+
+    /* ── CONTACT INFO CARDS ── */
+    .info-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 18px; margin-bottom: 56px; }
+    .info-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 14px; padding: 22px 18px; box-shadow: var(--shadow); transition: transform var(--transition), box-shadow var(--transition); }
+    .info-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .info-card-icon { width: 42px; height: 42px; border-radius: 10px; background: linear-gradient(135deg, var(--navy), var(--navy-light)); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+    .info-card-icon svg { width: 20px; height: 20px; fill: var(--gold); }
+    .info-card-label { font-family: var(--font-head); font-size: 10.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 5px; }
+    .info-card-value { font-family: var(--font-head); font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.5; }
+    .info-card-value a { color: inherit; text-decoration: none; transition: color var(--transition); }
+    .info-card-value a:hover { color: var(--gold-dark); }
+
+    /* ── MATRIX CARD ── */
+    .matrix-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 16px; padding: 32px; box-shadow: var(--shadow); margin-bottom: 28px; }
+
+    /* ── TABLES ── */
+    .table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--gray-200); }
+    table { width: 100%; border-collapse: collapse; background: var(--white); font-family: var(--font-body); min-width: 680px; }
+    thead th { background: var(--navy); color: var(--gold); font-family: var(--font-head); font-size: 11.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 13px 15px; text-align: left; border-right: 1px solid rgba(255,255,255,0.08); }
+    thead th:last-child { border-right: none; }
+    tbody td { padding: 13px 15px; font-size: 13px; color: var(--gray-600); border-bottom: 1px solid var(--gray-100); border-right: 1px solid var(--gray-100); vertical-align: top; line-height: 1.6; }
+    tbody td:last-child { border-right: none; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: rgba(201,168,76,0.03); }
+    .td-bold { font-family: var(--font-head); font-size: 13px; font-weight: 700; color: var(--navy); white-space: nowrap; }
+    td a { color: var(--gold-dark); text-decoration: none; }
+    td a:hover { text-decoration: underline; }
+
+    /* ── NOTICE BLOCK ── */
+    .notice { background: var(--off-white); border: 1px solid var(--gray-200); border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 18px 22px; margin-top: 20px; }
+    .notice p { font-size: 13.5px; color: var(--gray-600); line-height: 1.8; text-align: left; }
+    .notice p + p { margin-top: 10px; }
+    .notice strong { color: var(--navy); }
+    .notice a { color: var(--gold-dark); font-weight: 600; text-decoration: none; }
+    .notice a:hover { text-decoration: underline; }
+
+    /* ── FILING INFO ── */
+    .filing-box { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-radius: 14px; padding: 28px 32px; margin-top: 0; margin-bottom: 28px; }
+    .filing-box h3 { font-family: var(--font-head); font-size: 15px; font-weight: 700; color: var(--gold); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1.5px; }
+    .filing-box p { font-size: 13.5px; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 10px; text-align: left; }
+    .filing-box ol { padding-left: 20px; margin: 6px 0 12px; }
+    .filing-box ol li { font-size: 13.5px; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 4px; }
+    .filing-box strong { color: var(--white); }
+
+    /* ── PORTAL LINKS ── */
+    .portal-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .portal-btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.35); border-radius: 50px; text-decoration: none; font-family: var(--font-head); font-size: 12.5px; font-weight: 700; color: var(--gold); transition: background 0.2s, border-color 0.2s; }
+    .portal-btn:hover { background: rgba(201,168,76,0.22); border-color: var(--gold); }
+
+    /* ── DOCS GRID ── */
+    .docs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px,1fr)); gap: 12px; margin-top: 18px; }
+    .doc-link { display: flex; align-items: center; gap: 10px; padding: 13px 15px; background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); text-decoration: none; color: var(--navy); font-family: var(--font-head); font-size: 13px; font-weight: 600; transition: border-color var(--transition), transform var(--transition); }
+    .doc-link:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .doc-link .dl-icon { width: 30px; height: 30px; border-radius: 7px; background: var(--navy); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .doc-link .dl-icon svg { width: 15px; height: 15px; fill: var(--gold); }
+    .doc-ext { font-size: 10px; font-weight: 700; color: var(--gold-dark); background: rgba(201,168,76,0.1); padding: 2px 6px; border-radius: 4px; margin-left: auto; }
+
+    /* ── BANK CARD ── */
+    .bank-card { background: var(--off-white); border: 1px solid var(--gray-200); border-radius: 14px; padding: 24px 28px; margin-top: 28px; }
+    .bank-card h3 { font-family: var(--font-head); font-size: 14px; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--gray-200); }
+    .bank-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 20px; }
+    .bank-field span:first-child { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gray-400); margin-bottom: 3px; }
+    .bank-field span:last-child { display: block; font-size: 14px; font-weight: 700; color: var(--navy); font-family: var(--font-head); }
+    .bank-notice { font-size: 12.5px; color: var(--gray-600); line-height: 1.7; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--gray-200); text-align: left; }
+
+    /* ── FOOTER ── */
+    footer { background: #050E24; color: rgba(255,255,255,0.5); padding: 32px 24px; text-align: center; }
+    footer p { font-size: 12.5px; line-height: 1.8; }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      .matrix-card, .filing-box { padding: 20px; }
+      .info-cards { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .info-cards { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after { transition-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- HEADER -->
+  <header id="site-header" role="banner">
+    <div class="nav-container">
+      <a href="index.html" class="logo" aria-label="BnB Financial Services – Home">
+        <img src="logo-new.png" alt="" class="logo-mark-img" aria-hidden="true">
+        <div class="logo-text-block">
+          <span class="logo-name">BnB Financial Services Pvt. Ltd.</span>
+                    <span class="logo-tagline">
+            <span style="color:#269558;">•</span>
+            <span>EXPERIENCE</span>
+            <span style="color:#269558;">•</span>
+            <span>EXPERTISE</span>
+            <span style="color:#269558;">•</span>
+            <span>EXCELLENCE</span>
+          </span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open navigation menu" id="nav-toggle-btn">☰</button>
+      <nav id="main-nav" role="navigation" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="index.html#about">ABOUT US</a></li>
+          <li class="nav-dropdown">
+            <a href="index.html#services" aria-haspopup="true">SERVICES ▾</a>
+            <ul class="dropdown-menu" aria-label="Services submenu">
+              <li><a href="index.html#commodities">COMMODITIES</a></li>
+              <li><a href="index.html#fpi">FPI</a></li>
+            </ul>
+          </li>
+          <li><a href="index.html#team">OUR TEAM</a></li>
+          <li><a href="index.html#downloads">DOWNLOADS</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="contact.html" aria-current="page">CONTACT</a></li>
+          <li class="nav-login"><a href="http://bo.bnbfin.com:8037/" target="_blank" rel="noopener noreferrer" aria-label="Client Login Portal">LOGIN</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <p class="page-label">Reach Us · Grievance Redressal</p>
+      <h1 class="page-title">Contact Us</h1>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <!-- ── CONTACT INFO ── -->
+      <section aria-labelledby="contact-info-h" style="margin-bottom:52px;">
+        <p class="section-label">Get In Touch</p>
+        <h2 id="contact-info-h" class="section-title">Our Contact Details</h2>
+        <div class="section-divider"></div>
+        <div class="info-cards">
+          <div class="info-card">
+            <div class="info-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div class="info-card-label">Phone</div>
+            <div class="info-card-value"><a href="tel:+914043334857">+91 40 4333 4857</a></div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+            </div>
+            <div class="info-card-label">Website</div>
+            <div class="info-card-value"><a href="https://www.bnbfin.com" target="_blank" rel="noopener noreferrer">www.bnbfin.com</a></div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="info-card-label">Address</div>
+            <div class="info-card-value" style="text-align: justify;">
+              Level 1, Spacion Towers, Next to Westin Hotel, Raheja Mind Space, Hi-Tech City, Madhapur, Hyderabad, Telangana – 500 081
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="info-card-label">Email</div>
+            <div class="info-card-value"><a href="mailto:info@bnbfin.com">info@bnbfin.com</a></div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="info-card-label">SEBI Registration</div>
+            <div class="info-card-value">INZ000057434</div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <div class="info-card-label">MCX Member ID</div>
+            <div class="info-card-value">40735</div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <!-- ── ESCALATION MATRIX ── -->
+      <section aria-labelledby="matrix-h" style="margin-bottom:52px;">
+        <p class="section-label">Investor Grievance</p>
+        <h2 id="matrix-h" class="section-title">Escalation Matrix</h2>
+        <div class="section-divider"></div>
+
+        <div class="matrix-card">
+          <div class="table-wrap" role="region" aria-label="Escalation matrix table">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Details Of</th>
+                  <th scope="col">Contact Person</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Contact No.</th>
+                  <th scope="col">Email ID</th>
+                  <th scope="col">Working Hours</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="td-bold">Customer Care</td>
+                  <td>Pavan A</td>
+                  <td>H.No: 1-98/5/2A, Sy.No-85, Spacion Towers, Serlingampally, Vittal Rao Nagar, Madhapur, Hyderabad, Telangana – 500 081</td>
+                  <td style="white-space:nowrap;"><a href="tel:8247704298">82477 04298</a></td>
+                  <td><a href="mailto:info@bnbfin.com">info@bnbfin.com</a></td>
+                  <td style="white-space:nowrap;">9 AM – 5 PM</td>
+                </tr>
+                <tr>
+                  <td class="td-bold">Head of Customer Care</td>
+                  <td>Anitha S</td>
+                  <td>H.No: 1-98/5/2A, Sy.No-85, Spacion Towers, Serlingampally, Vittal Rao Nagar, Madhapur, Hyderabad, Telangana – 500 081</td>
+                  <td style="white-space:nowrap;"><a href="tel:8919567142">89195 67142</a></td>
+                  <td><a href="mailto:reports@bnbfin.com">reports@bnbfin.com</a></td>
+                  <td style="white-space:nowrap;">9 AM – 5 PM</td>
+                </tr>
+                <tr>
+                  <td class="td-bold">Compliance Officer</td>
+                  <td>Rajesh Lakshmanan Govindarajapuram</td>
+                  <td>H.No: 1-98/5/2A, Sy.No-85, Spacion Towers, Serlingampally, Vittal Rao Nagar, Madhapur, Hyderabad, Telangana – 500 081</td>
+                  <td style="white-space:nowrap;"><a href="tel:9848180139">98481 80139</a></td>
+                  <td><a href="mailto:rajeshlg@bnbfin.com">rajeshlg@bnbfin.com</a></td>
+                  <td style="white-space:nowrap;">9 AM – 11:30 PM</td>
+                </tr>
+                <tr>
+                  <td class="td-bold">Director</td>
+                  <td>Sunesh Kumar Raj</td>
+                  <td>H.No: 1-98/5/2A, Sy.No-85, Spacion Towers, Serlingampally, Vittal Rao Nagar, Madhapur, Hyderabad, Telangana – 500 081</td>
+                  <td style="white-space:nowrap;"><a href="tel:9848122737">98481 22737</a></td>
+                  <td><a href="mailto:suneshkraj@bnbfin.com">suneshkraj@bnbfin.com</a></td>
+                  <td style="white-space:nowrap;">9 AM – 11:30 PM</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="notice">
+            <p>In absence of response/complaint not addressed to your satisfaction, you may lodge a complaint with SEBI at <a href="https://scores.sebi.gov.in/" target="_blank" rel="noopener noreferrer"><strong>SCORES</strong></a> or Exchange at <a href="https://www.mcxindia.com/Investor-Services" target="_blank" rel="noopener noreferrer"><strong>MCX</strong></a>. Please quote your Service Ticket/Complaint Ref No. while raising your complaint at SEBI SCORES/Exchange portal.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SCORES / SMARTODR FILING ── -->
+      <section aria-labelledby="filing-h" style="margin-bottom:52px;">
+        <p class="section-label">Online Redressal</p>
+        <h2 id="filing-h" class="section-title">Filing Complaints via SCORES &amp; SMARTODR</h2>
+        <div class="section-divider"></div>
+
+        <div class="filing-box">
+          <h3>Easy &amp; Quick – File Online</h3>
+          <p><strong>a.</strong> Register on SCORES / SMARTODR portal</p>
+          <p><strong>b.</strong> Mandatory details for filing complaints on SCORES:</p>
+          <p style="padding-left:16px; color:rgba(255,255,255,0.65); font-size:13px;">Name · PAN · Address · Mobile Number · Email ID</p>
+          <p style="margin-top:12px;"><strong>c.</strong> Benefits:</p>
+          <ol style="padding-left:32px; margin-top:6px;">
+            <li>Effective Communication</li>
+            <li>Speedy Redressal of Grievance / Dispute</li>
+          </ol>
+
+          <div class="portal-links">
+            <a href="https://smartodr.in/login" target="_blank" rel="noopener noreferrer" class="portal-btn">SMARTODR ↗</a>
+            <a href="https://scores.sebi.gov.in" target="_blank" rel="noopener noreferrer" class="portal-btn">SCORES ↗</a>
+            <a href="SEBIMasterCircularforSCORES.pdf" target="_blank" rel="noopener noreferrer" class="portal-btn">SEBI Master Circular – SCORES ↗</a>
+            <a href="SEBIMasterCircularforODR.pdf" target="_blank" rel="noopener noreferrer" class="portal-btn">SEBI Master Circular – SMARTODR ↗</a>
+            <a href="https://www.mcxindia.com/Investor-Services" target="_blank" rel="noopener noreferrer" class="portal-btn">MCX India ↗</a>
+          </div>
+        </div>
+
+        <!-- DOCS -->
+        <div style="margin-top:28px;">
+          <h3 style="font-family:var(--font-head);font-size:16px;font-weight:700;color:var(--navy);margin-bottom:16px;">Important Investor Documents</h3>
+          <div class="docs-grid">
+            <a href="https://www.bnbfin.com/assets/docs/BnB%20Client%20Agreement%20Form.pdf" target="_blank" rel="noopener noreferrer" class="doc-link" aria-label="Procedure to open trading account">
+              <div class="dl-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+              Procedure to Open Trading Account
+              <span class="doc-ext">PDF</span>
+            </a>
+            <a href="Advisory_for_Investors.pdf" target="_blank" rel="noopener noreferrer" class="doc-link" aria-label="Advisory for Investors">
+              <div class="dl-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              Advisory for Investors
+              <span class="doc-ext">PDF</span>
+            </a>
+            <a href="disclosure-of-complaints.html" target="_blank" rel="noopener noreferrer" class="doc-link" aria-label="Disclosure of complaint">
+              <div class="dl-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+              Disclosure of Complaint
+              <span class="doc-ext">↗</span>
+            </a>
+            <a href="InvestorCharter.pdf" target="_blank" rel="noopener noreferrer" class="doc-link" aria-label="Investor Charter">
+              <div class="dl-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+              Investor Charter
+              <span class="doc-ext">PDF</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <p>&copy; 2026 BnB Financial Services Pvt. Ltd. All rights reserved.</p>
+    <p style="margin-top:6px;">
+      <a href="index.html">Home</a> &middot;
+      <a href="escalation-matrix.html">Escalation Matrix</a> &middot;
+      <a href="terms.html">Terms &amp; Conditions</a> &middot;
+      <a href="privacy.html">Privacy Policy</a>
+    </p>
+    <p style="margin-top:6px; font-size:11.5px; color:rgba(255,255,255,0.3);">SEBI Reg. No.: INZ000057434 &middot; MCX Member ID: 40735 &middot; CIN: U67110TG2010PTC069597</p>
+  </footer>
+
+  <!-- CHATBOT WIDGET (Item 14) -->
+  <button id="chatbotToggleBtn" class="chatbot-btn" aria-label="Open Chat Support" aria-expanded="false" aria-controls="chatbotWindow">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 5.91 2 10.75c0 2.76 1.48 5.21 3.79 6.8-.2.94-.74 2.22-1.5 3.02a.6.6 0 00.37 1.01c2.14.07 4.14-.98 5.37-2.02.63.09 1.29.14 1.97.14 5.52 0 10-3.91 10-8.75S17.52 2 12 2zm0 15.5c-.6 0-1.18-.04-1.74-.11a.6.6 0 00-.47.16c-1.11.96-2.6 1.7-4.14 1.83.56-.73.97-1.68 1.15-2.58a.6.6 0 00-.18-.54C4.66 14.88 3.2 12.92 3.2 10.75 3.2 6.58 7.15 3.2 12 3.2s8.8 3.38 8.8 7.55-3.94 7.55-8.8 7.55z"/><path d="M7.5 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM12 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM16.5 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
+  </button>
+  <div id="chatbotWindow" class="chatbot-window" role="dialog" aria-labelledby="chatbotTitle" aria-hidden="true">
+    <div class="chat-header">
+      <h3 id="chatbotTitle">BnB Support</h3>
+      <button id="chatbotCloseBtn" class="chat-close" aria-label="Close Chat Window">&times;</button>
+    </div>
+    <div class="chat-body" id="chatBody" aria-live="polite">
+      <div class="chat-msg bot">Hello! How can we help you today?</div>
+      <div class="chat-faq-options" id="chatOptions">
+        <button class="chat-faq-btn" onclick="sendChatReply('How to open an account?', 'You can open an account by filling the contact form on this page, or calling us at +91 40 4333 4857.')">How to open an account?</button>
+        <button class="chat-faq-btn" onclick="sendChatReply('What are your trading hours?', 'Our trading hours align with MCX market timings: 9:00 AM to 11:30 PM IST.')">What are your trading hours?</button>
+        <button class="chat-faq-btn" onclick="sendChatReply('How do I contact support?', 'You can email info@bnbfin.com or call +91 40 4333 4857.')">How do I contact support?</button>
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="chatInput" class="chat-input" placeholder="Type your message..." aria-label="Type your message">
+      <button id="chatSendBtn" class="chat-send-btn" aria-label="Send message">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('nav-toggle-btn');
+    const mainNav = document.getElementById('main-nav');
+    toggleBtn.addEventListener('click', () => {
+      const open = mainNav.classList.toggle('open');
+      toggleBtn.setAttribute('aria-expanded', open);
+      toggleBtn.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+      toggleBtn.textContent = open ? '✕' : '☰';
+    });
+    mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mainNav.classList.remove('open');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      toggleBtn.textContent = '☰';
+    }));
+    document.querySelectorAll('.nav-dropdown > a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (window.innerWidth <= 1050) {
+          e.preventDefault();
+          link.closest('.nav-dropdown').classList.toggle('mobile-open');
+        }
+      });
+    });
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50), {passive:true});
+  </script>
+</body>
+</html>

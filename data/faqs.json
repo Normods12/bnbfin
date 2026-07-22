@@ -1,0 +1,50 @@
+[
+  {
+    "q": "What is a Commodity Exchange?",
+    "a": "<p>A commodity exchange is an association, company, or body corporate that organises futures trading in commodities and is registered with SEBI (formerly the Forward Market Commission).</p>"
+  },
+  {
+    "q": "Which are the major commodity exchanges in India?",
+    "a": "<p>There are 24 commodity exchanges in India. The two national-level exchanges are: <strong>MCX (Multi Commodity Exchange of India, Mumbai)</strong> and <strong>NCDEX (National Commodity and Derivative Exchange, Mumbai)</strong>.</p>"
+  },
+  {
+    "q": "Which commodities can I trade on MCX?",
+    "a": "<p><strong>Bullion:</strong> Gold, Gold Mini, Silver, Silver Mini · <strong>Metals:</strong> Aluminium, Copper, Zinc, Lead, Nickel, Brass · <strong>Energy:</strong> Crude Oil, Crude Oil Mini, Natural Gas · <strong>Agricultural:</strong> Cardamom, Cotton, CPO, Mentha Oil</p>"
+  },
+  {
+    "q": "Who can invest in commodities?",
+    "a": "<p>Commodity markets are open to individual retail investors, traders, hedgers, and institutional investors. Anyone with an account at a registered broker like BnB Financial can participate.</p>"
+  },
+  {
+    "q": "How is BnB Financial regulated?",
+    "a": "<p>BnB Financial is registered with SEBI as a Trading cum Clearing Member of MCX. <strong>SEBI Code: INZ000057434 · MCX Member ID: 40735</strong>. Grievances can be filed through <strong>SCORES</strong> at scores.gov.in.</p>"
+  },
+  {
+    "q": "What is a futures contract?",
+    "a": "<p>A futures contract is a standardized agreement to buy or sell a commodity at a predetermined price at a specified date in the future. These contracts are traded on commodity exchanges like MCX and are used for both hedging and speculation.</p>"
+  },
+  {
+    "q": "What is hedging in commodity markets?",
+    "a": "<p>Hedging is a risk management strategy where commodity traders or producers lock in a future price to protect themselves against adverse price movements. For example, a gold jeweller may sell gold futures to hedge against a potential fall in gold prices.</p>"
+  },
+  {
+    "q": "What is margin in commodity trading?",
+    "a": "<p>Margin is the initial deposit required to enter into a futures contract. It is a percentage of the total contract value and acts as a performance bond to ensure that both parties fulfil their obligations. MCX sets the margin requirements for each commodity.</p>"
+  },
+  {
+    "q": "How do I open a trading account with BnB Financial?",
+    "a": "<p>You can open a trading account by contacting our team through the Contact Us form or calling us directly. You will need to complete KYC (Know Your Customer) documentation including PAN card, Aadhaar, bank account details, and proof of address. Our team will guide you through the entire process.</p>"
+  },
+  {
+    "q": "What documents are required to open a commodity trading account?",
+    "a": "<p>Documents required include: PAN Card, Aadhaar Card / Passport / Voter ID (Identity Proof), Bank Statement / Cancelled Cheque (Bank Proof), Recent passport-size photograph, and a signed Client Agreement Form. You can download the agreement form from our Downloads section.</p>"
+  },
+  {
+    "q": "What are MCX trading hours?",
+    "a": "<p>MCX trading sessions:<br><strong>9:00 AM – 11:30 PM (Monday to Friday)</strong> Summer time<br><strong>9:00 AM – 11:55 PM (Monday to Friday)</strong> Winter time</p>"
+  },
+  {
+    "q": "How can I file a grievance?",
+    "a": "<p>You can file a grievance by: (1) Emailing us at <strong>info@bnbfin.com</strong>, (2) Using the SEBI SCORES portal at <a href=\"https://scores.gov.in\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"SEBI SCORES grievance portal\">scores.gov.in</a>, or (3) Contacting MCX's Investor Services Centre. We are committed to resolving all grievances promptly and transparently.</p>"
+  }
+]

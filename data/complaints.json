@@ -1,0 +1,204 @@
+{
+  "monthEnding": "July 2026",
+  "summary": [
+    {
+      "label": "Directly from Investors",
+      "cf": 0,
+      "recv": 0,
+      "total": 0,
+      "resolved": 0,
+      "pending": 0,
+      "lt3": 0,
+      "gt3": 0,
+      "avgDays": 0
+    },
+    {
+      "label": "SEBI (SCORES 2.0)",
+      "cf": 0,
+      "recv": 0,
+      "total": 0,
+      "resolved": 0,
+      "pending": 0,
+      "lt3": 0,
+      "gt3": 0,
+      "avgDays": 0
+    },
+    {
+      "label": "Stock Exchanges",
+      "cf": 0,
+      "recv": 0,
+      "total": 0,
+      "resolved": 0,
+      "pending": 0,
+      "lt3": 0,
+      "gt3": 0,
+      "avgDays": 0
+    },
+    {
+      "label": "Other Sources (if any)",
+      "cf": 0,
+      "recv": 0,
+      "total": 0,
+      "resolved": 0,
+      "pending": 0,
+      "lt3": 0,
+      "gt3": 0,
+      "avgDays": 0
+    },
+    {
+      "label": "Grand Total",
+      "cf": 0,
+      "recv": 0,
+      "total": 0,
+      "resolved": 0,
+      "pending": 0,
+      "lt3": 0,
+      "gt3": 0,
+      "avgDays": 0
+    }
+  ],
+  "monthly": [
+    {
+      "month": "April-2025",
+      "cf": 0,
+      "recv": 0,
+      "resolved": 0,
+      "pending": 0
+    },
+    {
+      "month": "May-2025",
+      "cf": 0,
+      "recv": 0,
+      "resolved": 0,
+      "pending": 0
+    },
+    {
+      "month": "June-2025",
+      "cf": 0,
+      "recv": 0,
+      "resolved": 0,
+      "pending": 0
+    },
+    {
+      "month": "July-2025",
+      "cf": 0,
+      "recv": 0,
+      "resolved": 0,
+      "pending": 0
+    },
+    {
+      "month": "Aug-2025",
+      "cf": 0,
+      "recv": 0,
+      "resolved": 0,
+      "pending": 0
+    },
+    {
+      "month": "Sep-2025",
+      "cf": 0,
+      "recv": 0,
+      "resolved": 0,
+      "pending": 0
+    },
+    {
+      "month": "Oct-2025",
+      "cf": 0,
+      "recv": 0,
+      "resolved": 0,
+      "pending": 0
+    },
+    {
+      "month": "Nov-2025",
+      "cf": 0,
+      "recv": 0,
+      "resolved": 0,
+      "pending": 0
+    },
+    {
+      "month": "Dec-2025",
+      "cf": 0,
+      "recv": 0,
+      "resolved": 0,
+      "pending": 0
+    },
+    {
+      "month": "Jan-2026",
+      "cf": 0,
+      "recv": 0,
+      "resolved": 0,
+      "pending": 0
+    },
+    {
+      "month": "Feb-2026",
+      "cf": 0,
+      "recv": 0,
+      "resolved": 0,
+      "pending": 0
+    },
+    {
+      "month": "Mar-2026",
+      "cf": 0,
+      "recv": 0,
+      "resolved": 0,
+      "pending": 0
+    },
+    {
+      "month": "Apr-2026",
+      "cf": 0,
+      "recv": 0,
+      "resolved": 0,
+      "pending": 0
+    }
+  ],
+  "annual": [
+    {
+      "year": "2019-20",
+      "cf": 0,
+      "recv": 0,
+      "resolved": 0,
+      "pending": 0
+    },
+    {
+      "year": "2020-21",
+      "cf": 0,
+      "recv": 0,
+      "resolved": 0,
+      "pending": 0
+    },
+    {
+      "year": "2021-22",
+      "cf": 0,
+      "recv": 0,
+      "resolved": 0,
+      "pending": 0
+    },
+    {
+      "year": "2022-23",
+      "cf": 0,
+      "recv": 0,
+      "resolved": 0,
+      "pending": 0
+    },
+    {
+      "year": "2023-24",
+      "cf": 0,
+      "recv": 0,
+      "resolved": 0,
+      "pending": 0
+    },
+    {
+      "year": "2024-25",
+      "cf": 0,
+      "recv": 0,
+      "resolved": 0,
+      "pending": 0
+    },
+    {
+      "year": "2025-26",
+      "cf": 0,
+      "recv": 0,
+      "resolved": 0,
+      "pending": 0
+    }
+  ]
+}
