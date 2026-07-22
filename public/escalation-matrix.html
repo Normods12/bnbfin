@@ -36,7 +36,7 @@
     .logo-tagline { display: flex; justify-content: space-between; width: 100%; align-items: center; font-family: var(--font-head); font-size: 9.5px; font-weight: 600; color: #ffffff; letter-spacing: 1.5px; text-transform: uppercase; white-space: nowrap; margin-top: -2px; }
     nav[role="navigation"] ul { display: flex; list-style: none; gap: 2px; align-items: center; }
     nav[role="navigation"] a { color: #FFFFFF; text-decoration: none; font-family: var(--font-head); font-size: 12.5px; font-weight: 600; padding: 7px 11px; border-radius: 6px; transition: color var(--transition), background var(--transition); letter-spacing: 0.3px; white-space: nowrap; }
-    nav[role="navigation"] a:hover, nav[role="navigation"] a[aria-current="page"] { color: var(--gold); background: rgba(201,168,76,0.1); }
+    nav[role="navigation"] a:hover, nav[role="navigation"] a[aria-current="page"] { color: #E8CC7A; background: rgba(201,168,76,0.1); }
     .nav-login a { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: var(--navy) !important; font-weight: 700 !important; padding: 8px 16px !important; border-radius: var(--radius); }
     .nav-login a:hover { background: var(--gold-light) !important; }
     .nav-dropdown { position: relative; }
@@ -58,7 +58,7 @@
     .page-hero { min-height: 200px; background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 55%, var(--navy-light) 100%); display: flex; align-items: flex-end; padding: 100px 24px 40px; position: relative; overflow: hidden; }
     .page-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 49.8%, rgba(201,168,76,0.06) 50%, transparent 50.2%) 0 0/80px 80px, linear-gradient(0deg, transparent 49.8%, rgba(201,168,76,0.04) 50%, transparent 50.2%) 0 0/80px 80px; pointer-events: none; }
     .page-hero-content { max-width: 1200px; margin: 0 auto; width: 100%; position: relative; z-index: 2; }
-    .page-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .page-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #E8CC7A; margin-bottom: 10px; }
     .page-title { font-family: var(--font-head); font-size: clamp(28px,4vw,48px); font-weight: 800; color: var(--white); line-height: 1.15; letter-spacing: -1px; }
     .page-subtitle { font-size: 15px; color: #E2E6EF; margin-top: 8px; }
 
@@ -67,7 +67,7 @@
     .container { max-width: 1200px; margin: 0 auto; }
 
     /* ── SECTION LABELS ── */
-    .section-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .section-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #E8CC7A; margin-bottom: 10px; }
     .section-title { font-family: var(--font-head); font-size: clamp(20px,2.5vw,30px); font-weight: 800; color: var(--navy); line-height: 1.2; letter-spacing: -0.3px; margin-bottom: 14px; }
     .section-divider { width: 48px; height: 4px; border-radius: 2px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); margin-bottom: 28px; }
 
@@ -77,7 +77,7 @@
     /* ── TABLES ── */
     .table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--gray-200); }
     table { width: 100%; border-collapse: collapse; background: var(--white); font-family: var(--font-body); min-width: 700px; }
-    thead th { background: var(--navy); color: var(--gold); font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 14px 16px; text-align: left; white-space: nowrap; border-right: 1px solid rgba(255,255,255,0.1); }
+    thead th { background: var(--navy); color: #E8CC7A; font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 14px 16px; text-align: left; white-space: nowrap; border-right: 1px solid rgba(255,255,255,0.1); }
     thead th:last-child { border-right: none; }
     tbody td { padding: 13px 16px; font-size: 13.5px; color: var(--gray-600); border-bottom: 1px solid var(--gray-100); border-right: 1px solid var(--gray-100); vertical-align: top; line-height: 1.6; }
     tbody td:last-child { border-right: none; }
@@ -99,14 +99,14 @@
     /* ── RESOURCES GRID ── */
     .resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 14px; margin-top: 8px; }
     .resource-link { display: flex; align-items: center; gap: 10px; padding: 14px 16px; background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); text-decoration: none; color: var(--navy); font-family: var(--font-head); font-size: 13px; font-weight: 600; transition: border-color var(--transition), background var(--transition), transform var(--transition); }
-    .resource-link:hover { border-color: var(--gold); background: rgba(201,168,76,0.04); transform: translateY(-2px); }
+    .resource-link:hover { border-color: #E8CC7A; background: rgba(201,168,76,0.04); transform: translateY(-2px); }
     .resource-link .rl-icon { width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, var(--navy), var(--navy-light)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .resource-link .rl-icon svg { width: 16px; height: 16px; fill: var(--gold); }
     .resource-link .rl-ext { font-size: 10px; font-weight: 700; color: var(--gold-dark); background: rgba(201,168,76,0.12); padding: 2px 6px; border-radius: 4px; margin-left: auto; flex-shrink: 0; }
 
     /* ── BANK ACCOUNT CARD ── */
     .bank-card { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-radius: 14px; padding: 32px 36px; color: var(--white); margin-top: 28px; }
-    .bank-card h3 { font-family: var(--font-head); font-size: 14px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.15); }
+    .bank-card h3 { font-family: var(--font-head); font-size: 14px; font-weight: 700; color: #E8CC7A; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.15); }
     .bank-fields-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 24px; }
     .bank-field { }
     .bank-field span:first-child { display: block; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #E2E6EF; margin-bottom: 6px; }
@@ -120,7 +120,7 @@
     /* ── FOOTER ── */
     footer { background: #050E24; color: #E2E6EF; padding: 28px 24px; text-align: center; }
     footer p { font-size: 12.5px; line-height: 1.8; }
-    footer a { color: var(--gold); text-decoration: none; }
+    footer a { color: #E8CC7A; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
     /* ── RESPONSIVE ── */
@@ -138,8 +138,8 @@
     .chatbot-btn { position: fixed; bottom: 32px; right: 28px; z-index: 999; width: 58px; height: 58px; border-radius: 50%; background: var(--gold); border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(201,168,76,0.4); cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease; }
     .chatbot-btn:hover, .chatbot-btn:focus-visible { transform: scale(1.1); box-shadow: 0 8px 30px rgba(201,168,76,0.6); outline: none; }
     .chatbot-btn svg { width: 32px; height: 32px; fill: var(--navy); }
-    .chatbot-window { position: fixed; bottom: 102px; right: 28px; width: 340px; max-width: calc(100vw - 56px); height: 450px; background: var(--white); border-radius: 12px; box-shadow: 0 8px 40px rgba(10,31,68,0.16); z-index: 1000; display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px); opacity: 0; pointer-events: none; transition: transform 0.3s, opacity 0.3s; border: 1px solid var(--gray-200); }
-    .chatbot-window.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+    .chatbot-window { display: none;  position: fixed; bottom: 102px; right: 28px; width: 340px; max-width: calc(100vw - 56px); height: 450px; background: var(--white); border-radius: 12px; box-shadow: 0 8px 40px rgba(10,31,68,0.16); z-index: 1000; display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px); opacity: 0; pointer-events: none; transition: transform 0.3s, opacity 0.3s; border: 1px solid var(--gray-200); }
+    .chatbot-window.open { display: flex; transform: translateY(0); opacity: 1; pointer-events: all; }
     .chat-header { background: var(--navy); color: var(--white); padding: 16px; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-head); }
     .chat-header h3 { font-size: 16px; font-weight: 700; margin: 0; }
     .chat-close { background: none; border: none; color: var(--white); font-size: 24px; cursor: pointer; line-height: 1; }
@@ -152,7 +152,7 @@
     .chat-faq-btn:hover, .chat-faq-btn:focus-visible { background: var(--gold); color: var(--white); outline: none; }
     .chat-input-area { display: flex; padding: 12px 16px; border-top: 1px solid var(--gray-200); background: var(--white); }
     .chat-input { flex: 1; border: 1px solid var(--gray-200); border-radius: 20px; padding: 8px 12px; font-size: 13.5px; font-family: var(--font-body); outline: none; transition: border-color 0.2s; }
-    .chat-input:focus { border-color: var(--gold); }
+    .chat-input:focus { border-color: #E8CC7A; }
     .chat-send-btn { background: var(--gold); border: none; color: var(--navy); border-radius: 50%; width: 36px; height: 36px; margin-left: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s; }
     .chat-send-btn:hover, .chat-send-btn:focus-visible { background: var(--gold-dark); outline: none; }
     .chat-send-btn svg { width: 16px; height: 16px; fill: currentColor; }
@@ -317,28 +317,28 @@
           <div class="step-card">
             <div class="step-num" aria-hidden="true">1</div>
             <div class="step-body">
-              <h4>Contact Customer Care</h4>
+              <h3>Contact Customer Care</h3>
               <p>Email <a href="mailto:info@bnbfin.com">info@bnbfin.com</a> or call <a href="tel:8247704298">82477 04298</a>. We aim to resolve grievances within 30 days of receipt.</p>
             </div>
           </div>
           <div class="step-card">
             <div class="step-num" aria-hidden="true">2</div>
             <div class="step-body">
-              <h4>Head of Customer Care</h4>
+              <h3>Head of Customer Care</h3>
               <p>If unresolved, escalate to Anitha S at <a href="mailto:reports@bnbfin.com">reports@bnbfin.com</a> or <a href="tel:8919567142">89195 67142</a>.</p>
             </div>
           </div>
           <div class="step-card">
             <div class="step-num" aria-hidden="true">3</div>
             <div class="step-body">
-              <h4>SEBI SCORES Portal</h4>
+              <h3>SEBI SCORES Portal</h3>
               <p>Lodge your complaint at <a href="https://scores.sebi.gov.in" target="_blank" rel="noopener noreferrer">scores.sebi.gov.in</a> or contact MCX Investor Services at <a href="https://www.mcxindia.com/Investor-Services" target="_blank" rel="noopener noreferrer">mcxindia.com</a>.</p>
             </div>
           </div>
           <div class="step-card">
             <div class="step-num" aria-hidden="true">4</div>
             <div class="step-body">
-              <h4>Online Dispute Resolution</h4>
+              <h3>Online Dispute Resolution</h3>
               <p>Use the SMART ODR platform at <a href="https://smartodr.in/login" target="_blank" rel="noopener noreferrer">smartodr.in</a> for online conciliation and arbitration as mandated by SEBI.</p>
             </div>
           </div>
