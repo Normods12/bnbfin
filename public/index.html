@@ -36,7 +36,7 @@
     .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
     .logo-mark-img { height: 38px; width: auto; object-fit: contain; display: block; flex-shrink: 0; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25)); }
     .logo-text-block { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; transform: translateY(-1px); }
-    .logo-name { font-family: var(--font-head); font-weight: 800; font-size: 16px; color: #15803D; letter-spacing: -0.2px; white-space: nowrap; line-height: 1.2; margin-top: 2px; }
+    .logo-name { font-family: var(--font-head); font-weight: 800; font-size: 16px; color: #166534; letter-spacing: -0.2px; white-space: nowrap; line-height: 1.2; margin-top: 2px; }
     .logo-tagline { display: flex; justify-content: space-between; width: 100%; align-items: center; font-family: var(--font-head); font-size: 9.5px; font-weight: 600; color: #ffffff; letter-spacing: 1.5px; text-transform: uppercase; white-space: nowrap; margin-top: -2px; }
     nav[role="navigation"] ul { display: flex; list-style: none; gap: 2px; align-items: center; }
     nav[role="navigation"] a { color: #FFFFFF; text-decoration: none; font-family: var(--font-head); font-size: 12.5px; font-weight: 600; padding: 7px 11px; border-radius: 6px; transition: color var(--transition), background var(--transition); letter-spacing: 0.3px; white-space: nowrap; }
@@ -395,10 +395,10 @@
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 5.91 2 10.75c0 2.76 1.48 5.21 3.79 6.8-.2.94-.74 2.22-1.5 3.02a.6.6 0 00.37 1.01c2.14.07 4.14-.98 5.37-2.02.63.09 1.29.14 1.97.14 5.52 0 10-3.91 10-8.75S17.52 2 12 2zm0 15.5c-.6 0-1.18-.04-1.74-.11a.6.6 0 00-.47.16c-1.11.96-2.6 1.7-4.14 1.83.56-.73.97-1.68 1.15-2.58a.6.6 0 00-.18-.54C4.66 14.88 3.2 12.92 3.2 10.75 3.2 6.58 7.15 3.2 12 3.2s8.8 3.38 8.8 7.55-3.94 7.55-8.8 7.55z"/><path d="M7.5 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM12 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM16.5 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
   </button>
 
-  <div id="chatbotWindow" class="chatbot-window" role="dialog" aria-labelledby="chatbotTitle" aria-hidden="true">
+  <div id="chatbotWindow" class="chatbot-window" role="dialog" aria-labelledby="chatbotTitle" inert>
     <div class="chat-header">
       <h3 id="chatbotTitle">BnB Support</h3>
-      <button id="chatbotCloseBtn" class="chat-close" aria-label="Close Chat Window">&times;</button>
+      <button id="chatbotCloseBtn" class="chat-close" tabindex="-1" aria-label="Close Chat Window">&times;</button>
     </div>
     <div class="chat-body" id="chatBody" aria-live="polite">
       <div class="chat-msg bot">Hello! How can we help you today?</div>
@@ -409,8 +409,8 @@
       </div>
     </div>
     <div class="chat-input-area">
-      <input type="text" id="chatInput" class="chat-input" placeholder="Type your message..." aria-label="Type your message">
-      <button id="chatSendBtn" class="chat-send-btn" aria-label="Send message">
+      <input type="text" id="chatInput" class="chat-input" tabindex="-1" placeholder="Type your message..." aria-label="Type your message">
+      <button id="chatSendBtn" class="chat-send-btn" tabindex="-1" aria-label="Send message">
         <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
       </button>
     </div>
@@ -610,7 +610,7 @@
           <div class="fpi-info">
             <h2 id="fpi-heading">Foreign Portfolio Investment (FPI)</h2>
             <div class="section-divider" aria-hidden="true"></div>
-            <p class="fpi-subtitle">Access India's Fast-Growing Commodity Markets Through a Regulated Investment Framework</p>
+            <p class="fpi-subtitle" style="color:#1A202C;">Access India's Fast-Growing Commodity Markets Through a Regulated Investment Framework</p>
             <p>BNB Financial Services facilitates foreign investors seeking exposure to Indian commodity derivatives traded on MCX through the Foreign Portfolio Investor (FPI) route. Our experienced research team, institutional trading expertise, and strategic partnerships help global investors participate in one of the world's fastest-growing commodity markets.</p>
             <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:12px;" aria-label="Enquire about FPI services">Enquire About FPI</a>
           </div>
@@ -661,25 +661,25 @@
           <div class="team-card">
             <div class="team-avatar" aria-hidden="true">S</div>
             <h3>Sunesh Kumar Raj</h3>
-            <span class="team-role">Corporate Administration &amp; Planning</span>
+            <span class="team-role" style="color:#1A202C;font-weight:600;">Corporate Administration &amp; Planning</span>
             <p>Brings over three decades of experience in international commodity markets. Leads the company's day to day administrative functions and operational activities, ensuring efficient execution and seamless coordination across departments. He plays a key role in driving sustainable growth, operational excellence, and long-term business success.</p>
           </div>
           <div class="team-card">
             <div class="team-avatar" aria-hidden="true">R</div>
             <h3>Rajesh L G</h3>
-            <span class="team-role">Compliance &amp; Strategy</span>
+            <span class="team-role" style="color:#1A202C;font-weight:600;">Compliance &amp; Strategy</span>
             <p>With over three decades of experience in the international commodities market, he specializes in technical and fundamental market analysis. He leads the company's compliance and strategic initiatives, ensuring adherence to regulatory standards while providing valuable investment strategies, risk assessment and portfolio guidance to clients.</p>
           </div>
           <div class="team-card">
             <div class="team-avatar" aria-hidden="true">S</div>
             <h3>Saud Mohammed Sharaf</h3>
-            <span class="team-role">Marketing &amp; Administration</span>
+            <span class="team-role" style="color:#1A202C;font-weight:600;">Marketing &amp; Administration</span>
             <p>Brings expertise in marketing and administrative operations, with a strong focus on corporate governance and organizational management. He specializes in driving strategic marketing initiatives, streamlining business operations, and supporting sustainable growth through effective administration and operational excellence.</p>
           </div>
           <div class="team-card">
             <div class="team-avatar" aria-hidden="true">M</div>
             <h3>Mirza Masood Ahmed Baig</h3>
-            <span class="team-role">Business Development &amp; Investor Relations</span>
+            <span class="team-role" style="color:#1A202C;font-weight:600;">Business Development &amp; Investor Relations</span>
             <p>Brings over sixteen years of experience across business development, investor relations, legal affairs, and wealth management. He specializes in cultivating strategic investor partnerships, driving business growth, facilitating foreign portfolio investments, and creating long-term value through strong stakeholder engagement and market expertise.</p>
           </div>
         </div>
@@ -764,7 +764,7 @@
               <span class="dl-accordion-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
             </button>
             <div class="dl-accordion-body" id="dl-body-vernacular" role="region" aria-labelledby="dl-vernacular">
-              <div class="download-vernacular" role="list">
+              <div class="download-vernacular">
                 <a href="https://www.bnbfin.com/assets/docs/assamese.zip"  target="_blank" rel="noopener noreferrer" aria-label="Download Assamese client agreement form">↓ Assamese</a>
                 <a href="https://www.bnbfin.com/assets/docs/bengali.zip"  target="_blank" rel="noopener noreferrer" aria-label="Download Bengali client agreement form">↓ Bengali</a>
                 <a href="https://www.bnbfin.com/assets/docs/gujarati.zip"  target="_blank" rel="noopener noreferrer" aria-label="Download Gujarati client agreement form">↓ Gujarati</a>
@@ -1015,7 +1015,7 @@
     <!-- FULL DISCLAIMER -->
     <div class="footer-full-disclaimer">
       <div class="container">
-        <h5>Regulatory Disclaimer</h5>
+        <h4>Regulatory Disclaimer</h4>
         <p><strong>Disclaimer:</strong> Trading Futures, Options on Futures, and Foreign Exchange involves substantial risk of loss and may not be suitable for all investors. You should carefully consider whether trading is suitable for you in light of your circumstances, knowledge, and financial resources. You may lose all or more of your initial investment. Opinions, market data, and recommendations are subject to change at any time. The information contained on this site and any communications from this site or our company does not constitute a solicitation to buy or sell by any individual or firm and/or its affiliates, and is not to be available to individuals in a jurisdiction where such availability would be contrary to local regulation or law.</p>
         <h5 style="margin-top:14px;">Cautionary Message</h5>
         <ul>
@@ -1221,13 +1221,21 @@ Note: Also that our website may contain links to other sites. While we try to li
       if (isOpen) {
         chatbotWindow.classList.remove('open');
         chatbotWindow.style.display = 'none';
-        chatbotWindow.setAttribute('aria-hidden', 'true');
+        chatbotWindow.removeAttribute('aria-hidden');
+        chatbotWindow.setAttribute('inert', '');
+        if (chatInput) chatInput.setAttribute('tabindex', '-1');
+        if (chatSendBtn) chatSendBtn.setAttribute('tabindex', '-1');
+        if (chatbotCloseBtn) chatbotCloseBtn.setAttribute('tabindex', '-1');
         chatbotToggleBtn.setAttribute('aria-expanded', 'false');
         chatbotToggleBtn.focus();
       } else {
         chatbotWindow.style.display = 'flex';
         chatbotWindow.classList.add('open');
-        chatbotWindow.setAttribute('aria-hidden', 'false');
+        chatbotWindow.removeAttribute('aria-hidden');
+        chatbotWindow.removeAttribute('inert');
+        if (chatInput) chatInput.removeAttribute('tabindex');
+        if (chatSendBtn) chatSendBtn.removeAttribute('tabindex');
+        if (chatbotCloseBtn) chatbotCloseBtn.removeAttribute('tabindex');
         chatbotToggleBtn.setAttribute('aria-expanded', 'true');
         chatbotCloseBtn.focus();
       }
@@ -1360,7 +1368,7 @@ Note: Also that our website may contain links to other sites. While we try to li
                   <a href="post.html?title=${encodeURIComponent(p.title)}" class="kb-card">
                     ${thumbHtml}
                     <div class="kb-content">
-                      <div class="kb-category">${p.category || 'Update'}</div>
+                      <div class="kb-category" style="color:#0A1F44;font-weight:700;">${p.category || 'Update'}</div>
                       <h3 class="kb-title">${p.title}</h3>
                       ${p.description ? `<div class="kb-desc">${p.description}</div>` : '<div class="kb-desc"></div>'}
                       ${linkHtml}
