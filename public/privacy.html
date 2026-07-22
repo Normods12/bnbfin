@@ -713,9 +713,9 @@ Note: Also that our website may contain links to other sites. While we try to li
         <div class="admin-section">
           <h3>📄 PDF Management</h3>
           <div class="admin-row">
-            <input type="text" id="pdfTitle" placeholder="Document title">
-            <input type="url" id="pdfUrl" placeholder="PDF URL (https://...)">
-            <select id="pdfCategory"><option>Knowledge Base</option><option>Research Reports</option></select>
+            <input type="text" id="pdfTitle" aria-label="pdfTitle" placeholder="Document title">
+            <input type="url" id="pdfUrl" aria-label="pdfUrl" placeholder="PDF URL (https://...)">
+            <select id="pdfCategory" aria-label="pdfCategory"><option>Knowledge Base</option><option>Research Reports</option></select>
           </div>
           <button class="btn-primary" id="addPdfBtn" type="button" style="margin-bottom:10px;">+ Add PDF</button>
           <ul class="admin-list" id="pdfList"></ul>
@@ -723,8 +723,8 @@ Note: Also that our website may contain links to other sites. While we try to li
         <!-- FAQ Management -->
         <div class="admin-section">
           <h3>❓ FAQ Management</h3>
-          <div class="admin-row"><input type="text" id="faqQ" placeholder="Question"></div>
-          <div class="admin-row"><input type="text" id="faqA" placeholder="Answer"></div>
+          <div class="admin-row"><input type="text" id="faqQ" aria-label="faqQ" placeholder="Question"></div>
+          <div class="admin-row"><input type="text" id="faqA" aria-label="faqA" placeholder="Answer"></div>
           <button class="btn-primary" id="addFaqBtn" type="button" style="margin-bottom:10px;">+ Add FAQ</button>
           <ul class="admin-list" id="adminFaqList"></ul>
         </div>

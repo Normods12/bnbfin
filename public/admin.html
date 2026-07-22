@@ -61,9 +61,13 @@
     .data-grid input:focus { border-color: var(--gold); outline: none; background: #fffdf5; }
     .data-grid input.readonly-col { background: var(--gray-100); font-weight: 600; color: var(--gray-800); }
     
+  
+    :focus-visible { outline: 3px solid #C9A84C; outline-offset: 3px; border-radius: 4px; }
+    @media (prefers-reduced-motion: reduce) { *, ::before, ::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
   </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- LOGIN SCREEN -->
   <div class="login-container" id="loginScreen">
@@ -71,7 +75,7 @@
       <h2>BnB Admin Console</h2>
       <div class="input-group">
         <label>Admin Password</label>
-        <input type="password" id="adminPw" placeholder="Enter password...">
+        <input type="password" id="adminPw" aria-label="adminPw" placeholder="Enter password...">
       </div>
       <button class="btn-primary" id="loginBtn" style="width:100%;">Login</button>
       <div id="error-msg">Incorrect password. Please try again.</div>
@@ -95,11 +99,11 @@
           <div class="form-grid">
             <div class="form-control">
               <label>Title</label>
-              <input type="text" id="kbTitle" placeholder="e.g. Master Circular on ODR">
+              <input type="text" id="kbTitle" aria-label="kbTitle" placeholder="e.g. Master Circular on ODR">
             </div>
             <div class="form-control">
               <label>Category</label>
-              <select id="kbCategory">
+              <select id="kbCategory" aria-label="kbCategory">
                 <option>Regulatory</option>
                 <option>Knowledge Base</option>
                 <option>Research Reports</option>
@@ -107,19 +111,19 @@
             </div>
             <div class="form-control">
               <label>Document (Paste Link OR Upload File)</label>
-              <input type="url" id="kbUrl" placeholder="Paste URL here...">
-              <input type="file" id="kbFile" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.csv" style="padding:4px; font-size:12px;">
+              <input type="url" id="kbUrl" aria-label="kbUrl" placeholder="Paste URL here...">
+              <input type="file" id="kbFile" aria-label="Upload document file" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.csv" style="padding:4px; font-size:12px;">
             </div>
             <div class="form-control">
               <label>Thumbnail (Paste Link OR Upload Image)</label>
-              <input type="url" id="kbThumb" placeholder="Paste image URL here...">
-              <input type="file" id="kbThumbFile" accept="image/*" style="padding:4px; font-size:12px;">
+              <input type="url" id="kbThumb" aria-label="kbThumb" placeholder="Paste image URL here...">
+              <input type="file" id="kbThumbFile" aria-label="Upload thumbnail image" accept="image/*" style="padding:4px; font-size:12px;">
             </div>
           </div>
           <div class="form-grid full">
             <div class="form-control">
               <label>Short Description *</label>
-              <textarea id="kbDesc" placeholder="Brief summary of the document..."></textarea>
+              <textarea id="kbDesc" aria-label="kbDesc" placeholder="Brief summary of the document..."></textarea>
             </div>
           </div>
           <div style="display:flex; gap:12px; margin-top:12px;">
@@ -138,11 +142,11 @@
           <div class="form-grid full">
             <div class="form-control">
               <label>Question</label>
-              <input type="text" id="faqQ" placeholder="e.g. How do I open an account?">
+              <input type="text" id="faqQ" aria-label="faqQ" placeholder="e.g. How do I open an account?">
             </div>
             <div class="form-control">
               <label>Answer</label>
-              <textarea id="faqA" placeholder="Your answer here..."></textarea>
+              <textarea id="faqA" aria-label="faqA" placeholder="Your answer here..."></textarea>
             </div>
           </div>
           <div style="display:flex; gap:12px; margin-top:12px;">
@@ -161,7 +165,7 @@
           <label style="font-weight:700; font-size:14px; color:var(--navy); display:block; margin-bottom:8px;">Month Ending Subtitle Text (Dynamic)</label>
           <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
             <span style="font-size:14px; color:var(--gray-800); font-weight:600;">Data for every month ending</span>
-            <input type="text" id="monthEndingInput" placeholder="e.g. June 2026" style="padding:8px 12px; border:1px solid var(--gray-200); border-radius:6px; font-size:14px; font-weight:700; color:var(--navy); flex:1; min-width:200px; max-width:320px;">
+            <input type="text" id="monthEndingInput" aria-label="monthEndingInput" placeholder="e.g. June 2026" style="padding:8px 12px; border:1px solid var(--gray-200); border-radius:6px; font-size:14px; font-weight:700; color:var(--navy); flex:1; min-width:200px; max-width:320px;">
           </div>
         </div>
         

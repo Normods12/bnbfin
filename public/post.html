@@ -481,7 +481,7 @@
 
     <main class="post-page">
       <div class="post-container" id="postWrapper">
-        <div style="padding: 100px; text-align: center; color: var(--gray-600);">Loading Post...</div>
+        <div style="padding: 100px; text-align: center; color: var(--gray-600);"><h1 style="font-size:24px;">Knowledge Base Post</h1><p>Loading Post...</p></div>
       </div>
     </main>
 
@@ -491,7 +491,7 @@
         const titleQuery = urlParams.get('title');
         
         if (!titleQuery) {
-            document.getElementById('postWrapper').innerHTML = '<div style="padding: 100px; text-align: center;"><h2>Post Not Found</h2><a href="index.html" class="btn-back">Return Home</a></div>';
+            document.getElementById('postWrapper').innerHTML = '<div style="padding: 100px; text-align: center;"><h2>Post Not Found</h1><a href="index.html" class="btn-back">Return Home</a></div>';
             return;
         }
 

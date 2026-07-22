@@ -130,6 +130,8 @@
       .holiday-table th:nth-child(3), .holiday-table td:nth-child(3) { display: none; }
       .holiday-table th, .holiday-table td { padding: 11px 12px; }
     }
+  
+    @media (prefers-reduced-motion: reduce) { *, ::before, ::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
   </style>
 </head>
 <body>
