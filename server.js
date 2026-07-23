@@ -108,7 +108,11 @@ function escapeHtml(str) {
 }
 
 // Contact Form Handler with Resend
-app.post('/api/contact', async (req, res) => {
+app.options('/api/contact', cors());
+app.post('/api/contact', cors(), async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     try {
         const { name, email, phone, service, message } = req.body || {};
 
