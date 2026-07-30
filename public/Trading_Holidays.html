@@ -12,7 +12,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --navy: #0A1F44; --navy-mid: #122B5E; --navy-light: #1C3A7A;
-      --gold: #C9A84C; --gold-light: #E8CC7A; --gold-dark: #7A5C00;
+      --gold: #C9A84C; --gold-light: #E8CC7A; --gold-dark: #A07B2A; --gold-dark-link: #7A5C00;
       --white: #FFFFFF; --off-white: #F8F9FC; --gray-100: #F1F3F8;
       --gray-200: #E2E6EF; --gray-400: #4A5568; --gray-600: #2D3748; --gray-800: #1A202C;
       --green: #1A9E5F; --green-light: #E8F9F1; --green-dark: #157A49;
@@ -66,7 +66,7 @@
     .filters-label { font-family: var(--font-head); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--gray-400); margin-bottom: 12px; }
     .month-filters { display: flex; flex-wrap: wrap; gap: 8px; }
     .month-btn { font-family: var(--font-head); font-size: 12.5px; font-weight: 600; padding: 7px 16px; border-radius: 50px; border: 1.5px solid var(--gray-200); background: var(--white); color: var(--gray-600); cursor: pointer; transition: all var(--transition); }
-    .month-btn:hover { border-color: #E8CC7A; color: var(--gold-dark); }
+    .month-btn:hover { border-color: #E8CC7A; color: var(--gold-dark-link); }
     .month-btn.active { background: var(--navy); border-color: var(--navy); color: var(--white); }
     .month-btn[data-month="ALL"].active { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border-color: #E8CC7A; color: var(--navy); }
 
@@ -107,7 +107,7 @@
     .info-box h3 { font-family: var(--font-head); font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
     .info-box p, .info-box li { font-size: 13px; color: var(--gray-600); line-height: 1.7; }
     .info-box ul { padding-left: 18px; }
-    .info-box a { color: var(--gold-dark); text-decoration: none; font-weight: 600; }
+    .info-box a { color: var(--gold-dark-link); text-decoration: none; font-weight: 600; }
     .info-box a:hover { text-decoration: underline; }
 
     .legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 20px; padding: 16px 20px; background: var(--gray-100); border-radius: var(--radius); }

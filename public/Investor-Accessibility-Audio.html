@@ -12,7 +12,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --navy: #0A1F44; --navy-mid: #122B5E; --navy-light: #1C3A7A;
-      --gold: #C9A84C; --gold-light: #E8CC7A; --gold-dark: #7A5C00;
+      --gold: #C9A84C; --gold-light: #E8CC7A; --gold-dark: #A07B2A; --gold-dark-link: #7A5C00;
       --white: #FFFFFF; --off-white: #F8F9FC; --gray-100: #F1F3F8;
       --gray-200: #E2E6EF; --gray-400: #4A5568; --gray-600: #2D3748; --gray-800: #1A202C;
       --font-head: 'Inter', sans-serif; --font-body: 'Open Sans', sans-serif;
@@ -55,20 +55,20 @@
     .audio-player-wrap { padding: 28px; background: var(--off-white); }
     .audio-player-wrap audio { width: 100%; border-radius: var(--radius); }
     .audio-player-wrap p { font-size: 13px; color: var(--gray-600); margin-top: 12px; }
-    .audio-player-wrap a { color: var(--gold-dark); font-weight: 600; text-decoration: none; }
+    .audio-player-wrap a { color: var(--gold-dark-link); font-weight: 600; text-decoration: none; }
     .audio-player-wrap a:hover { text-decoration: underline; }
 
     /* INFO BOX */
     .info-box { background: var(--off-white); border: 1px solid var(--gray-200); border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 16px; }
     .info-box h3 { font-family: var(--font-head); font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
     .info-box p { font-size: 13.5px; color: var(--gray-600); line-height: 1.7; text-align: left; }
-    .info-box a { color: var(--gold-dark); text-decoration: none; font-weight: 600; }
+    .info-box a { color: var(--gold-dark-link); text-decoration: none; font-weight: 600; }
     .info-box a:hover { text-decoration: underline; }
 
     /* LINKS ROW */
     .links-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
     .pill-link { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: var(--white); border: 1px solid var(--gray-200); border-radius: 50px; text-decoration: none; font-family: var(--font-head); font-size: 12.5px; font-weight: 600; color: var(--navy); transition: border-color 0.2s, background 0.2s; }
-    .pill-link:hover { border-color: #E8CC7A; background: rgba(201,168,76,0.06); color: var(--gold-dark); }
+    .pill-link:hover { border-color: #E8CC7A; background: rgba(201,168,76,0.06); color: var(--gold-dark-link); }
     .pill-link::before { content: '→'; color: #E8CC7A; }
 
     /* RETURN BTN */
