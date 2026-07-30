@@ -155,10 +155,10 @@
     .commodity-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 12px; padding: 24px 20px; text-align: center; transition: background var(--transition), border-color var(--transition), transform var(--transition); cursor: pointer; }
     .commodity-card:hover { background: rgba(201,168,76,0.1); border-color: #E8CC7A; transform: translateY(-2px); }
     .commodity-icon { font-size: 32px; margin-bottom: 10px; display: block; }
-    .commodity-card h4 { display: flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-head); font-size: 15px; font-weight: 700; color: #FFE4A0; margin-bottom: 6px; }
-    .commodity-card h4::after { content: '▼'; font-size: 9px; opacity: 0.5; transition: transform 0.3s ease, opacity 0.3s ease; }
-    .commodity-card:hover h4::after { opacity: 1; }
-    .commodity-card.expanded h4::after { transform: rotate(180deg); opacity: 1; }
+    .commodity-card h3 { display: flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-head); font-size: 15px; font-weight: 700; color: #FFE4A0; margin-bottom: 6px; }
+    .commodity-card h3::after { content: '▼'; font-size: 9px; opacity: 0.5; transition: transform 0.3s ease, opacity 0.3s ease; }
+    .commodity-card:hover h3::after { opacity: 1; }
+    .commodity-card.expanded h3::after { transform: rotate(180deg); opacity: 1; }
     .commodity-details { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, margin-top 0.3s; opacity: 0; }
     .commodity-card.expanded .commodity-details { max-height: 80px; margin-top: 10px; opacity: 1; }
     .commodity-details p { font-size: 13px; color: #E2E6EF; line-height: 1.4; margin: 0; text-align: center; }
@@ -249,7 +249,7 @@
     .contact-detail-text span { display: block; }
     .contact-detail-text span:first-child { font-size: 12px; color: #E8CC7A; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
     .contact-detail-text span:last-child { font-size: 15px; color: var(--white); margin-top: 2px; }
-    .contact-form { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 36px; }
+    .contact-form { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.5); border-radius: 16px; padding: 36px; }
     .form-group { margin-bottom: 20px; }
     .form-group label { display: block; font-size: 13px; font-weight: 600; color: #FFFFFF; margin-bottom: 8px; }
     .form-group input, .form-group textarea, .form-group select { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.5); border-radius: var(--radius); padding: 12px 16px; color: var(--white); font-family: var(--font-body); font-size: 14.5px; transition: border-color var(--transition); }
