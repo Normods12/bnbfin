@@ -30,7 +30,7 @@
     .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
     .logo-mark-img { height: 38px; width: auto; object-fit: contain; display: block; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25)); }
     .logo-text-block { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; transform: translateY(-5px); }
-    .logo-name { font-family: var(--font-head); font-weight: 800; font-size: 16px; color: #166534; letter-spacing: -0.2px; white-space: nowrap; line-height: 1.2; }
+    .logo-name { font-family: var(--font-head); font-weight: 800; font-size: 16px; color: #6EE7A0; letter-spacing: -0.2px; white-space: nowrap; line-height: 1.2; }
     .logo-tagline { display: flex; justify-content: space-between; width: 100%; align-items: center; font-family: var(--font-head); font-size: 9.5px; font-weight: 600; color: #ffffff; letter-spacing: 1.5px; text-transform: uppercase; }
     .back-link { font-family: var(--font-head); font-size: 13px; font-weight: 600; color: #FFFFFF; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius); transition: all 0.2s; }
     .back-link:hover { color: #E8CC7A; border-color: #E8CC7A; }
@@ -38,7 +38,7 @@
     /* HERO */
     .page-hero { background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 55%, var(--navy-light) 100%); padding: 56px 24px 40px; }
     .page-hero-content { max-width: 900px; margin: 0 auto; text-align: center; }
-    .page-label { font-family: var(--font-head); font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #E8CC7A; margin-bottom: 12px; }
+    .page-label { font-family: var(--font-head); font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #7A5C00; margin-bottom: 12px; }
     .page-title { font-family: var(--font-head); font-size: clamp(24px,4vw,40px); font-weight: 800; color: var(--white); line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 12px; }
     .page-subtitle { font-size: 15px; color: #FFFFFF; max-width: 600px; margin: 0 auto; }
 
@@ -61,8 +61,17 @@
     /* FOOTER */
     footer { background: #050E24; color: #E2E6EF; padding: 24px; text-align: center; font-size: 12.5px; }
     footer a { color: #E8CC7A; text-decoration: none; }
+    footer a[href^='tel:'], footer a[href^='mailto:'] { display: inline-block; min-height: 24px; padding-top: 3px; padding-bottom: 3px; }
   
     @media (prefers-reduced-motion: reduce) { *, ::before, ::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+
+    @media (max-width: 400px) {
+      .logo-name { font-size: 12px !important; white-space: normal !important; overflow-wrap: break-word; }
+      .logo-tagline { font-size: 7px !important; letter-spacing: 0.5px !important; }
+      .logo-text-block { max-width: calc(100vw - 80px); }
+      .nav-container { overflow: visible; min-width: 0; }
+      header { padding: 0 12px; }
+    }
   </style>
 </head>
 <body>
@@ -102,7 +111,8 @@
         <video controls preload="metadata" aria-label="Investor Accessibility Video from BnB Financial Services">
           <source src="VID-20260712-WA0020.mp4" type="video/mp4">
           <p>Your browser does not support HTML5 video. <a href="VID-20260712-WA0020.mp4" download>Download the video</a> to watch it.</p>
-        </video>
+          <track kind="captions" src="investor-video-captions.vtt" srclang="en" label="English Captions" default>
+</video>
       </div>
       <div class="video-info">
         <h2>Investor Accessibility – Awareness Video</h2>

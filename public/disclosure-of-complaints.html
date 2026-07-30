@@ -30,7 +30,7 @@
     .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
     .logo-mark-img { height: 38px; width: auto; object-fit: contain; display: block; flex-shrink: 0; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25)); }
     .logo-text-block { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; transform: translateY(-1px); }
-    .logo-name { font-family: var(--font-head); font-weight: 800; font-size: 16px; color: #166534; white-space: nowrap; line-height: 1.2; margin-top: 2px; }
+    .logo-name { font-family: var(--font-head); font-weight: 800; font-size: 16px; color: #6EE7A0; white-space: nowrap; line-height: 1.2; margin-top: 2px; }
     .logo-tagline { display: flex; justify-content: space-between; width: 100%; align-items: center; font-family: var(--font-head); font-size: 9.5px; font-weight: 600; color: #ffffff; letter-spacing: 1.5px; text-transform: uppercase; white-space: nowrap; margin-top: -2px; }
     nav[role="navigation"] ul { display: flex; list-style: none; gap: 2px; align-items: center; }
     nav[role="navigation"] a { color: #FFFFFF; text-decoration: none; font-family: var(--font-head); font-size: 12.5px; font-weight: 600; padding: 7px 11px; border-radius: 6px; transition: color var(--transition), background var(--transition); letter-spacing: 0.3px; white-space: nowrap; }
@@ -53,12 +53,12 @@
     .page-hero { min-height: 200px; background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 55%, var(--navy-light) 100%); display: flex; align-items: flex-end; padding: 100px 24px 40px; position: relative; overflow: hidden; }
     .page-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 49.8%, rgba(201,168,76,0.06) 50%, transparent 50.2%) 0 0/80px 80px, linear-gradient(0deg, transparent 49.8%, rgba(201,168,76,0.04) 50%, transparent 50.2%) 0 0/80px 80px; pointer-events: none; }
     .page-hero-content { max-width: 1200px; margin: 0 auto; width: 100%; position: relative; z-index: 2; }
-    .page-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #E8CC7A; margin-bottom: 10px; }
+    .page-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #7A5C00; margin-bottom: 10px; }
     .page-title { font-family: var(--font-head); font-size: clamp(28px,4vw,48px); font-weight: 800; color: var(--white); line-height: 1.15; letter-spacing: -1px; }
     .page-subtitle { font-size: 15px; color: #E2E6EF; margin-top: 8px; }
     main { padding: 56px 24px 80px; }
     .container { max-width: 1200px; margin: 0 auto; }
-    .section-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #E8CC7A; margin-bottom: 10px; }
+    .section-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #7A5C00; margin-bottom: 10px; }
     .section-title { font-family: var(--font-head); font-size: clamp(18px,2.5vw,26px); font-weight: 800; color: var(--navy); line-height: 1.2; letter-spacing: -0.3px; margin-bottom: 14px; }
     .section-divider { width: 48px; height: 4px; border-radius: 2px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); margin-bottom: 28px; }
     .matrix-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 16px; padding: 32px; box-shadow: var(--shadow); margin-bottom: 36px; }
@@ -100,6 +100,7 @@
     .admin-logout { background: none; border: 1px solid var(--gray-200); border-radius: 6px; padding: 6px 12px; font-family: var(--font-head); font-size: 12px; font-weight: 600; cursor: pointer; color: var(--gray-600); }
     .chatbot-btn { position: fixed; bottom: 32px; right: 28px; z-index: 999; width: 58px; height: 58px; border-radius: 50%; background: var(--gold); border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(201,168,76,0.4); cursor: pointer; transition: transform 0.25s; }
     .chatbot-btn:hover { transform: scale(1.1); }
+    #chatbotToggleBtn:focus-visible { outline: 3px solid #E8CC7A; outline-offset: 3px; border-radius: 50%; }
     .chatbot-btn svg { width: 32px; height: 32px; fill: var(--navy); }
     .chatbot-window { display: none;  position: fixed; bottom: 102px; right: 28px; width: 340px; max-width: calc(100vw - 56px); height: 450px; background: var(--white); border-radius: 12px; box-shadow: 0 8px 40px rgba(10,31,68,0.16); z-index: 1000; display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px); opacity: 0; pointer-events: none; transition: transform 0.3s, opacity 0.3s; border: 1px solid var(--gray-200); }
     .chatbot-window.open { display: flex; transform: translateY(0); opacity: 1; pointer-events: all; }
@@ -121,6 +122,7 @@
     footer { background: #050E24; color: #E2E6EF; padding: 32px 24px; text-align: center; }
     footer p { font-size: 12.5px; line-height: 1.8; }
     footer a { color: #E8CC7A; text-decoration: none; }
+    footer a[href^='tel:'], footer a[href^='mailto:'] { display: inline-block; min-height: 24px; padding-top: 3px; padding-bottom: 3px; }
     footer a:hover { text-decoration: underline; }
     @media (max-width: 768px) { .matrix-card { padding: 20px; } }
     @media (prefers-reduced-motion: reduce) { *, ::before, ::after { transition-duration: 0.01ms !important; } }
@@ -285,8 +287,8 @@
   <button id="chatbotToggleBtn" class="chatbot-btn" aria-label="Open Chat Support" aria-expanded="false">
     <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.91 2 10.75c0 2.76 1.48 5.21 3.79 6.8-.2.94-.74 2.22-1.5 3.02a.6.6 0 00.37 1.01c2.14.07 4.14-.98 5.37-2.02.63.09 1.29.14 1.97.14 5.52 0 10-3.91 10-8.75S17.52 2 12 2z"/></svg>
   </button>
-  <div id="chatbotWindow" class="chatbot-window" role="dialog" aria-label="Support Chat Window" aria-hidden="true">
-    <div class="chat-header"><h3>BnB Support</h3><button id="chatbotCloseBtn" class="chat-close" tabindex="-1">&times;</button></div>
+  <div id="chatbotWindow" class="chatbot-window" role="dialog" aria-label="Support Chat Window" aria-hidden="true" inert>
+    <div class="chat-header"><h3>BnB Support</h3><button id="chatbotCloseBtn" class="chat-close" aria-label="Close Chat Window">&times;</button></div>
     <div class="chat-body" id="chatBody" aria-live="polite">
       <div class="chat-msg bot">Hello! How can we help you today?</div>
       <div class="chat-faq-options" id="chatOptions">
@@ -402,11 +404,15 @@
       if (isOpen) {
         chatbotWindow.classList.remove('open');
         chatbotWindow.setAttribute('aria-hidden', 'true');
+        chatbotWindow.inert = true;
         chatbotToggleBtn.setAttribute('aria-expanded', 'false');
+        chatbotToggleBtn.focus();
       } else {
         chatbotWindow.classList.add('open');
         chatbotWindow.setAttribute('aria-hidden', 'false');
+        chatbotWindow.inert = false;
         chatbotToggleBtn.setAttribute('aria-expanded', 'true');
+        document.getElementById('chatbotCloseBtn').focus();
       }
     }
 

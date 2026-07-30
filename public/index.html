@@ -36,7 +36,7 @@
     .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
     .logo-mark-img { height: 38px; width: auto; object-fit: contain; display: block; flex-shrink: 0; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25)); }
     .logo-text-block { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; transform: translateY(-1px); }
-    .logo-name { font-family: var(--font-head); font-weight: 800; font-size: 16px; color: #166534; letter-spacing: -0.2px; white-space: nowrap; line-height: 1.2; margin-top: 2px; }
+    .logo-name { font-family: var(--font-head); font-weight: 800; font-size: 16px; color: #6EE7A0; letter-spacing: -0.2px; white-space: nowrap; line-height: 1.2; margin-top: 2px; }
     .logo-tagline { display: flex; justify-content: space-between; width: 100%; align-items: center; font-family: var(--font-head); font-size: 9.5px; font-weight: 600; color: #ffffff; letter-spacing: 1.5px; text-transform: uppercase; white-space: nowrap; margin-top: -2px; }
     nav[role="navigation"] ul { display: flex; list-style: none; gap: 2px; align-items: center; }
     nav[role="navigation"] a { color: #FFFFFF; text-decoration: none; font-family: var(--font-head); font-size: 12.5px; font-weight: 600; padding: 7px 11px; border-radius: 6px; transition: color var(--transition), background var(--transition); letter-spacing: 0.3px; white-space: nowrap; }
@@ -82,7 +82,9 @@
     section { padding: 80px 24px; }
     .container { max-width: 1200px; margin: 0 auto; }
     p { text-align: justify; }
-    .section-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #E8CC7A; margin-bottom: 12px; }
+    .section-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #7A5C00; margin-bottom: 12px; }
+    /* Restore gold section-label for dark-background sections */
+    #commodities .section-label, #hero .section-label, #contact .section-label, footer .section-label { color: #E8CC7A; }
     .section-title { font-family: var(--font-head); font-size: clamp(28px,3.5vw,42px); font-weight: 800; color: var(--navy); line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 16px; }
     .section-subtitle { font-size: 17px; color: var(--gray-600); max-width: 600px; line-height: 1.7; }
     .section-header { margin-bottom: 52px; }
@@ -153,7 +155,7 @@
     .commodity-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 12px; padding: 24px 20px; text-align: center; transition: background var(--transition), border-color var(--transition), transform var(--transition); cursor: pointer; }
     .commodity-card:hover { background: rgba(201,168,76,0.1); border-color: #E8CC7A; transform: translateY(-2px); }
     .commodity-icon { font-size: 32px; margin-bottom: 10px; display: block; }
-    .commodity-card h4 { display: flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-head); font-size: 15px; font-weight: 700; color: #E8CC7A; margin-bottom: 6px; }
+    .commodity-card h4 { display: flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-head); font-size: 15px; font-weight: 700; color: #FFE4A0; margin-bottom: 6px; }
     .commodity-card h4::after { content: '▼'; font-size: 9px; opacity: 0.5; transition: transform 0.3s ease, opacity 0.3s ease; }
     .commodity-card:hover h4::after { opacity: 1; }
     .commodity-card.expanded h4::after { transform: rotate(180deg); opacity: 1; }
@@ -250,11 +252,14 @@
     .contact-form { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 36px; }
     .form-group { margin-bottom: 20px; }
     .form-group label { display: block; font-size: 13px; font-weight: 600; color: #FFFFFF; margin-bottom: 8px; }
-    .form-group input, .form-group textarea, .form-group select { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); border-radius: var(--radius); padding: 12px 16px; color: var(--white); font-family: var(--font-body); font-size: 14.5px; transition: border-color var(--transition); }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.5); border-radius: var(--radius); padding: 12px 16px; color: var(--white); font-family: var(--font-body); font-size: 14.5px; transition: border-color var(--transition); }
     .form-group select option { background: var(--navy); }
     .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: #E8CC7A; }
     .form-group textarea { resize: vertical; min-height: 110px; }
     .form-group input::placeholder, .form-group textarea::placeholder { color: #E2E6EF; }
+
+    .field-error { display: none; font-size: 12px; color: #991B1B; font-weight: 600; margin-top: 4px; }
+    .field-error.visible { display: block; }
     .form-disclaimer { font-size: 12px; color: #E2E6EF; line-height: 1.6; margin-top: 14px; }
     /* SUCCESS POPUP MODAL */
     .success-modal-overlay { display: none; position: fixed; inset: 0; z-index: 10000; background: rgba(10, 31, 68, 0.75); backdrop-filter: blur(6px); align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
@@ -308,6 +313,7 @@
     .footer-col p { font-size: 13px; line-height: 1.8; color: #E2E6EF; }
     .footer-col p a { color: #FFFFFF; text-decoration: none; transition: color var(--transition); }
     .footer-col p a:hover { color: #E8CC7A; }
+    footer a[href^='tel:'], footer a[href^='mailto:'] { display: inline-block; min-height: 24px; padding-top: 3px; padding-bottom: 3px; }
     .footer-reg { margin-top: 14px; }
     .footer-reg span { display: block; font-size: 12px; color: #E2E6EF; margin-bottom: 4px; }
     .footer-reg strong { color: #FFFFFF; }
@@ -321,9 +327,11 @@
     .footer-bottom p { color: #E2E6EF; }
 
         /* SCROLLING DISCLAIMER */
-    .footer-scroll-disclaimer { background: rgba(201,168,76,0.08); border-top: 2px solid rgba(201,168,76,0.3); padding: 0; overflow: hidden; }
-    .scroll-disclaimer-track { display: flex; gap: 80px; width: max-content; animation: scrollLeft 60s linear infinite; padding: 12px 0; }
-    .scroll-disclaimer-track:hover { animation-play-state: paused; }
+    .footer-scroll-disclaimer { background: rgba(201,168,76,0.08); border-top: 2px solid rgba(201,168,76,0.3); padding: 0; overflow: hidden; position: relative; }
+    .disclaimer-pause-btn { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); z-index: 2; background: rgba(10,31,68,0.8); border: 1px solid rgba(201,168,76,0.5); color: #E8CC7A; font-size: 11px; font-family: var(--font-head); font-weight: 700; padding: 3px 8px; border-radius: 4px; cursor: pointer; letter-spacing: 0.5px; line-height: 1.4; white-space: nowrap; }
+    .disclaimer-pause-btn:focus-visible { outline: 3px solid #E8CC7A; outline-offset: 2px; }
+    .scroll-disclaimer-track { display: flex; gap: 80px; width: max-content; animation: scrollLeft 60s linear infinite; padding: 12px 48px 12px 0; }
+    .scroll-disclaimer-track.paused { animation-play-state: paused; }
     .scroll-disclaimer-track span { white-space: nowrap; font-size: 13px; color: #FFFFFF; font-family: var(--font-head); font-weight: 500; }
     @keyframes scrollLeft { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
@@ -337,7 +345,8 @@
 
     /* CHATBOT BUTTON */
     .chatbot-btn { position: fixed; bottom: 100px; right: 28px; z-index: 999; width: 58px; height: 58px; border-radius: 50%; background: var(--gold); border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(201,168,76,0.4); cursor: pointer; transition: transform var(--transition), box-shadow var(--transition); }
-    .chatbot-btn:hover, .chatbot-btn:focus-visible { transform: scale(1.1); box-shadow: 0 8px 30px rgba(201,168,76,0.6); outline: none; }
+    .chatbot-btn:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(201,168,76,0.6); }
+    #chatbotToggleBtn:focus-visible { outline: 3px solid #E8CC7A; outline-offset: 3px; border-radius: 50%; }
     .chatbot-btn svg { width: 32px; height: 32px; fill: var(--navy); }
     
     .chatbot-window { display: none;  position: fixed; bottom: 170px; right: 28px; width: 340px; max-width: calc(100vw - 56px); height: 450px; background: var(--white); border-radius: 12px; box-shadow: var(--shadow-xl); z-index: 1000; display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px); opacity: 0; pointer-events: none; transition: transform 0.3s, opacity 0.3s; border: 1px solid var(--gray-200); }
@@ -389,6 +398,14 @@
         .logo-name { font-size: 14px !important; }
         .logo-tagline { font-size: 8px !important; letter-spacing: 1px !important; }
         .logo-mark-img { height: 32px !important; }
+    }
+
+    @media (max-width: 400px) {
+      .logo-name { font-size: 12px !important; white-space: normal !important; overflow-wrap: break-word; }
+      .logo-tagline { font-size: 7px !important; letter-spacing: 0.5px !important; }
+      .logo-text-block { max-width: calc(100vw - 80px); }
+      .nav-container { overflow: visible; min-width: 0; }
+      header { padding: 0 12px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, ::before, ::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -900,15 +917,18 @@
             <form aria-label="Get In Touch Form" novalidate id="contact-form">
               <div class="form-group">
                 <label for="cn">Full Name <span aria-hidden="true" style="color:var(--gold)">*</span></label>
-                <input type="text" id="cn" name="name" placeholder="Your full name" required autocomplete="name" aria-required="true">
+                <input type="text" id="cn" name="name" placeholder="Your full name" required autocomplete="name" aria-required="true" aria-describedby="cn-error">
+              <span id="cn-error" class="field-error" role="alert" aria-live="assertive"></span>
               </div>
               <div class="form-group">
                 <label for="ce">Email Address <span aria-hidden="true" style="color:var(--gold)">*</span></label>
-                <input type="email" id="ce" name="email" placeholder="you@example.com" required autocomplete="email" aria-required="true">
+                <input type="email" id="ce" name="email" placeholder="you@example.com" required autocomplete="email" aria-required="true" aria-describedby="ce-error">
+              <span id="ce-error" class="field-error" role="alert" aria-live="assertive"></span>
               </div>
               <div class="form-group">
                 <label for="cp">Phone Number <span aria-hidden="true" style="color:var(--gold)">*</span></label>
-                <input type="tel" id="cp" name="phone" placeholder="+91 XXXXX XXXXX" required autocomplete="tel" aria-required="true">
+                <input type="tel" id="cp" name="phone" placeholder="+91 XXXXX XXXXX" required autocomplete="tel" aria-required="true" aria-describedby="cp-error">
+              <span id="cp-error" class="field-error" role="alert" aria-live="assertive"></span>
               </div>
               <div class="form-group">
                 <label for="cs">Interested In</label>
@@ -1048,6 +1068,7 @@ Note: Also that our website may contain links to other sites. While we try to li
 
     <!-- SCROLLING DISCLAIMER – very bottom of page (Item 9) -->
         <div class="footer-scroll-disclaimer" role="note" aria-label="Regulatory disclaimer">
+      <button class="disclaimer-pause-btn" aria-pressed="false" aria-label="Pause scrolling disclaimer">▌▌ Pause</button>
       <div class="scroll-disclaimer-track" aria-hidden="true">
         <span>⚠️ Disclaimer: Trading Futures, Options on Futures, and Foreign Exchange involves substantial risk of loss and may not be suitable for all investors. Opinions, market data, and recommendations are subject to change at any time.</span>
         <span>⚠️ Keep Your Password/Pin and OTPs private &amp; confidential to avoid any misuse or unauthorised trades. Please ensure that you do not share it with anyone.</span>
@@ -1089,7 +1110,18 @@ Note: Also that our website may contain links to other sites. While we try to li
       toggleBtn.textContent = '☰';
     }));
 
-    document.querySelectorAll('.nav-dropdown').forEach(el => {
+    
+      // Dropdown Esc key to close (WCAG 1.4.13)
+      document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+        dropdown.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            const trigger = dropdown.querySelector(':scope > a');
+            document.activeElement.blur();
+            if (trigger) trigger.focus();
+          }
+        });
+      });
+      document.querySelectorAll('.nav-dropdown').forEach(el => {
       el.addEventListener('mouseleave', () => {
         if (document.activeElement && el.contains(document.activeElement)) {
           document.activeElement.blur();
@@ -1446,14 +1478,30 @@ Note: Also that our website may contain links to other sites. While we try to li
         const service = document.getElementById('cs')?.value.trim();
         const message = document.getElementById('cm')?.value.trim();
 
-        if (!name || !email || !phone) {
-          if (statusDiv) {
-            statusDiv.style.display = 'block';
-            statusDiv.style.backgroundColor = '#FEE2E2';
-            statusDiv.style.color = '#991B1B';
-            statusDiv.style.border = '1px solid #FCA5A5';
-            statusDiv.textContent = 'Please fill in all required fields (Name, Email, Phone).';
-          }
+        // Per-field validation (WCAG 3.3.1)
+        let hasError = false;
+        const clearFieldError = (id, errId) => {
+          const el = document.getElementById(id);
+          const err = document.getElementById(errId);
+          if (el) { el.removeAttribute('aria-invalid'); }
+          if (err) { err.textContent = ''; err.classList.remove('visible'); }
+        };
+        const setFieldError = (id, errId, msg) => {
+          const el = document.getElementById(id);
+          const err = document.getElementById(errId);
+          if (el) { el.setAttribute('aria-invalid', 'true'); }
+          if (err) { err.textContent = msg; err.classList.add('visible'); }
+          hasError = true;
+        };
+        clearFieldError('cn','cn-error');
+        clearFieldError('ce','ce-error');
+        clearFieldError('cp','cp-error');
+        if (!name) setFieldError('cn','cn-error','Full Name is required.');
+        if (!email) setFieldError('ce','ce-error','Email Address is required.');
+        else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) setFieldError('ce','ce-error','Please enter a valid email address.');
+        if (!phone) setFieldError('cp','cp-error','Phone Number is required.');
+        if (hasError) {
+          document.getElementById('cn').focus();
           return;
         }
 
@@ -1551,6 +1599,19 @@ Note: Also that our website may contain links to other sites. While we try to li
       loadDynamicData();
       initContactForm();
     });
+  
+    // Scrolling Disclaimer Pause Toggle (WCAG 2.2.2)
+    (function() {
+      var btn = document.querySelector('.disclaimer-pause-btn');
+      var track = document.querySelector('.scroll-disclaimer-track');
+      if (btn && track) {
+        btn.addEventListener('click', function() {
+          var paused = track.classList.toggle('paused');
+          btn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+          btn.textContent = paused ? '\u25B6 Resume' : '\u258C\u258C Pause';
+        });
+      }
+    })();
   </script>
 </body>
 

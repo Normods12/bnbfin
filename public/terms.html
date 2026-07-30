@@ -36,7 +36,7 @@
         .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
     .logo-mark-img { height: 38px; width: auto; object-fit: contain; display: block; flex-shrink: 0; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25)); }
     .logo-text-block { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; transform: translateY(-1px); }
-    .logo-name { font-family: var(--font-head); font-weight: 800; font-size: 16px; color: #166534; letter-spacing: -0.2px; white-space: nowrap; line-height: 1.2; margin-top: 2px; }
+    .logo-name { font-family: var(--font-head); font-weight: 800; font-size: 16px; color: #6EE7A0; letter-spacing: -0.2px; white-space: nowrap; line-height: 1.2; margin-top: 2px; }
     .logo-tagline { display: flex; justify-content: space-between; width: 100%; align-items: center; font-family: var(--font-head); font-size: 9.5px; font-weight: 600; color: #ffffff; letter-spacing: 1.5px; text-transform: uppercase; white-space: nowrap; margin-top: -2px; }
     nav[role="navigation"] ul { display: flex; list-style: none; gap: 2px; align-items: center; }
     nav[role="navigation"] a { color: #FFFFFF; text-decoration: none; font-family: var(--font-head); font-size: 12.5px; font-weight: 600; padding: 7px 11px; border-radius: 6px; transition: color var(--transition), background var(--transition); letter-spacing: 0.3px; white-space: nowrap; }
@@ -82,7 +82,7 @@
     section { padding: 80px 24px; }
     .container { max-width: 1200px; margin: 0 auto; }
     p { text-align: justify; }
-    .section-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #E8CC7A; margin-bottom: 12px; }
+    .section-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #7A5C00; margin-bottom: 12px; }
     .section-title { font-family: var(--font-head); font-size: clamp(28px,3.5vw,42px); font-weight: 800; color: var(--navy); line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 16px; }
     .section-subtitle { font-size: 17px; color: var(--gray-600); max-width: 600px; line-height: 1.7; }
     .section-header { margin-bottom: 52px; }
@@ -300,13 +300,23 @@
     .footer-links-list a:hover { color: #E8CC7A; }
     .footer-links-list a::before { content: '›'; color: #E8CC7A; font-size: 16px; font-weight: 700; flex-shrink: 0; }
     .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 0; }
+    
+    .footer-reg a[href^='tel:'],
+    .footer-reg a[href^='mailto:'] {
+      display: inline-block;
+      min-height: 24px;
+      padding-top: 3px;
+      padding-bottom: 3px;
+    }
     .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12.5px; padding: 20px 0; }
     .footer-bottom p { color: #E2E6EF; }
 
         /* SCROLLING DISCLAIMER */
-    .footer-scroll-disclaimer { background: rgba(201,168,76,0.08); border-top: 2px solid rgba(201,168,76,0.3); padding: 0; overflow: hidden; }
-    .scroll-disclaimer-track { display: flex; gap: 80px; width: max-content; animation: scrollLeft 60s linear infinite; padding: 12px 0; }
-    .scroll-disclaimer-track:hover { animation-play-state: paused; }
+    .footer-scroll-disclaimer { background: rgba(201,168,76,0.08); border-top: 2px solid rgba(201,168,76,0.3); padding: 0; overflow: hidden; position: relative; }
+    .disclaimer-pause-btn { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); z-index: 2; background: rgba(10,31,68,0.8); border: 1px solid rgba(201,168,76,0.5); color: #E8CC7A; font-size: 11px; font-family: var(--font-head); font-weight: 700; padding: 3px 8px; border-radius: 4px; cursor: pointer; letter-spacing: 0.5px; line-height: 1.4; }
+    .disclaimer-pause-btn:focus-visible { outline: 3px solid #E8CC7A; outline-offset: 2px; }
+    .scroll-disclaimer-track { display: flex; gap: 80px; width: max-content; animation: scrollLeft 60s linear infinite; padding: 12px 48px 12px 0; }
+    .scroll-disclaimer-track.paused { animation-play-state: paused; }
     .scroll-disclaimer-track span { white-space: nowrap; font-size: 13px; color: #FFFFFF; font-family: var(--font-head); font-weight: 500; }
     @keyframes scrollLeft { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
@@ -320,7 +330,8 @@
 
     /* CHATBOT BUTTON */
     .chatbot-btn { position: fixed; bottom: 100px; right: 28px; z-index: 999; width: 58px; height: 58px; border-radius: 50%; background: var(--gold); border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(201,168,76,0.4); cursor: pointer; transition: transform var(--transition), box-shadow var(--transition); }
-    .chatbot-btn:hover, .chatbot-btn:focus-visible { transform: scale(1.1); box-shadow: 0 8px 30px rgba(201,168,76,0.6); outline: none; }
+    .chatbot-btn:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(201,168,76,0.6); }
+    #chatbotToggleBtn:focus-visible { outline: 3px solid #E8CC7A; outline-offset: 3px; border-radius: 50%; }
     .chatbot-btn svg { width: 32px; height: 32px; fill: var(--navy); }
     
     .chatbot-window { display: none;  position: fixed; bottom: 170px; right: 28px; width: 340px; max-width: calc(100vw - 56px); height: 450px; background: var(--white); border-radius: 12px; box-shadow: var(--shadow-xl); z-index: 1000; display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px); opacity: 0; pointer-events: none; transition: transform 0.3s, opacity 0.3s; border: 1px solid var(--gray-200); }
@@ -383,7 +394,7 @@
     <style>
     .page-hero { background: var(--navy-mid); border-bottom: 1px solid rgba(201,168,76,0.2); padding: 140px 24px 48px; }
     .page-hero-inner { max-width: 1000px; margin: 0 auto; }
-    .page-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #E8CC7A; margin-bottom: 12px; display: block; }
+    .page-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #7A5C00; margin-bottom: 12px; display: block; }
     .page-title { font-family: var(--font-head); font-size: clamp(28px,4vw,48px); font-weight: 800; color: var(--white); margin-bottom: 14px; line-height: 1.15; }
     .page-meta { font-size: 14px; color: #E2E6EF; }
     .gradient-bar { width: 48px; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-dark)); border-radius: 2px; margin: 16px 0; }
@@ -408,7 +419,7 @@
     </style>
 </head>
 <body>
-  <a href="index.html#main-content" class="skip-link">Skip to main content</a>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- CHATBOT WIDGET -->
   <button id="chatbotToggleBtn" class="chatbot-btn" aria-label="Open Chat Support" aria-expanded="false" aria-controls="chatbotWindow">
@@ -484,7 +495,7 @@
       <p class="page-meta">Last updated: July 2026 · BnB Financial Services Pvt. Ltd.</p>
     </div>
   </div>
-<main class="legal-main">
+<main id="main-content" class="legal-main">
 
     <div class="notice-box">
       <p><strong>Please read these Terms &amp; Conditions carefully before using this website.</strong> By accessing or using this website, you agree to be bound by these terms. If you do not agree, please discontinue use immediately.</p>
@@ -642,6 +653,7 @@ Note: Also that our website may contain links to other sites. While we try to li
 
     <!-- SCROLLING DISCLAIMER -->
         <div class="footer-scroll-disclaimer" role="note" aria-label="Regulatory disclaimer">
+      <button class="disclaimer-pause-btn" aria-pressed="false" aria-label="Pause scrolling disclaimer">&#9646;&#9646; Pause</button>
       <div class="scroll-disclaimer-track" aria-hidden="true">
         <span>⚠️ Disclaimer: Trading Futures, Options on Futures, and Foreign Exchange involves substantial risk of loss and may not be suitable for all investors. Opinions, market data, and recommendations are subject to change at any time.</span>
         <span>⚠️ Keep Your Password/Pin and OTPs private &amp; confidential to avoid any misuse or unauthorised trades. Please ensure that you do not share it with anyone.</span>
@@ -1016,6 +1028,19 @@ Note: Also that our website may contain links to other sites. While we try to li
     chatInput.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') handleSendCustomMessage();
     });
+  
+    // Scrolling Disclaimer Pause Toggle
+    (function() {
+      var btn = document.querySelector('.disclaimer-pause-btn');
+      var track = document.querySelector('.scroll-disclaimer-track');
+      if (btn && track) {
+        btn.addEventListener('click', function() {
+          var paused = track.classList.toggle('paused');
+          btn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+          btn.textContent = paused ? '\u25B6 Resume' : '\u258C\u258C Pause';
+        });
+      }
+    })();
   </script>
 </body>
 </html>
