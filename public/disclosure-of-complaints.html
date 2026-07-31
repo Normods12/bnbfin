@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -418,6 +418,8 @@
 
     chatbotToggleBtn.addEventListener('click', toggleChat);
     chatbotCloseBtn.addEventListener('click', toggleChat);
+    // Escape closes chat (SC 1.4.13)
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && chatbotWindow.classList.contains('open')) toggleChat(); });
   </script>
 </body>
 </html>

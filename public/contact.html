@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -463,6 +463,58 @@
     });
     const header = document.getElementById('site-header');
     window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50), {passive:true});
+
+    // Nav dropdown Escape-key dismiss (SC 1.4.13)
+    document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+      dropdown.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          dropdown.classList.add('force-close');
+          const trigger = dropdown.querySelector('a');
+          if (trigger) trigger.focus();
+          setTimeout(() => dropdown.classList.remove('force-close'), 300);
+        }
+      });
+    });
+
+    // Chatbot toggle logic (SC 1.4.13, 2.1.1, 4.1.2)
+    const chatbotToggleBtn = document.getElementById('chatbotToggleBtn');
+    const chatbotCloseBtn  = document.getElementById('chatbotCloseBtn');
+    const chatbotWindow    = document.getElementById('chatbotWindow');
+    function toggleChat() {
+      const isOpen = chatbotWindow.classList.contains('open');
+      if (isOpen) {
+        chatbotWindow.classList.remove('open');
+        chatbotWindow.setAttribute('aria-hidden', 'true');
+        chatbotWindow.inert = true;
+        chatbotToggleBtn.setAttribute('aria-expanded', 'false');
+        chatbotToggleBtn.focus();
+      } else {
+        chatbotWindow.classList.add('open');
+        chatbotWindow.setAttribute('aria-hidden', 'false');
+        chatbotWindow.inert = false;
+        chatbotToggleBtn.setAttribute('aria-expanded', 'true');
+        chatbotCloseBtn.focus();
+      }
+    }
+    chatbotToggleBtn.addEventListener('click', toggleChat);
+    chatbotCloseBtn.addEventListener('click', toggleChat);
+    // Escape closes chat (SC 1.4.13)
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && chatbotWindow.classList.contains('open')) toggleChat(); });
+
+    window.sendChatReply = function(question, answer) {
+      const chatBody = document.getElementById('chatBody');
+      const opts = document.getElementById('chatOptions');
+      const userMsg = document.createElement('div');
+      userMsg.className = 'chat-msg user';
+      userMsg.textContent = question;
+      chatBody.insertBefore(userMsg, opts);
+      const botMsg = document.createElement('div');
+      botMsg.className = 'chat-msg bot';
+      botMsg.textContent = answer;
+      chatBody.insertBefore(botMsg, opts);
+      opts.style.display = 'none';
+      chatBody.scrollTop = chatBody.scrollHeight;
+    };
   </script>
 </body>
 </html>
