@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -339,7 +339,7 @@
     
     .chat-header { background: var(--navy); color: var(--white); padding: 16px; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-head); }
     .chat-header h3 { font-size: 16px; font-weight: 700; margin: 0; }
-    .chat-close { background: none; border: none; color: var(--white); font-size: 24px; cursor: pointer; line-height: 1; }
+    .chat-close { background: none; border: none; color: var(--white); font-size: 24px; cursor: pointer; line-height: 1; min-width: 24px; min-height: 24px; padding: 0 6px; display: flex; align-items: center; justify-content: center; }
     
     .chat-body { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #f9f9fc; }
     .chat-msg { max-width: 85%; padding: 10px 14px; border-radius: 12px; font-size: 13.5px; line-height: 1.5; color: var(--navy); }
@@ -421,16 +421,6 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- CHATBOT WIDGET -->
-  <button id="chatbotToggleBtn" class="chatbot-btn" aria-label="Open Chat Support" aria-expanded="false" aria-controls="chatbotWindow">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 5.91 2 10.75c0 2.76 1.48 5.21 3.79 6.8-.2.94-.74 2.22-1.5 3.02a.6.6 0 00.37 1.01c2.14.07 4.14-.98 5.37-2.02.63.09 1.29.14 1.97.14 5.52 0 10-3.91 10-8.75S17.52 2 12 2zm0 15.5c-.6 0-1.18-.04-1.74-.11a.6.6 0 00-.47.16c-1.11.96-2.6 1.7-4.14 1.83.56-.73.97-1.68 1.15-2.58a.6.6 0 00-.18-.54C4.66 14.88 3.2 12.92 3.2 10.75 3.2 6.58 7.15 3.2 12 3.2s8.8 3.38 8.8 7.55-3.94 7.55-8.8 7.55z"/><path d="M7.5 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM12 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM16.5 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
-  </button>
-
-  <div id="chatbotWindow" class="chatbot-window" role="dialog" aria-labelledby="chatbotTitle" inert>
-    <div class="chat-header">
-      <h3 id="chatbotTitle">BnB Support</h3>
-      <button id="chatbotCloseBtn" class="chat-close" tabindex="-1" aria-label="Close Chat Window">&times;</button>
-    </div>
     <div class="chat-body" id="chatBody" aria-live="polite">
       <div class="chat-msg bot">Hello! How can we help you today?</div>
       <div class="chat-faq-options" id="chatOptions">
@@ -1074,5 +1064,16 @@ Note: Also that our website may contain links to other sites. While we try to li
       }
     })();
   </script>
+
+  <!-- CHATBOT WIDGET -->
+  <button id="chatbotToggleBtn" class="chatbot-btn" aria-label="Open Chat Support" aria-expanded="false" aria-controls="chatbotWindow">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 5.91 2 10.75c0 2.76 1.48 5.21 3.79 6.8-.2.94-.74 2.22-1.5 3.02a.6.6 0 00.37 1.01c2.14.07 4.14-.98 5.37-2.02.63.09 1.29.14 1.97.14 5.52 0 10-3.91 10-8.75S17.52 2 12 2zm0 15.5c-.6 0-1.18-.04-1.74-.11a.6.6 0 00-.47.16c-1.11.96-2.6 1.7-4.14 1.83.56-.73.97-1.68 1.15-2.58a.6.6 0 00-.18-.54C4.66 14.88 3.2 12.92 3.2 10.75 3.2 6.58 7.15 3.2 12 3.2s8.8 3.38 8.8 7.55-3.94 7.55-8.8 7.55z"/><path d="M7.5 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM12 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM16.5 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
+  </button>
+
+  <div id="chatbotWindow" class="chatbot-window" role="dialog" aria-labelledby="chatbotTitle" inert>
+    <div class="chat-header">
+      <h3 id="chatbotTitle">BnB Support</h3>
+      <button id="chatbotCloseBtn" class="chat-close" tabindex="-1" aria-label="Close Chat Window">&times;</button>
+    </div>
 </body>
 </html>
