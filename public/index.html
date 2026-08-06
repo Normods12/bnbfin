@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -349,8 +349,8 @@
     #chatbotToggleBtn:focus-visible { outline: 3px solid #E8CC7A; outline-offset: 3px; border-radius: 50%; }
     .chatbot-btn svg { width: 32px; height: 32px; fill: var(--navy); }
     
-    .chatbot-window { display: none;  position: fixed; bottom: 170px; right: 28px; width: 340px; max-width: calc(100vw - 56px); height: 450px; background: var(--white); border-radius: 12px; box-shadow: var(--shadow-xl); z-index: 1000; display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px); opacity: 0; pointer-events: none; transition: transform 0.3s, opacity 0.3s; border: 1px solid var(--gray-200); }
-    .chatbot-window.open { display: flex; transform: translateY(0); opacity: 1; pointer-events: all; }
+    .chatbot-window { position: fixed; bottom: 170px; right: 28px; width: 340px; max-width: calc(100vw - 56px); height: 450px; background: var(--white); border-radius: 12px; box-shadow: var(--shadow-xl); z-index: 1000; display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px); opacity: 0; visibility: hidden; pointer-events: none; transition: transform 0.3s, opacity 0.3s, visibility 0s linear 0.3s; border: 1px solid var(--gray-200); }
+    .chatbot-window.open { transform: translateY(0); opacity: 1; visibility: visible; pointer-events: all; transition: transform 0.3s, opacity 0.3s, visibility 0s linear 0s; }
     
     .chat-header { background: var(--navy); color: var(--white); padding: 16px; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-head); }
     .chat-header h3 { font-size: 16px; font-weight: 700; margin: 0; }
@@ -393,7 +393,7 @@
         .footer-bottom p { text-align: center; width: 100%; justify-content: center; display: flex; }
         .chatbot-btn { bottom: 80px; right: 16px; width: 50px; height: 50px; }
         .chatbot-btn svg { width: 24px; height: 24px; }
-        .chatbot-window { display: none;  bottom: 140px; right: 16px; width: calc(100vw - 32px); height: 400px; }
+        .chatbot-window { bottom: 140px; right: 16px; width: calc(100vw - 32px); height: 400px; }
         .table-responsive { width: 100%; overflow-x: auto; margin-bottom: 24px; }
         .logo-name { font-size: 14px !important; }
         .logo-tagline { font-size: 8px !important; letter-spacing: 1px !important; }
@@ -416,24 +416,6 @@
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <div class="chat-body" id="chatBody" aria-live="polite">
-      <div class="chat-msg bot">Hello! How can we help you today?</div>
-      <div class="chat-faq-options" id="chatOptions">
-        <button class="chat-faq-btn" onclick="sendChatReply('How to open an account?', 'You can open an account by clicking the OPEN A TRADING ACCOUNT button on our Commodities page, or contacting us at +91 40 4333 4857.')">How to open an account?</button>
-        <button class="chat-faq-btn" onclick="sendChatReply('What are your trading hours?', 'Our trading hours align with MCX market timings: 9:00 AM to 11:30 PM / 11:55 PM IST.')">What are your trading hours?</button>
-        <button class="chat-faq-btn" onclick="sendChatReply('How do I contact support?', 'You can email info@bnbfin.com, call +91 40 4333 4857, or message us on WhatsApp using the button below.')">How do I contact support?</button>
-      </div>
-    </div>
-    <div class="chat-input-area">
-      <input type="text" id="chatInput" class="chat-input" tabindex="-1" placeholder="Type your message..." aria-label="Type your message">
-      <button id="chatSendBtn" class="chat-send-btn" tabindex="-1" aria-label="Send message">
-        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-      </button>
-    </div>
-  </div>
-
-
 
   <header id="site-header" role="banner">
     <div class="nav-container">
@@ -1621,6 +1603,21 @@ Note: Also that our website may contain links to other sites. While we try to li
       <h3 id="chatbotTitle">BnB Support</h3>
       <button id="chatbotCloseBtn" class="chat-close" tabindex="-1" aria-label="Close Chat Window">&times;</button>
     </div>
+    <div class="chat-body" id="chatBody" aria-live="polite">
+      <div class="chat-msg bot">Hello! How can we help you today?</div>
+      <div class="chat-faq-options" id="chatOptions">
+        <button class="chat-faq-btn" onclick="sendChatReply('How to open an account?', 'You can open an account by clicking the OPEN A TRADING ACCOUNT button on our Commodities page, or contacting us at +91 40 4333 4857.')">How to open an account?</button>
+        <button class="chat-faq-btn" onclick="sendChatReply('What are your trading hours?', 'Our trading hours align with MCX market timings: 9:00 AM to 11:30 PM / 11:55 PM IST.')">What are your trading hours?</button>
+        <button class="chat-faq-btn" onclick="sendChatReply('How do I contact support?', 'You can email info@bnbfin.com, call +91 40 4333 4857, or message us on WhatsApp using the button below.')">How do I contact support?</button>
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="chatInput" class="chat-input" tabindex="-1" placeholder="Type your message..." aria-label="Type your message">
+      <button id="chatSendBtn" class="chat-send-btn" tabindex="-1" aria-label="Send message">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
 </body>
 
 

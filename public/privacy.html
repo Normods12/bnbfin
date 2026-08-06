@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -334,8 +334,8 @@
     #chatbotToggleBtn:focus-visible { outline: 3px solid #E8CC7A; outline-offset: 3px; border-radius: 50%; }
     .chatbot-btn svg { width: 32px; height: 32px; fill: var(--navy); }
     
-    .chatbot-window { display: none;  position: fixed; bottom: 170px; right: 28px; width: 340px; max-width: calc(100vw - 56px); height: 450px; background: var(--white); border-radius: 12px; box-shadow: var(--shadow-xl); z-index: 1000; display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px); opacity: 0; pointer-events: none; transition: transform 0.3s, opacity 0.3s; border: 1px solid var(--gray-200); }
-    .chatbot-window.open { display: flex; transform: translateY(0); opacity: 1; pointer-events: all; }
+    .chatbot-window { position: fixed; bottom: 170px; right: 28px; width: 340px; max-width: calc(100vw - 56px); height: 450px; background: var(--white); border-radius: 12px; box-shadow: var(--shadow-xl); z-index: 1000; display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px); opacity: 0; visibility: hidden; pointer-events: none; transition: transform 0.3s, opacity 0.3s, visibility 0s linear 0.3s; border: 1px solid var(--gray-200); }
+    .chatbot-window.open { transform: translateY(0); opacity: 1; visibility: visible; pointer-events: all; transition: transform 0.3s, opacity 0.3s, visibility 0s linear 0s; }
     
     .chat-header { background: var(--navy); color: var(--white); padding: 16px; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-head); }
     .chat-header h3 { font-size: 16px; font-weight: 700; margin: 0; }
@@ -378,7 +378,7 @@
         .footer-bottom p { text-align: center; width: 100%; justify-content: center; display: flex; }
         .chatbot-btn { bottom: 80px; right: 16px; width: 50px; height: 50px; }
         .chatbot-btn svg { width: 24px; height: 24px; }
-        .chatbot-window { display: none;  bottom: 140px; right: 16px; width: calc(100vw - 32px); height: 400px; }
+        .chatbot-window { bottom: 140px; right: 16px; width: calc(100vw - 32px); height: 400px; }
         .table-responsive { width: 100%; overflow-x: auto; margin-bottom: 24px; }
         .logo-name { font-size: 14px !important; }
         .logo-tagline { font-size: 8px !important; letter-spacing: 1px !important; }
@@ -420,23 +420,6 @@
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <div class="chat-body" id="chatBody" aria-live="polite">
-      <div class="chat-msg bot">Hello! How can we help you today?</div>
-      <div class="chat-faq-options" id="chatOptions">
-        <button class="chat-faq-btn" onclick="sendChatReply('How to open an account?', 'You can open an account by clicking the OPEN A TRADING ACCOUNT button on our Commodities page, or contacting us at +91 40 4333 4857.')">How to open an account?</button>
-        <button class="chat-faq-btn" onclick="sendChatReply('What are your trading hours?', 'Our trading hours align with MCX market timings: 9:00 AM to 11:30 PM / 11:55 PM IST.')">What are your trading hours?</button>
-        <button class="chat-faq-btn" onclick="sendChatReply('How do I contact support?', 'You can email info@bnbfin.com, call +91 40 4333 4857, or message us on WhatsApp using the button below.')">How do I contact support?</button>
-      </div>
-    </div>
-    <div class="chat-input-area">
-      <input type="text" id="chatInput" class="chat-input" tabindex="-1" placeholder="Type your message..." aria-label="Type your message">
-      <button id="chatSendBtn" class="chat-send-btn" tabindex="-1" aria-label="Send message">
-        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-      </button>
-    </div>
-  </div>
-
 
 
   <header id="site-header" role="banner">
@@ -1062,6 +1045,201 @@ Note: Also that our website may contain links to other sites. While we try to li
           btn.textContent = paused ? '\u25B6 Resume' : '\u258C\u258C Pause';
         });
       }
+    // ADMIN PANEL
+    const ADMIN_PW = 'BnBAdmin@2024#Secure';
+    const adminOverlay = document.getElementById('adminOverlay');
+    const adminLoginScreen = document.getElementById('adminLoginScreen');
+    const adminDashboard = document.getElementById('adminDashboard');
+    const adminPw = document.getElementById('adminPw');
+    const adminErr = document.getElementById('adminErr');
+    let adminLoggedIn = false;
+
+    function openAdmin() {
+      adminOverlay.classList.add('open');
+      if (adminLoggedIn) { adminLoginScreen.style.display='none'; adminDashboard.style.display='block'; }
+      else { adminLoginScreen.style.display='block'; adminDashboard.style.display='none'; adminPw.value=''; adminErr.style.display='none'; }
+    }
+    function closeAdmin() {
+      adminOverlay.classList.remove('open');
+      history.replaceState(null,'',location.pathname);
+    }
+    function checkAdminHash() { if(location.hash==='#/admin') openAdmin(); }
+    window.addEventListener('hashchange', checkAdminHash);
+    checkAdminHash();
+
+    document.getElementById('adminLoginBtn').addEventListener('click', () => {
+      if(adminPw.value === ADMIN_PW) {
+        adminLoggedIn = true; adminErr.style.display='none';
+        adminLoginScreen.style.display='none'; adminDashboard.style.display='block';
+        renderAdminPdfs(); renderAdminFaqs();
+      } else { adminErr.style.display='block'; adminPw.value=''; adminPw.focus(); }
+    });
+    adminPw.addEventListener('keydown', e => { if(e.key==='Enter') document.getElementById('adminLoginBtn').click(); });
+    document.getElementById('adminCancelBtn').addEventListener('click', closeAdmin);
+    document.getElementById('adminLogoutBtn').addEventListener('click', () => { adminLoggedIn=false; closeAdmin(); });
+    document.getElementById('adminPwToggle').addEventListener('click', () => {
+      adminPw.type = adminPw.type==='password' ? 'text' : 'password';
+    });
+    adminOverlay.addEventListener('click', e => { if(e.target===adminOverlay) closeAdmin(); });
+
+    // PDF Management
+    function getPdfs() { try { return JSON.parse(localStorage.getItem('bnb_pdfs')||'[]'); } catch(e){return[];} }
+    function savePdfs(d) { localStorage.setItem('bnb_pdfs', JSON.stringify(d)); }
+    function renderAdminPdfs() {
+      const pdfs=getPdfs(); const ul=document.getElementById('pdfList'); ul.innerHTML='';
+      pdfs.forEach((p,i) => {
+        const li=document.createElement('li');
+        li.innerHTML=`<span>${p.title} <span style="color:var(--gray-400);font-size:11px;">[${p.category}]</span></span><button aria-label="Delete ${p.title}" onclick="deletePdf(${i})">×</button>`;
+        ul.appendChild(li);
+      });
+    }
+    window.deletePdf = function(i) { const d=getPdfs(); d.splice(i,1); savePdfs(d); renderAdminPdfs(); };
+    document.getElementById('addPdfBtn').addEventListener('click', () => {
+      const t=document.getElementById('pdfTitle').value.trim();
+      const u=document.getElementById('pdfUrl').value.trim();
+      const c=document.getElementById('pdfCategory').value;
+      if(!t||!u) return alert('Please enter both title and URL.');
+      const d=getPdfs(); d.push({title:t,url:u,category:c}); savePdfs(d);
+      document.getElementById('pdfTitle').value=''; document.getElementById('pdfUrl').value='';
+      renderAdminPdfs();
+    });
+
+    // FAQ Management
+    function getAdminFaqs() { try { return JSON.parse(localStorage.getItem('bnb_faqs')||'[]'); } catch(e){return[];} }
+    function saveAdminFaqs(d) { localStorage.setItem('bnb_faqs', JSON.stringify(d)); }
+    function renderAdminFaqs() {
+      const faqs=getAdminFaqs(); const ul=document.getElementById('adminFaqList'); ul.innerHTML='';
+      faqs.forEach((f,i) => {
+        const li=document.createElement('li');
+        li.innerHTML=`<span>${f.q}</span><button aria-label="Delete FAQ" onclick="deleteAdminFaq(${i})">×</button>`;
+        ul.appendChild(li);
+      });
+    }
+    window.deleteAdminFaq = function(i) { const d=getAdminFaqs(); d.splice(i,1); saveAdminFaqs(d); renderAdminFaqs(); };
+    document.getElementById('addFaqBtn').addEventListener('click', () => {
+      const q=document.getElementById('faqQ').value.trim();
+      const a=document.getElementById('faqA').value.trim();
+      if(!q||!a) return alert('Please enter both question and answer.');
+      const d=getAdminFaqs(); d.push({q,a}); saveAdminFaqs(d);
+      document.getElementById('faqQ').value=''; document.getElementById('faqA').value='';
+      renderAdminFaqs();
+      // Inject into live FAQ list
+      const faqList=document.getElementById('faq-list');
+      const idx=d.length; const item=document.createElement('div'); item.className='faq-item';
+      const qid=`faq-adm-q${idx}`; const aid=`faq-adm-a${idx}`;
+      item.innerHTML=`<button class="faq-question" aria-expanded="false" aria-controls="${aid}" id="${qid}">${q}<span class="faq-icon" aria-hidden="true">+</span></button><div id="${aid}" class="faq-answer" role="region" aria-labelledby="${qid}"><p>${a}</p></div>`;
+      faqList.appendChild(item);
+      item.querySelector('.faq-question').addEventListener('click', function() {
+        const exp=this.getAttribute('aria-expanded')==='true';
+        document.querySelectorAll('.faq-question').forEach(b=>{b.setAttribute('aria-expanded','false');document.getElementById(b.getAttribute('aria-controls')).classList.remove('open');});
+        if(!exp){this.setAttribute('aria-expanded','true');document.getElementById(this.getAttribute('aria-controls')).classList.add('open');}
+      });
+    });
+
+    // LOGO FALLBACK - show text logo if image fails
+    document.querySelectorAll('.logo-img').forEach(img => {
+      img.addEventListener('error', function() {
+        this.style.display = 'none';
+        const fallback = this.nextElementSibling;
+        if (fallback && fallback.classList.contains('logo-fallback')) {
+          fallback.style.display = 'flex';
+        }
+      });
+    });
+
+    // CHATBOT LOGIC
+    const chatbotToggleBtn = document.getElementById('chatbotToggleBtn');
+    const chatbotCloseBtn = document.getElementById('chatbotCloseBtn');
+    const chatbotWindow = document.getElementById('chatbotWindow');
+    const chatBody = document.getElementById('chatBody');
+    const chatOptions = document.getElementById('chatOptions');
+
+    function toggleChat() {
+      const isOpen = chatbotWindow.classList.contains('open');
+      if (isOpen) {
+        chatbotWindow.classList.remove('open');
+        chatbotWindow.setAttribute('aria-hidden', 'true');
+        chatbotToggleBtn.setAttribute('aria-expanded', 'false');
+        chatbotToggleBtn.focus();
+      } else {
+        chatbotWindow.classList.add('open');
+        chatbotWindow.setAttribute('aria-hidden', 'false');
+        chatbotToggleBtn.setAttribute('aria-expanded', 'true');
+        chatbotCloseBtn.focus();
+      }
+    }
+
+    chatbotToggleBtn.addEventListener('click', toggleChat);
+    chatbotCloseBtn.addEventListener('click', toggleChat);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && chatbotWindow.classList.contains('open')) {
+        toggleChat();
+      }
+    });
+
+    window.sendChatReply = function(question, answer) {
+      chatOptions.style.display = 'none';
+      const userMsg = document.createElement('div');
+      userMsg.className = 'chat-msg user';
+      userMsg.textContent = question;
+      chatBody.appendChild(userMsg);
+      chatBody.scrollTop = chatBody.scrollHeight;
+      
+      setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'chat-msg bot';
+        botMsg.textContent = answer;
+        chatBody.appendChild(botMsg);
+        chatBody.scrollTop = chatBody.scrollHeight;
+        
+        setTimeout(() => {
+          chatOptions.style.display = 'flex';
+          chatBody.appendChild(chatOptions);
+          chatBody.scrollTop = chatBody.scrollHeight;
+        }, 1000);
+      }, 500);
+    };
+
+    const chatInput = document.getElementById('chatInput');
+    const chatSendBtn = document.getElementById('chatSendBtn');
+
+    function handleSendCustomMessage() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      
+      const userMsg = document.createElement('div');
+      userMsg.className = 'chat-msg user';
+      userMsg.textContent = text;
+      chatBody.appendChild(userMsg);
+      chatInput.value = '';
+      chatBody.scrollTop = chatBody.scrollHeight;
+      
+      setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'chat-msg bot';
+        botMsg.textContent = "Thanks for your message! Our team will get back to you shortly, or you can use the options above.";
+        chatBody.appendChild(botMsg);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }, 600);
+    }
+
+    chatSendBtn.addEventListener('click', handleSendCustomMessage);
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') handleSendCustomMessage();
+    });
+  
+    // Scrolling Disclaimer Pause Toggle
+    (function() {
+      var btn = document.querySelector('.disclaimer-pause-btn');
+      var track = document.querySelector('.scroll-disclaimer-track');
+      if (btn && track) {
+        btn.addEventListener('click', function() {
+          var paused = track.classList.toggle('paused');
+          btn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+          btn.textContent = paused ? '\u25B6 Resume' : '\u258C\u258C Pause';
+        });
+      }
     })();
   </script>
 
@@ -1075,5 +1253,20 @@ Note: Also that our website may contain links to other sites. While we try to li
       <h3 id="chatbotTitle">BnB Support</h3>
       <button id="chatbotCloseBtn" class="chat-close" tabindex="-1" aria-label="Close Chat Window">&times;</button>
     </div>
+    <div class="chat-body" id="chatBody" aria-live="polite">
+      <div class="chat-msg bot">Hello! How can we help you today?</div>
+      <div class="chat-faq-options" id="chatOptions">
+        <button class="chat-faq-btn" onclick="sendChatReply('How to open an account?', 'You can open an account by clicking the OPEN A TRADING ACCOUNT button on our Commodities page, or contacting us at +91 40 4333 4857.')">How to open an account?</button>
+        <button class="chat-faq-btn" onclick="sendChatReply('What are your trading hours?', 'Our trading hours align with MCX market timings: 9:00 AM to 11:30 PM / 11:55 PM IST.')">What are your trading hours?</button>
+        <button class="chat-faq-btn" onclick="sendChatReply('How do I contact support?', 'You can email info@bnbfin.com, call +91 40 4333 4857, or message us on WhatsApp using the button below.')">How do I contact support?</button>
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="chatInput" class="chat-input" tabindex="-1" placeholder="Type your message..." aria-label="Type your message">
+      <button id="chatSendBtn" class="chat-send-btn" tabindex="-1" aria-label="Send message">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
 </body>
 </html>
