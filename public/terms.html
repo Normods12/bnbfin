@@ -922,90 +922,97 @@ Note: Also that our website may contain links to other sites. While we try to li
       });
     });
 
-    // CHATBOT LOGIC
-    const chatbotToggleBtn = document.getElementById('chatbotToggleBtn');
-    const chatbotCloseBtn = document.getElementById('chatbotCloseBtn');
-    const chatbotWindow = document.getElementById('chatbotWindow');
-    const chatBody = document.getElementById('chatBody');
-    const chatOptions = document.getElementById('chatOptions');
+    // CHATBOT LOGIC — deferred so chatbot HTML (after </script>) is in DOM
+    document.addEventListener('DOMContentLoaded', function initChatbot() {
+      const chatbotToggleBtn = document.getElementById('chatbotToggleBtn');
+      const chatbotCloseBtn = document.getElementById('chatbotCloseBtn');
+      const chatbotWindow = document.getElementById('chatbotWindow');
+      const chatBody = document.getElementById('chatBody');
+      const chatOptions = document.getElementById('chatOptions');
+      const chatInput = document.getElementById('chatInput');
+      const chatSendBtn = document.getElementById('chatSendBtn');
 
-    function toggleChat() {
-      const isOpen = chatbotWindow.classList.contains('open');
-      if (isOpen) {
-        chatbotWindow.classList.remove('open');
-        chatbotWindow.setAttribute('aria-hidden', 'true');
-        chatbotToggleBtn.setAttribute('aria-expanded', 'false');
-        chatbotToggleBtn.focus();
-      } else {
-        chatbotWindow.classList.add('open');
-        chatbotWindow.setAttribute('aria-hidden', 'false');
-        chatbotToggleBtn.setAttribute('aria-expanded', 'true');
-        chatbotCloseBtn.focus();
+      if (!chatbotToggleBtn || !chatbotWindow) return;
+
+      function toggleChat() {
+        const isOpen = chatbotWindow.classList.contains('open');
+        if (isOpen) {
+          chatbotWindow.classList.remove('open');
+          chatbotWindow.setAttribute('aria-hidden', 'true');
+          chatbotWindow.inert = true;
+          chatbotToggleBtn.setAttribute('aria-expanded', 'false');
+          chatbotToggleBtn.focus();
+        } else {
+          chatbotWindow.classList.add('open');
+          chatbotWindow.setAttribute('aria-hidden', 'false');
+          chatbotWindow.inert = false;
+          chatbotToggleBtn.setAttribute('aria-expanded', 'true');
+          if (chatbotCloseBtn) chatbotCloseBtn.focus();
+        }
       }
-    }
 
-    chatbotToggleBtn.addEventListener('click', toggleChat);
-    chatbotCloseBtn.addEventListener('click', toggleChat);
+      chatbotToggleBtn.addEventListener('click', toggleChat);
+      if (chatbotCloseBtn) chatbotCloseBtn.addEventListener('click', toggleChat);
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && chatbotWindow.classList.contains('open')) {
-        toggleChat();
-      }
-    });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && chatbotWindow.classList.contains('open')) {
+          toggleChat();
+        }
+      });
 
-    window.sendChatReply = function(question, answer) {
-      chatOptions.style.display = 'none';
-      const userMsg = document.createElement('div');
-      userMsg.className = 'chat-msg user';
-      userMsg.textContent = question;
-      chatBody.appendChild(userMsg);
-      chatBody.scrollTop = chatBody.scrollHeight;
-      
-      setTimeout(() => {
-        const botMsg = document.createElement('div');
-        botMsg.className = 'chat-msg bot';
-        botMsg.textContent = answer;
-        chatBody.appendChild(botMsg);
+      window.sendChatReply = function(question, answer) {
+        if (chatOptions) chatOptions.style.display = 'none';
+        const userMsg = document.createElement('div');
+        userMsg.className = 'chat-msg user';
+        userMsg.textContent = question;
+        chatBody.appendChild(userMsg);
         chatBody.scrollTop = chatBody.scrollHeight;
-        
+
         setTimeout(() => {
-          chatOptions.style.display = 'flex';
-          chatBody.appendChild(chatOptions);
+          const botMsg = document.createElement('div');
+          botMsg.className = 'chat-msg bot';
+          botMsg.textContent = answer;
+          chatBody.appendChild(botMsg);
           chatBody.scrollTop = chatBody.scrollHeight;
-        }, 1000);
-      }, 500);
-    };
 
-    const chatInput = document.getElementById('chatInput');
-    const chatSendBtn = document.getElementById('chatSendBtn');
+          setTimeout(() => {
+            if (chatOptions) {
+              chatOptions.style.display = 'flex';
+              chatBody.appendChild(chatOptions);
+              chatBody.scrollTop = chatBody.scrollHeight;
+            }
+          }, 1000);
+        }, 500);
+      };
 
-    function handleSendCustomMessage() {
-      const text = chatInput.value.trim();
-      if (!text) return;
-      
-      const userMsg = document.createElement('div');
-      userMsg.className = 'chat-msg user';
-      userMsg.textContent = text;
-      chatBody.appendChild(userMsg);
-      chatInput.value = '';
-      chatBody.scrollTop = chatBody.scrollHeight;
-      
-      setTimeout(() => {
-        const botMsg = document.createElement('div');
-        botMsg.className = 'chat-msg bot';
-        botMsg.textContent = "Thanks for your message! Our team will get back to you shortly, or you can use the options above.";
-        chatBody.appendChild(botMsg);
+      function handleSendCustomMessage() {
+        const text = chatInput ? chatInput.value.trim() : '';
+        if (!text) return;
+
+        const userMsg = document.createElement('div');
+        userMsg.className = 'chat-msg user';
+        userMsg.textContent = text;
+        chatBody.appendChild(userMsg);
+        chatInput.value = '';
         chatBody.scrollTop = chatBody.scrollHeight;
-      }, 600);
-    }
 
-    chatSendBtn.addEventListener('click', handleSendCustomMessage);
-    chatInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') handleSendCustomMessage();
+        setTimeout(() => {
+          const botMsg = document.createElement('div');
+          botMsg.className = 'chat-msg bot';
+          botMsg.textContent = 'Thanks for your message! Our team will get back to you shortly, or you can use the options above.';
+          chatBody.appendChild(botMsg);
+          chatBody.scrollTop = chatBody.scrollHeight;
+        }, 600);
+      }
+
+      if (chatSendBtn) chatSendBtn.addEventListener('click', handleSendCustomMessage);
+      if (chatInput) chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleSendCustomMessage();
+      });
     });
   
     // Scrolling Disclaimer Pause Toggle
-    (function() {
+    document.addEventListener('DOMContentLoaded', function initPauseBtn() {
       var btn = document.querySelector('.disclaimer-pause-btn');
       var track = document.querySelector('.scroll-disclaimer-track');
       if (btn && track) {
@@ -1015,7 +1022,7 @@ Note: Also that our website may contain links to other sites. While we try to li
           btn.textContent = paused ? '\u25B6 Resume' : '\u258C\u258C Pause';
         });
       }
-    })();
+    });
   </script>
 
   <!-- CHATBOT WIDGET -->
