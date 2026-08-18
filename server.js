@@ -11,7 +11,7 @@ const ADMIN_PW = 'BnBAdmin@2024#Secure'; // Hardcoded simple password
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), { extensions: ['html'] }));
 
 // Data file paths
 const DATA_DIR = path.join(__dirname, 'data');
@@ -210,7 +210,7 @@ app.post('/api/complaints', requireAdmin, (req, res) => {
 });
 
 // Start Server
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running on http://localhost:${PORT} and http://127.0.0.1:${PORT}`);
 });
 

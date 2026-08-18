@@ -1,0 +1,1508 @@
+WCAG 2.2 (Level A & AA) 
+ACCESSIBILITY TEST REPORT 
+LEVEL-2 
+
+FOR 
+
+BnB Financial Services Pvt. Ltd. 
+
+Pages Tested: Homepage (single-page site with anchor sections) and Contact page 
+
+Website: https://bnbfin.com/ 
+
+31 July 2026 
+
+ 
+ 
+1. Management Summary 
+
+1.1 Document Title 
+
+Document Title 
+
+WCAG 2.2 Accessibility Test Report 
+
+Organization Name 
+
+BnB Financial Services Pvt. Ltd. 
+
+Application / Website 
+
+Public Website — https://bnbfin.com/ (homepage + Contact page, see 
+Section 2) 
+
+Document Version 
+
+1.0 
+
+Report No. 
+
+Last Edit Date 
+
+WCAG/BNBFIN/01 
+
+31 July 2026 
+
+1.2 Overall Accessibility Status 
+
+This review confirms 2 Success Criteria failures out of the 56 assessed under WCAG 2.2 (a 3.6% 
+failure rate), against 54 passes and 0 not-applicable criteria — every criterion was directly assessed 
+against the homepage and the linked Contact page. Both confirmed failures are isolated to the same 
+shared component: the site's chat widget. Its “BnB Support” heading (H3) appears in the DOM 
+before the page's own H1 (“FOCUS on What Matters”), breaking a logical top-down heading 
+hierarchy, and its close button measures roughly 14×24 CSS pixels, short of the 24×24 minimum 
+target size. 
+
+Everything else tested — non-text alternatives, colour contrast, keyboard operability, focus visibility, 
+form labelling and error handling, reflow, ARIA semantics, and consistency across both pages — 
+passed. WCAG 2.2 Level AA conformance is not yet fully met, but the site's overall pass rate (96.4%) 
+reflects a strongly accessible implementation, and because both failures sit within the same shared 
+chat widget, a single component-level fix is likely to resolve them across every page where it 
+appears. Section 8 details each issue with recommended fixes. 
+
+1.3 Key Findings (at a glance) 
+
+●  The chat widget's “BnB Support” heading (H3) appears in the DOM before the page's own 
+H1 (“FOCUS on What Matters”), breaking a logical top-down heading hierarchy (1.3.1) 
+
+●  The chat window's close button measures roughly 14×24 CSS pixels, short of the 24×24 
+
+minimum target size (2.5.8) 
+
+●  Both failures are isolated to the same shared chat widget component, so a single fix to that 
+
+component is likely to resolve them across every page where it appears 
+
+ 
+ 
+ 
+2. Scope, Scan (Test) and Report Details 
+
+Scope of work: 
+
+Name 
+
+URL 
+
+Pages Tested 
+
+BnB Financial Services Pvt. Ltd. — bnbfin.com 
+
+https://bnbfin.com/ 
+
+https://bnbfin.com/ (homepage) and https://bnbfin.com/contact.html 
+(contact page) 
+
+Scan / Test details: 
+
+Date 
+
+31 July 2026 
+
+Methodology 
+
+Tested directly in the browser using keyboard navigation, zoom/reflow 
+checks, form validation, DOM/ARIA inspection, and colour contrast 
+sampling 
+
+3. Assessment Constraints 
+
+This review covers the two pages explicitly in scope: the homepage (https://bnbfin.com/, a single 
+long page with anchor-linked sections — Home, About Us, Services, FPI, Our Team, Downloads, FAQ, 
+and an embedded enquiry form) and the separate Contact page (https://bnbfin.com/contact.html). 
+The following boundaries are noted here rather than folded silently into the results above: 
+
+●  Scope is limited to these two pages. The site's footer links to several additional pages and 
+
+documents (Investor Charter, Trading Holidays, Escalation Matrix, Disclosure of Complaints, 
+Investor Accessibility Audio/Video Information, Terms & Conditions, Privacy Policy) that 
+were not part of this round. 
+
+●  This review was conducted via direct browser-based testing (keyboard navigation, 
+
+zoom/reflow checks, form validation, DOM/ARIA inspection, and colour-contrast sampling) 
+rather than a live screen-reader session. 
+
+●  The tester's name was not supplied in the source data (a placeholder was left in its place); 
+
+this field is left for the client to complete. 
+
+We recommend the items in Section 9 be confirmed before treating the results above as a final 
+compliance determination. 
+
+4. Tools / Methods Used 
+
+The following tools/methods were used for this review: 
+
+●  Keyboard navigation testing 
+
+●  Zoom / reflow checks 
+
+●  Form validation testing 
+
+●  DOM / ARIA inspection 
+
+●  Colour contrast sampling 
+
+●  W3C WCAG 2.2 Success Criteria used as the assessment reference 
+
+Not used in this round: a live screen-reader session — see Section 3. 
+
+ 
+ 
+5. Standard Followed 
+
+●  Web Content Accessibility Guidelines 2.2 (WCAG 2.2), Levels A and AA 
+
+6. WCAG 2.2 Accessibility Guidelines 
+
+Legend: Pass = confirmed · Fail = confirmed issue, see Section 8 · N/A = criterion does not apply to the pages 
+tested. 
+
+# 
+
+WCAG 2.2 SC 
+
+Level 
+
+What it requires 
+
+Result 
+
+Remarks 
+
+Guideline 1.1 – Text Alternatives 
+
+1 
+
+1.1.1 Non-text 
+Content 
+
+A 
+
+All non-text content that is 
+presented to the user has a text 
+alternative that serves the 
+equivalent purpose 
+
+Pass 
+
+Images carry alt attributes; decorative 
+logos use alt=""; icon buttons (chat, 
+hamburger) have aria-label. 
+
+Guideline 1.2 – Time-based Media 
+
+2 
+
+3 
+
+4 
+
+5 
+
+6 
+
+1.2.1 Audio-
+only/Video-only 
+
+1.2.2 Captions 
+(Prerecorded) 
+
+1.2.3 Audio 
+Description or 
+Alternative 
+
+1.2.4 Captions 
+(Live) 
+
+1.2.5 Audio 
+Description 
+(Prerecorded) 
+
+An alternative for time-based 
+media is provided that presents 
+equivalent information for 
+prerecorded audio-only content 
+and video-only content. 
+
+Captions are provided for all 
+prerecorded audio content in 
+synchronized media. 
+
+An alternative for time-based 
+media or audio description of the 
+prerecorded video content is 
+provided for synchronized media. 
+
+Captions are provided for all live 
+audio content in synchronized 
+media. 
+
+Audio description is provided for 
+all prerecorded video content in 
+synchronized media. 
+
+A 
+
+A 
+
+A 
+
+AA 
+
+AA 
+
+Guideline 1.3 – Adaptable 
+
+7 
+
+1.3.1 Info and 
+Relationships 
+
+8 
+
+1.3.2 Meaningful 
+Sequence 
+
+9 
+
+1.3.3 Sensory 
+Characteristics 
+
+A 
+
+A 
+
+A 
+
+Information, structure, and 
+relationships conveyed through 
+presentation can be 
+programmatically determined or 
+are available in text. 
+
+When the sequence in which 
+content is presented affects its 
+meaning, a correct reading 
+sequence can be 
+programmatically determined. 
+
+Instructions provided for 
+understanding and operating 
+content do not rely solely on 
+sensory characteristics of 
+components such as shape, color, 
+size, visual location, orientation, 
+or sound. 
+
+Pass 
+
+No prerecorded audio-only or video-
+only content exists on the site. 
+
+Pass 
+
+No video-with-audio content present. 
+
+Pass 
+
+No synchronized media present. 
+
+Pass 
+
+No live media present. 
+
+Pass 
+
+No prerecorded video content 
+present. 
+
+Fail 
+
+Heading order is irregular: the chat 
+widget's "BnB Support" (H3) appears 
+before the page's own H1 ("FOCUS on 
+What Matters") in the DOM, breaking 
+a logical top-down hierarchy. 
+
+Pass 
+
+DOM order matches the visual, single-
+column reading order throughout. 
+
+Pass 
+
+Required-field and instructional text 
+do not rely on shape/colour/location 
+alone. 
+
+10  1.3.4 Orientation 
+
+AA 
+
+Content does not restrict its view 
+and operation to a single display 
+
+Pass 
+
+Layout is fluid and not locked to a 
+single orientation. 
+
+# 
+
+WCAG 2.2 SC 
+
+Level 
+
+What it requires 
+
+Result 
+
+Remarks 
+
+11 
+
+1.3.5 Identify 
+Input Purpose 
+
+AA 
+
+orientation, such as portrait or 
+landscape, unless a specific 
+display orientation is essential. 
+
+The purpose of each input field 
+collecting information about the 
+user can be programmatically 
+determined. 
+
+Guideline 1.4 – Distinguishable 
+
+12 
+
+1.4.1 Use of 
+Color 
+
+13 
+
+1.4.2 Audio 
+Control 
+
+A 
+
+A 
+
+14 
+
+1.4.3 Contrast 
+(Minimum) 
+
+AA 
+
+15  1.4.4 Resize Text 
+
+AA 
+
+16 
+
+1.4.5 Images of 
+Text 
+
+AA 
+
+17  1.4.10 Reflow 
+
+AA 
+
+18 
+
+1.4.11 Non-text 
+Contrast 
+
+AA 
+
+19 
+
+1.4.12 Text 
+Spacing 
+
+AA 
+
+Color is not used as the only visual 
+means of conveying information, 
+indicating an action, prompting a 
+response, or distinguishing a 
+visual element. 
+
+If any audio on a Web page plays 
+automatically for more than 3 
+seconds, either a mechanism is 
+available to pause or stop the 
+audio, or a mechanism is available 
+to control audio volume 
+independently from the overall 
+system volume level. 
+
+The visual presentation of text 
+and images of text has a contrast 
+ratio of at least 4.5:1 Large-scale 
+text and images of large-scale text 
+have a contrast ratio of at least 
+3:1; 
+
+Except for captions and images of 
+text, text can be resized without 
+assistive technology up to 200 
+percent without loss of content or 
+functionality. 
+
+If the technologies being used can 
+achieve the visual presentation, 
+text is used to convey information 
+rather than images of text 
+
+Content can be presented without 
+loss of information or 
+functionality, and without 
+requiring scrolling in two 
+dimensions 
+
+The visual presentation of the 
+following have a contrast ratio of 
+at least 3:1 against adjacent 
+color(s 
+
+In content implemented using 
+markup languages that support 
+the following text style properties, 
+no loss of content or functionality 
+occurs by setting all of the 
+following and by changing no 
+other style property: Line height 
+(line spacing) to at least 1.5 times 
+the font size; Spacing following 
+paragraphs to at least 2 times the 
+
+Pass 
+
+Name, email, and phone fields carry 
+correct autocomplete tokens (name, 
+email, tel). 
+
+Pass 
+
+Form errors are conveyed with 
+explicit text messages, not colour 
+alone. 
+
+Pass 
+
+No auto-playing audio was found. 
+
+Pass 
+
+Sampled combinations (white on navy 
+~16:1, dark text on gold button 
+~7.1:1, body grey on white ~12:1) all 
+exceed 4.5:1. 
+
+Pass 
+
+Content simulated at 200% zoom 
+produced no horizontal overflow or 
+clipped text. 
+
+Pass 
+
+All headings and body copy render as 
+live text, not images. 
+
+Pass 
+
+Stylesheet defines breakpoints down 
+to 400px with single-column stacking; 
+no fixed-width containers causing 
+overflow were found. 
+
+Pass 
+
+Form field borders measured roughly 
+5:1 against their background. 
+
+Pass 
+
+Overriding line-height, paragraph, 
+letter, and word spacing caused no 
+loss of content (collapsed FAQ panels 
+behaved as expected, not clipped). 
+
+# 
+
+WCAG 2.2 SC 
+
+Level 
+
+What it requires 
+
+Result 
+
+Remarks 
+
+font size; Letter spacing (tracking) 
+to at least 0.12 times the font size; 
+Word spacing to at least 0.16 
+times the font size. 
+
+Where receiving and then 
+removing pointer hover or 
+keyboard focus triggers additional 
+content to become visible and 
+then hidden, the following are 
+true: 
+Dismissible,Hoverable,Persistent 
+
+20 
+
+1.4.13 Content 
+on Hover or 
+Focus 
+
+AA 
+
+Guideline 2.1 – Keyboard Accessible 
+
+21  2.1.1 Keyboard 
+
+A 
+
+22 
+
+2.1.2 No 
+Keyboard Trap 
+
+A 
+
+23 
+
+2.1.4 Character 
+Key Shortcuts 
+
+A 
+
+Guideline 2.2 – Enough Time 
+
+24 
+
+2.2.1 Timing 
+Adjustable 
+
+A 
+
+All functionality of the content is 
+operable through a keyboard 
+interface without requiring 
+specific timings for individual 
+keystrokes 
+
+If keyboard focus can be moved to 
+a component of the page using a 
+keyboard interface, then focus can 
+be moved away from that 
+component using only a keyboard 
+interface. 
+
+If a keyboard shortcut is 
+implemented in content using 
+only letter (including upper- and 
+lower-case letters), punctuation, 
+number, or symbol characters, 
+then at least one of the following 
+is true: Turn off: A mechanism is 
+available to turn the shortcut off; 
+Remap: A mechanism is available 
+to remap the shortcut to include 
+one or more non-printable 
+keyboard keys (e.g., Ctrl, Alt); 
+Active only on focus: The 
+keyboard shortcut for a user 
+interface component is only active 
+when that component has focus. 
+
+For each time limit that is set by 
+the content, at least one of the 
+following is true: Turn off: The 
+user is allowed to turn off the 
+time limit before encountering it; 
+or Adjust: The user is allowed to 
+adjust the time limit before 
+encountering it over a wide range 
+that is at least ten times the 
+length of the default setting; or 
+Extend: The user is warned before 
+time expires and given at least 20 
+seconds to extend the time limit 
+with a simple action (for example, 
+"press the space bar"), and the 
+user is allowed to extend the time 
+limit at least ten times; 
+
+Pass 
+
+Chat panel is dismissible with Escape, 
+and focus returns cleanly to its trigger 
+button. 
+
+Pass 
+
+Accordion, tabs, chat widget, and 
+form all operate through native, 
+keyboard-focusable 
+buttons/links/inputs. 
+
+Pass 
+
+Chat dialog and nav overlay do not 
+trap focus; Escape closes the chat and 
+restores focus. 
+
+Pass 
+
+No single-character keyboard 
+shortcuts are implemented. 
+
+Pass 
+
+No session time limits or timed 
+content were found. 
+
+# 
+
+WCAG 2.2 SC 
+
+Level 
+
+What it requires 
+
+Result 
+
+Remarks 
+
+25 
+
+2.2.2 Pause, 
+Stop, Hide 
+
+A 
+
+User-controllable mechanisms 
+must be provided for pausing, 
+stopping, or hiding automatically 
+moving, blinking, scrolling, or 
+updating information, unless such 
+actions are essential to the 
+associated activity. 
+
+Guideline 2.3 – Seizures and Physical Reactions 
+
+26 
+
+2.3.1 Three 
+Flashes 
+
+A 
+
+Guideline 2.4 – Navigable 
+
+Web pages do not contain 
+anything that flashes more than 
+three times in any one second 
+period, or the flash is below the 
+general flash and red flash 
+thresholds. 
+
+Pass 
+
+The scrolling disclaimer ticker includes 
+a visible "Pause" control. 
+
+Pass 
+
+No flashing content was detected. 
+
+27 
+
+2.4.1 Bypass 
+Blocks 
+
+A 
+
+A mechanism is available to 
+bypass blocks of content that are 
+repeated on multiple Web pages. 
+
+28  2.4.2 Page Titled 
+
+A 
+
+Web pages have titles that 
+describe topic or purpose. 
+
+Pass 
+
+Pass 
+
+A "Skip to main content" link is the 
+first focusable element and becomes 
+visible on focus. 
+
+Both pages carry unique, descriptive 
+titles. 
+
+29 
+
+2.4.3 Focus 
+Order 
+
+30 
+
+2.4.4 Link 
+Purpose (In 
+Context) 
+
+A 
+
+A 
+
+31 
+
+2.4.5 Multiple 
+Ways 
+
+AA 
+
+If a Web page can be navigated 
+sequentially and the navigation 
+sequences affect meaning or 
+operation, focusable components 
+receive focus in an order that 
+preserves meaning and 
+operability. 
+
+The purpose of each link can be 
+determined from the link text 
+alone or from the link text 
+together with its 
+programmatically determined link 
+context 
+
+More than one way is available to 
+locate a Web page within a set of 
+Web pages except where the Web 
+Page is the result of, or a step in, a 
+process. 
+
+Pass 
+
+Tab order follows the logical 
+visual/reading sequence. 
+
+Pass 
+
+"Read More" links sit inside a 
+heading/category wrapper, giving 
+each link a fuller descriptive 
+accessible name. 
+
+Pass 
+
+Main navigation menu, footer quick 
+links, and an FAQ search box are all 
+available. 
+
+32 
+
+2.4.6 Headings 
+and Labels 
+
+AA 
+
+Headings and labels describe topic 
+or purpose. 
+
+Pass 
+
+Headings and form labels (Full Name, 
+Email Address, etc.) are descriptive. 
+
+33 
+
+2.4.7 Focus 
+Visible 
+
+34 
+
+2.4.11 Focus Not 
+Obscured 
+(Minimum) 
+
+AA 
+
+AA 
+
+Any keyboard operable user 
+interface has a mode of operation 
+where the keyboard focus 
+indicator is visible. 
+
+When a user interface component 
+receives keyboard focus, the 
+component is not entirely hidden 
+due to author-created content. 
+
+Pass 
+
+Pass 
+
+A clear focus outline was confirmed 
+on the skip link, logo link, and chat 
+toggle. 
+
+No sticky element was found 
+obscuring a focused component 
+during testing. 
+
+Guideline 2.5 – Input Modalities 
+
+35 
+
+2.5.1 Pointer 
+Gestures 
+
+A 
+
+All functionality that uses 
+multipoint or path-based gestures 
+for operation can be operated 
+with a single pointer without a 
+
+Pass 
+
+No multipoint or path-based gestures 
+are required anywhere on the site. 
+
+# 
+
+WCAG 2.2 SC 
+
+Level 
+
+What it requires 
+
+Result 
+
+Remarks 
+
+path-based gesture, unless a 
+multipoint or path-based gesture 
+is essential. 
+
+For functionality that can be 
+operated using a single pointer, at 
+least one of the following is true: 
+No Down-Event: The down-event 
+of the pointer is not used to 
+execute any part of the function; 
+Abort or Undo: Completion of the 
+function is on the up-event, and a 
+mechanism is available to abort 
+the function before completion or 
+to undo the function after 
+completion 
+
+For user interface components 
+with labels that include text or 
+images of text, the name contains 
+the text that is presented visually. 
+
+navigational mechanisms that are 
+repeated on multiple Web pages 
+within a set of Web pages occur in 
+the same relative order each time 
+they are repeated, unless a 
+change is initiated by the user. 
+
+All functionality that uses a 
+dragging movement for operation 
+can be achieved by a single 
+pointer without dragging, unless 
+dragging is essential or the 
+functionality is determined by the 
+user agent and not modified by 
+the author. 
+
+36 
+
+2.5.2 Pointer 
+Cancellation 
+
+37 
+
+2.5.3 Label in 
+Name 
+
+38 
+
+2.5.4 Motion 
+Actuation 
+
+A 
+
+A 
+
+A 
+
+39 
+
+2.5.7 Dragging 
+Movements 
+
+AA 
+
+Pass 
+
+All controls are standard buttons/links 
+that activate on the up-event. 
+
+Pass 
+
+Accessible names match or contain 
+the visible labels on tested controls. 
+
+Pass 
+
+No device-motion-triggered 
+functionality exists. 
+
+Pass 
+
+No drag-and-drop functionality is 
+present. 
+
+40 
+
+2.5.8 Target Size 
+(Minimum) 
+
+AA 
+
+The size of the target for pointer 
+inputs is at least 24 by 24 CSS 
+pixels 
+
+Fail 
+
+The chat widget's close button ("×", 
+aria-label "Close Chat Window") 
+measures about 14×24 CSS px, under 
+the 24×24 minimum. 
+
+Guideline 3.1 – Readable 
+
+41 
+
+3.1.1 Language 
+of Page 
+
+42 
+
+3.1.2 Language 
+of Parts 
+
+A 
+
+AA 
+
+The default human language of 
+each Web page can be 
+programmatically determined. 
+
+The human language of each 
+passage or phrase in the content 
+can be programmatically 
+determined. 
+
+Pass 
+
+<html lang="en"> is valid and 
+correctly set. 
+
+Pass 
+
+No foreign-language passages 
+requiring separate lang tags were 
+found. 
+
+Guideline 3.2 – Predictable 
+
+43  3.2.1 On Focus 
+
+A 
+
+44  3.2.2 On Input 
+
+A 
+
+When any user interface 
+component receives focus, it does 
+not initiate a change of context. 
+
+Changing the setting of any user 
+interface component does not 
+automatically cause a change of 
+context unless the user has been 
+
+Pass 
+
+No unexpected context changes occur 
+when components receive focus. 
+
+Pass 
+
+Changing the "Interested In" 
+dropdown does not trigger an 
+automatic context change. 
+
+# 
+
+WCAG 2.2 SC 
+
+Level 
+
+What it requires 
+
+Result 
+
+Remarks 
+
+45 
+
+3.2.3 Consistent 
+Navigation 
+
+AA 
+
+46 
+
+3.2.4 Consistent 
+Identification 
+
+AA 
+
+47 
+
+3.2.6 Consistent 
+Help 
+
+A 
+
+advised of the behavior before 
+using the component. 
+
+Navigational mechanisms that are 
+repeated on multiple Web pages 
+within a set of Web pages occur in 
+the same relative order each time 
+they are repeated, unless a 
+change is initiated by the user. 
+
+Components that have the same 
+functionality within a set of Web 
+pages are identified consistently. 
+
+If a Web page contains any of the 
+following help mechanisms, and 
+those mechanisms are repeated 
+on multiple Web pages within a 
+set of Web pages, they occur in 
+the same order relative to other 
+page content, unless a change is 
+initiated by the user: Human 
+contact details; Human contact 
+mechanism; Self-help option; A 
+fully automated contact 
+mechanism. 
+
+Pass 
+
+Main navigation and footer links 
+appear in the same relative order on 
+both pages. 
+
+Pass 
+
+Chat support icon and label are used 
+consistently across pages. 
+
+Pass 
+
+The chat widget appears in the same 
+corner position on both pages tested. 
+
+Guideline 3.3 – Input Assistance 
+
+48 
+
+3.3.1 Error 
+Identification 
+
+49 
+
+3.3.2 Label or 
+Instructions 
+
+A 
+
+A 
+
+If an input error is automatically 
+detected, the item that is in error 
+is identified and the error is 
+described to the user in text. 
+
+Pass 
+
+Empty required fields produce specific 
+text errors, e.g. "Full Name is 
+required." 
+
+Labels or instructions are provided 
+when content requires user input. 
+
+Pass 
+
+All fields have visible text labels; 
+required fields are marked with an 
+asterisk plus aria-required. 
+
+50 
+
+3.3.3 Error 
+Suggestion 
+
+AA 
+
+51 
+
+3.3.4 Error 
+Prevention 
+(Legal, Financial, 
+Data) 
+
+AA 
+
+52 
+
+3.3.7 Redundant 
+Entry 
+
+A 
+
+If an input error is automatically 
+detected and suggestions for 
+correction are known, then the 
+suggestions are provided to the 
+user, unless it would jeopardize 
+the security or purpose of the 
+content. 
+
+For web pages involving legal 
+commitments, financial 
+transactions, or data 
+modifications, there must be a 
+mechanism: either submissions 
+are reversible, user-input data is 
+checked for errors with correction 
+opportunities, or there is a 
+confirmation process before 
+finalizing submissions. 
+
+Information previously entered by 
+or provided to the user that is 
+required to be entered again in 
+the same process is either: auto-
+populated, or available for the 
+user to select. 
+
+Pass 
+
+An invalid email produced the 
+corrective message "Please enter a 
+valid email address." 
+
+Pass 
+
+The contact form is a general enquiry 
+form, not a legal/financial transaction; 
+not applicable to tested pages. 
+
+Pass 
+
+No multi-step process requiring re-
+entry of previously supplied data was 
+found. 
+
+# 
+
+WCAG 2.2 SC 
+
+Level 
+
+What it requires 
+
+Result 
+
+Remarks 
+
+A cognitive function test (such as 
+remembering a password or 
+solving a puzzle) is not required 
+for any step in an authentication 
+process unless that step provides 
+at least one of the following: 
+Alternative: Another 
+authentication method that does 
+not rely on a cognitive function 
+test. Mechanism: A mechanism is 
+available to assist the user in 
+completing the cognitive function 
+test. Object Recognition: The 
+cognitive function test is to 
+recognize objects. Personal 
+Content: The cognitive function 
+test is to identify non-text content 
+the user provided to the Web site. 
+
+In content implemented using 
+markup languages, elements have 
+complete start and end tags, 
+elements are nested according to 
+their specifications, elements do 
+not contain duplicate attributes, 
+and any IDs are unique, except 
+where the specifications allow 
+these features. 
+
+For all user interface components 
+(including but not limited to: form 
+elements, links and components 
+generated by scripts), the name 
+and role can be programmatically 
+determined; states, properties, 
+and values that can be set by the 
+user can be programmatically set; 
+and notification of changes to 
+these items is available to user 
+agents, including assistive 
+technologies. 
+
+In content implemented using 
+markup languages, status 
+messages can be 
+programmatically determined 
+through role or properties such 
+that they can be presented to the 
+user by assistive technologies 
+without receiving focus. 
+
+53 
+
+3.3.8 Accessible 
+Authentication 
+(Minimum) 
+
+AA 
+
+Guideline 4.1 compatible 
+
+54  4.1.1 Parsing 
+
+A 
+
+55 
+
+4.1.2 Name, 
+Role, Value 
+
+A 
+
+56 
+
+4.1.3 Status 
+Messages 
+
+AA 
+
+Pass 
+
+No authentication takes place on 
+bnbfin.com itself (the client login is a 
+separate external system). 
+
+Pass 
+
+No duplicate id attributes were found; 
+markup parses cleanly. 
+
+Pass 
+
+Custom widgets (accordion, tabs, 
+dialog) expose correct roles/states via 
+aria-expanded, aria-selected, aria-
+controls. 
+
+Pass 
+
+Form validation errors use 
+role="alert" with aria-live="assertive", 
+announced without needing focus. 
+
+7. Summary of Key Findings 
+
+Confirmed issues from this review (detailed in Section 8): 
+
+Sr. No. 
+
+Confirmed Issue 
+
+1 
+
+2 
+
+Chat Widget Heading Appears Before the Page's Own H1 
+
+Chat Window Close Button Below Minimum Target Size 
+
+Status 
+
+OPEN 
+
+OPEN 
+
+8. Detailed Technical Report with Recommendations 
+
+8.1 Chat Widget Heading Appears Before the Page's Own H1 
+
+STATUS 
+
+WCAG 2.2 
+REFERENCE 
+
+DESCRIPTION 
+
+OPEN 
+
+1.3.1 Info and Relationships (Level A) 
+
+The chat widget's “BnB Support” heading (H3) appears in the DOM before the page's 
+own H1 (“FOCUS on What Matters”), breaking a logical top-down heading hierarchy. 
+
+IMPACT ON USERS 
+
+●  Screen-reader users navigating by heading level encounter the chat widget's 
+H3 before the page's own H1, which is disorienting since the page's actual 
+top-level heading should logically come first. 
+
+AFFECTED URL 
+
+https://bnbfin.com/ 
+
+RECOMMENDATIONS 
+
+●  Reorder the DOM so the page's own H1 (“FOCUS on What Matters”) 
+
+appears before the chat widget's “BnB Support” heading, restoring a logical 
+top-down hierarchy. Since the chat widget is a shared component, verify 
+this fix across every page where it appears. 
+
+8.2 Chat Window Close Button Below Minimum Target Size 
+
+STATUS 
+
+WCAG 2.2 
+REFERENCE 
+
+DESCRIPTION 
+
+OPEN 
+
+2.5.8 Target Size (Minimum) (Level AA) 
+
+The chat widget's close button (“×”, aria-label “Close Chat Window”) measures about 
+14×24 CSS px, under the 24×24 minimum. 
+
+IMPACT ON USERS 
+
+●  Users with limited dexterity or motor impairments, and touchscreen users 
+generally, may find this narrow close button difficult to accurately activate. 
+
+AFFECTED URL 
+
+https://bnbfin.com/ 
+
+RECOMMENDATIONS 
+
+●  Enlarge the chat window's close button to at least 24×24 CSS px, either by 
+
+increasing its width or adding sufficient padding/spacing around it. Since 
+this is part of the shared chat widget component, a single fix should resolve 
+it across every page where the widget appears. 
+
+Remediation priority: both fail points sit within the shared chat widget component and are isolated, 
+low-effort fixes relative to the site's otherwise strong accessibility performance. Priority should go to 
+(1) reordering the DOM so the page's H1 appears before the chat widget's heading, and (2) enlarging 
+the close button to at least 24×24 CSS px. A single fix to the shared chat widget component should 
+resolve both findings across every page where it appears. 
+
+9. Recommended Residual Verification 
+
+The items below were not confirmed by this review (see Section 3) and should be run before treating 
+any associated result in Section 6 as final: 
+
+ 
+ 
+Category 
+
+Success Criteria 
+
+Recommended Verification Method 
+
+Pages beyond this review's 
+scope 
+
+— 
+
+Screen reader behaviour 
+
+1.3.1, 2.5.8 
+
+Reviewer identity 
+
+— 
+
+The footer links to several additional pages and documents 
+(Investor Charter, Trading Holidays, Escalation Matrix, 
+Disclosure of Complaints, Investor Accessibility 
+Audio/Video Information, Terms & Conditions, Privacy 
+Policy) not covered in this round; extend testing to these if 
+they are user-facing and content-bearing. 
+
+NVDA and/or JAWS (Windows), VoiceOver (macOS/iOS) — 
+confirm the practical impact of the heading-order and 
+target-size findings once fixed. 
+
+The tester's name was not supplied in the source data; 
+complete this field for the final record. 
+
+ 
+
