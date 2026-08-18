@@ -45,7 +45,7 @@
     .nav-login a:hover { background: var(--gold-light) !important; }
     .nav-dropdown { position: relative; }
     .dropdown-menu { display: none; position: absolute; top: calc(100% + 4px); left: 0; background: var(--navy); border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; padding: 8px 0; min-width: 160px; z-index: 1000; box-shadow: var(--shadow-lg); opacity: 0; transform: translateY(-4px); transition: opacity 0.2s ease, transform 0.2s ease; pointer-events: none; }
-    .nav-dropdown:hover > .dropdown-menu, .nav-dropdown:focus-within > .dropdown-menu { display: flex; flex-direction: column; gap: 0; opacity: 1; transform: translateY(0); pointer-events: all; align-items: stretch; }
+    .nav-dropdown:not(.force-close):hover > .dropdown-menu, .nav-dropdown:not(.force-close):focus-within > .dropdown-menu { display: flex; flex-direction: column; gap: 0; opacity: 1; transform: translateY(0); pointer-events: all; align-items: stretch; }
     .dropdown-menu a { display: block; padding: 10px 20px !important; border-radius: 0 !important; color: #FFFFFF !important; background: transparent !important; text-align: left; }
     .nav-toggle { display: none; background: none; border: 2px solid rgba(201,168,76,0.5); color: var(--white); padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 20px; }
     @media (max-width: 1050px) {
@@ -244,10 +244,10 @@
     .contact-detail-text span { display: block; }
     .contact-detail-text span:first-child { font-size: 12px; color: #E8CC7A; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
     .contact-detail-text span:last-child { font-size: 15px; color: var(--white); margin-top: 2px; }
-    .contact-form { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 36px; }
+    .contact-form { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.5); border-radius: 16px; padding: 36px; }
     .form-group { margin-bottom: 20px; }
     .form-group label { display: block; font-size: 13px; font-weight: 600; color: #FFFFFF; margin-bottom: 8px; }
-    .form-group input, .form-group textarea, .form-group select { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); border-radius: var(--radius); padding: 12px 16px; color: var(--white); font-family: var(--font-body); font-size: 14.5px; transition: border-color var(--transition); }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.5); border-radius: var(--radius); padding: 12px 16px; color: var(--white); font-family: var(--font-body); font-size: 14.5px; transition: border-color var(--transition); }
     .form-group select option { background: var(--navy); }
     .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: #E8CC7A; }
     .form-group textarea { resize: vertical; min-height: 110px; }
@@ -389,12 +389,14 @@
       html { scroll-behavior: auto; }
       .scroll-disclaimer-track { animation: none; }
     }
-  </style>
+  
+    footer a[href^='tel:'], footer a[href^='mailto:'] { display: inline-block; min-height: 24px; padding-top: 3px; padding-bottom: 3px; }
+</style>
 
     <style>
     .page-hero { background: var(--navy-mid); border-bottom: 1px solid rgba(201,168,76,0.2); padding: 140px 24px 48px; }
     .page-hero-inner { max-width: 1000px; margin: 0 auto; }
-    .page-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #7A5C00; margin-bottom: 12px; display: block; }
+    .page-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #E8CC7A; margin-bottom: 12px; display: block; }
     .page-title { font-family: var(--font-head); font-size: clamp(28px,4vw,48px); font-weight: 800; color: var(--white); margin-bottom: 14px; line-height: 1.15; }
     .page-meta { font-size: 14px; color: #E2E6EF; }
     .gradient-bar { width: 48px; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-dark)); border-radius: 2px; margin: 16px 0; }
@@ -734,6 +736,25 @@ Note: Also that our website may contain links to other sites. While we try to li
     }));
 
     // MOBILE: Services dropdown toggle on click
+    
+      // Dropdown Esc key to close (WCAG 1.4.13)
+      document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+        dropdown.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            dropdown.classList.add('force-close');
+            const trigger = dropdown.querySelector(':scope > a');
+            document.activeElement.blur();
+            if (trigger) trigger.focus();
+          }
+        });
+        dropdown.addEventListener('mouseenter', () => dropdown.classList.remove('force-close'));
+        dropdown.addEventListener('focusout', (e) => {
+          if (!dropdown.contains(e.relatedTarget)) {
+            dropdown.classList.remove('force-close');
+          }
+        });
+      });
+    
     document.querySelectorAll('.nav-dropdown > a').forEach(link => {
       link.addEventListener('click', (e) => {
         if (window.innerWidth <= 1050) {

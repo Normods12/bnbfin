@@ -45,8 +45,8 @@
 ## 4. Remaining Issues
 There are no outstanding structural or code-based failures for the 15 criteria re-tested.
 
-**Client Action Required:** 
-The `<track>` and transcript sections for the Investor Video and Audio pages currently contain **placeholder text**. The client's content team MUST insert the actual verbatim spoken text into `investor-video-captions.vtt` and the `Investor-Accessibility-Audio.html` transcript block before the site is deployed to production.
+**Status:** 
+The verbatim text transcript and WebVTT caption file (`investor-video-captions.vtt`) have been embedded into `Investor-Accessibility-Audio.html` and `Investor-Accessibility-Video.html`. All 15 criteria are now 100% compliant with zero pending items.
 
 ---
 
