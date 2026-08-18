@@ -1,18 +1,13 @@
 {
-  "version": 2,
   "cleanUrls": true,
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/contact",
-      "dest": "/api/contact.js"
+      "source": "/api/contact",
+      "destination": "/api/contact.js"
     },
     {
-      "src": "/admin",
-      "dest": "/public/admin.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/public/$1"
+      "source": "/admin",
+      "destination": "/admin.html"
     }
   ]
 }
