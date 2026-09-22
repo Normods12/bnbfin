@@ -11,8 +11,8 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --navy: #0A1F44; --navy-mid: #122B5E; --navy-light: #1C3A7A;
-      --gold: #C9A84C; --gold-light: #E8CC7A; --gold-dark: #A07B2A; --gold-dark-link: #7A5C00;
+      --navy: #0A1F44; --navy-mid: #122B5E; --navy-light: #1C3A7A; --navy-dark: #040D1E;
+      --gold: #C9A84C; --gold-light: #E8CC7A; --gold-dark: #A07B2A; --gold-dark-link: #7A5C00; --gold-btn-dark: #B59038;
       --white: #FFFFFF; --off-white: #F8F9FC; --gray-100: #F1F3F8;
       --gray-200: #E2E6EF; --gray-400: #4A5568; --gray-600: #2D3748; --gray-800: #1A202C;
       --font-head: 'Inter', sans-serif; --font-body: 'Open Sans', sans-serif;
@@ -72,7 +72,7 @@
     .pill-link::before { content: '→'; color: #E8CC7A; }
 
     /* RETURN BTN */
-    .btn-return { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: var(--navy); font-family: var(--font-head); font-weight: 700; padding: 12px 24px; border-radius: var(--radius); text-decoration: none; font-size: 14px; margin-top: 28px; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(201,168,76,0.3); }
+    .btn-return { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--gold), var(--gold-btn-dark)); color: var(--navy-dark); font-family: var(--font-head); font-weight: 700; padding: 12px 24px; border-radius: var(--radius); text-decoration: none; font-size: 14px; margin-top: 28px; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(201,168,76,0.3); }
     .btn-return:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.5); }
 
     /* FOOTER */
@@ -101,11 +101,11 @@
         <div class="logo-text-block">
           <span class="logo-name">BnB Financial Services Pvt. Ltd.</span>
                     <span class="logo-tagline">
-            <span style="color:#15803D;">•</span>
+            <span style="color:#6EE7A0;">•</span>
             <span>EXPERIENCE</span>
-            <span style="color:#15803D;">•</span>
+            <span style="color:#6EE7A0;">•</span>
             <span>EXPERTISE</span>
-            <span style="color:#15803D;">•</span>
+            <span style="color:#6EE7A0;">•</span>
             <span>EXCELLENCE</span>
           </span>
         </div>
