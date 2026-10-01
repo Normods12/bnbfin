@@ -252,7 +252,10 @@
     if (token) {
       // Validate existing session token with server
       fetch('/api/admin/verify', { headers: { 'x-admin-password': token }})
-        .then(res => {
+        .then(async res => {
+          if (res.status === 404) {
+            res = await fetch('/api/pdfs', { headers: { 'x-admin-password': token }});
+          }
           if (res.ok) {
             showDashboard();
           } else {
@@ -275,7 +278,11 @@
         return;
       }
       try {
-        const res = await fetch('/api/admin/verify', { headers: { 'x-admin-password': token }});
+        let res = await fetch('/api/admin/verify', { headers: { 'x-admin-password': token }});
+        if (res.status === 404) {
+          // Fallback to /api/pdfs in case the server process has not restarted yet
+          res = await fetch('/api/pdfs', { headers: { 'x-admin-password': token }});
+        }
         if (res.ok) {
           sessionStorage.setItem('admin_token', token);
           errorMsg.style.display = 'none';
