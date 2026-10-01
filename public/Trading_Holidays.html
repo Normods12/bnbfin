@@ -191,7 +191,8 @@
         </div>
         <div class="session-details">
           <h3>Morning Session</h3>
-          <p>9:00 am – 5:00 pm</p>
+          <p id="dispMorningTime">9:00 am – 5:00 pm</p>
+          <p class="session-note" id="dispMorningNote" style="display:none;"></p>
         </div>
       </div>
       <div class="session-card">
@@ -202,8 +203,8 @@
         </div>
         <div class="session-details">
           <h3>Evening Session</h3>
-          <p>5:00 pm – 11:30 / 11:55 pm</p>
-          <p class="session-note">Winter session from 02.09.2026 to 12.03.2027</p>
+          <p id="dispEveningTime">5:00 pm – 11:30 / 11:55 pm</p>
+          <p class="session-note" id="dispEveningNote">Winter session from 02.09.2026 to 12.03.2027</p>
         </div>
       </div>
     </div>
@@ -427,6 +428,55 @@
           applyFilter(btn.dataset.month);
         });
       });
+    })();
+
+    // Dynamic Session Timings & Note Loader
+    (async function loadSessionNotice() {
+      try {
+        let data = null;
+        try {
+          const res = await fetch('/api/trading-sessions');
+          if (res.ok) data = await res.json();
+        } catch (_) {}
+
+        if (!data) {
+          try {
+            const compRes = await fetch('/api/complaints');
+            if (compRes.ok) {
+              const compData = await compRes.json();
+              if (compData && compData.tradingSessions) data = compData.tradingSessions;
+            }
+          } catch (_) {}
+        }
+
+        if (data) {
+          const mTime = document.getElementById('dispMorningTime');
+          const mNote = document.getElementById('dispMorningNote');
+          const eTime = document.getElementById('dispEveningTime');
+          const eNote = document.getElementById('dispEveningNote');
+
+          if (mTime && data.morningTime) mTime.textContent = data.morningTime;
+          if (mNote) {
+            if (data.morningNote && data.morningNote.trim()) {
+              mNote.textContent = data.morningNote.trim();
+              mNote.style.display = 'block';
+            } else {
+              mNote.style.display = 'none';
+            }
+          }
+          if (eTime && data.eveningTime) eTime.textContent = data.eveningTime;
+          if (eNote) {
+            if (data.eveningNote && data.eveningNote.trim()) {
+              eNote.textContent = data.eveningNote.trim();
+              eNote.style.display = 'block';
+            } else {
+              eNote.style.display = 'none';
+            }
+          }
+        }
+      } catch (err) {
+        console.error("Could not load dynamic session notice:", err);
+      }
     })();
   </script>
 </body>

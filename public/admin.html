@@ -241,6 +241,38 @@
         </div>
       </div>
 
+      <!-- TRADING SESSIONS SETTINGS -->
+      <div class="section">
+        <h2>Trading Holiday / Session Notice</h2>
+        <p style="font-size: 13.5px; color: var(--gray-600); margin-bottom: 16px;">
+          Manage the session timings and notes displayed on the <a href="Trading_Holidays.html" target="_blank" style="color: var(--navy); font-weight: 600;">Trading Holidays</a> page.
+        </p>
+        <div style="background: var(--gray-100); padding: 20px; border-radius: 8px; margin-bottom: 24px; border: 1px solid var(--gray-200);">
+          <div class="form-grid">
+            <div class="form-control">
+              <label>Morning Session Timings</label>
+              <input type="text" id="sessionMorningTime" placeholder="e.g. 9:00 am – 5:00 pm">
+            </div>
+            <div class="form-control">
+              <label>Morning Session Note (Optional)</label>
+              <input type="text" id="sessionMorningNote" placeholder="Leave blank if none">
+            </div>
+            <div class="form-control">
+              <label>Evening Session Timings</label>
+              <input type="text" id="sessionEveningTime" placeholder="e.g. 5:00 pm – 11:30 / 11:55 pm">
+            </div>
+            <div class="form-control">
+              <label>Evening Session Note (Winter Session, etc.)</label>
+              <input type="text" id="sessionEveningNote" placeholder="e.g. Winter session from 02.09.2026 to 12.03.2027">
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; margin-top:20px;">
+            <button class="btn-primary" id="saveSessionsBtn">Save Session Timings &amp; Note</button>
+            <span class="save-msg" id="sessionsMsg">Session notice saved successfully!</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -322,7 +354,7 @@
       pdfs = await fetch('/api/pdfs').then(r => r.json());
       faqs = await fetch('/api/faqs').then(r => r.json());
       complaints = await fetch('/api/complaints').then(r => r.json());
-      renderPdfs(); renderFaqs(); renderComplaintGrids();
+      renderPdfs(); renderFaqs(); renderComplaintGrids(); loadSessions();
     }
 
     async function saveApi(endpoint, data) {
@@ -648,6 +680,86 @@ window.deleteKb = async function(i) {
       syncGridData();
       if (await saveApi('/api/complaints', complaints)) {
         const msg = document.getElementById('complaintsMsg');
+        msg.classList.add('show');
+        setTimeout(() => msg.classList.remove('show'), 2000);
+      }
+    });
+
+    // --- TRADING SESSIONS NOTICE ---
+    async function loadSessions() {
+      try {
+        let data = null;
+        try {
+          const res = await fetch('/api/trading-sessions');
+          if (res.ok) data = await res.json();
+        } catch (_) {}
+
+        if (!data) {
+          try {
+            const compRes = await fetch('/api/complaints');
+            if (compRes.ok) {
+              const compData = await compRes.json();
+              if (compData && compData.tradingSessions) data = compData.tradingSessions;
+            }
+          } catch (_) {}
+        }
+
+        if (!data) {
+          data = {
+            morningTime: '9:00 am – 5:00 pm',
+            morningNote: '',
+            eveningTime: '5:00 pm – 11:30 / 11:55 pm',
+            eveningNote: 'Winter session from 02.09.2026 to 12.03.2027'
+          };
+        }
+
+        document.getElementById('sessionMorningTime').value = data.morningTime || '9:00 am – 5:00 pm';
+        document.getElementById('sessionMorningNote').value = data.morningNote || '';
+        document.getElementById('sessionEveningTime').value = data.eveningTime || '5:00 pm – 11:30 / 11:55 pm';
+        document.getElementById('sessionEveningNote').value = data.eveningNote || '';
+      } catch (err) {
+        console.error("Error loading session data:", err);
+      }
+    }
+
+    document.getElementById('saveSessionsBtn').addEventListener('click', async () => {
+      const payload = {
+        morningTime: document.getElementById('sessionMorningTime').value.trim() || '9:00 am – 5:00 pm',
+        morningNote: document.getElementById('sessionMorningNote').value.trim(),
+        eveningTime: document.getElementById('sessionEveningTime').value.trim() || '5:00 pm – 11:30 / 11:55 pm',
+        eveningNote: document.getElementById('sessionEveningNote').value.trim()
+      };
+
+      const btn = document.getElementById('saveSessionsBtn');
+      btn.disabled = true;
+      btn.textContent = 'Saving...';
+
+      let ok = false;
+      try {
+        const res = await fetch('/api/trading-sessions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-admin-password': token },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) ok = true;
+      } catch (_) {}
+
+      if (!ok) {
+        try {
+          const compRes = await fetch('/api/complaints');
+          const compData = compRes.ok ? await compRes.json() : {};
+          compData.tradingSessions = payload;
+          ok = await saveApi('/api/complaints', compData);
+        } catch (err) {
+          console.error("Fallback save failed:", err);
+        }
+      }
+
+      btn.disabled = false;
+      btn.textContent = 'Save Session Timings & Note';
+
+      if (ok) {
+        const msg = document.getElementById('sessionsMsg');
         msg.classList.add('show');
         setTimeout(() => msg.classList.remove('show'), 2000);
       }

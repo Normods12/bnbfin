@@ -18,6 +18,7 @@ const DATA_DIR = path.join(__dirname, 'data');
 const FAQS_FILE = path.join(DATA_DIR, 'faqs.json');
 const PDFS_FILE = path.join(DATA_DIR, 'pdfs.json');
 const COMPLAINTS_FILE = path.join(DATA_DIR, 'complaints.json');
+const SESSIONS_FILE = path.join(DATA_DIR, 'trading_sessions.json');
 
 // Helper to read JSON safely
 function readJsonFile(file) {
@@ -99,6 +100,21 @@ app.get('/api/pdfs', (req, res) => {
 
 app.get('/api/complaints', (req, res) => {
     res.json(readJsonFile(COMPLAINTS_FILE) || {});
+});
+
+app.get('/api/trading-sessions', (req, res) => {
+    const data = readJsonFile(SESSIONS_FILE);
+    if (data) return res.json(data);
+    const complaints = readJsonFile(COMPLAINTS_FILE);
+    if (complaints && complaints.tradingSessions) {
+        return res.json(complaints.tradingSessions);
+    }
+    res.json({
+        morningTime: '9:00 am – 5:00 pm',
+        morningNote: '',
+        eveningTime: '5:00 pm – 11:30 / 11:55 pm',
+        eveningNote: 'Winter session from 02.09.2026 to 12.03.2027'
+    });
 });
 
 
@@ -215,6 +231,17 @@ app.post('/api/complaints', requireAdmin, (req, res) => {
     const success = writeJsonFile(COMPLAINTS_FILE, req.body);
     if (success) res.json({ success: true });
     else res.status(500).json({ error: 'Failed to save Complaints' });
+});
+
+app.post('/api/trading-sessions', requireAdmin, (req, res) => {
+    const success = writeJsonFile(SESSIONS_FILE, req.body);
+    // Also sync into complaints.json for backward compatibility
+    const complaints = readJsonFile(COMPLAINTS_FILE) || {};
+    complaints.tradingSessions = req.body;
+    writeJsonFile(COMPLAINTS_FILE, complaints);
+
+    if (success) res.json({ success: true });
+    else res.status(500).json({ error: 'Failed to save Trading Sessions' });
 });
 
 // Start Server
