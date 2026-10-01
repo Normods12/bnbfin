@@ -249,20 +249,51 @@
     const loginScreen = document.getElementById('loginScreen');
     const dashboard = document.getElementById('dashboard');
     
-    if (token) showDashboard();
-
-    document.getElementById('loginBtn').addEventListener('click', () => {
-      token = document.getElementById('adminPw').value;
-      fetch('/api/pdfs', { headers: { 'x-admin-password': token }})
+    if (token) {
+      // Validate existing session token with server
+      fetch('/api/admin/verify', { headers: { 'x-admin-password': token }})
         .then(res => {
           if (res.ok) {
-            sessionStorage.setItem('admin_token', token);
-            document.getElementById('error-msg').style.display = 'none';
             showDashboard();
           } else {
-            document.getElementById('error-msg').style.display = 'block';
+            sessionStorage.removeItem('admin_token');
+            token = '';
           }
+        })
+        .catch(() => {
+          showDashboard();
         });
+    }
+
+    async function handleLogin() {
+      const pwInput = document.getElementById('adminPw');
+      token = (pwInput.value || '').trim();
+      const errorMsg = document.getElementById('error-msg');
+      if (!token) {
+        errorMsg.textContent = 'Please enter the admin password.';
+        errorMsg.style.display = 'block';
+        return;
+      }
+      try {
+        const res = await fetch('/api/admin/verify', { headers: { 'x-admin-password': token }});
+        if (res.ok) {
+          sessionStorage.setItem('admin_token', token);
+          errorMsg.style.display = 'none';
+          showDashboard();
+        } else {
+          errorMsg.textContent = 'Incorrect password. Please try again.';
+          errorMsg.style.display = 'block';
+          pwInput.focus();
+        }
+      } catch (err) {
+        errorMsg.textContent = 'Connection error. Please ensure the server is running.';
+        errorMsg.style.display = 'block';
+      }
+    }
+
+    document.getElementById('loginBtn').addEventListener('click', handleLogin);
+    document.getElementById('adminPw').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') handleLogin();
     });
 
     document.getElementById('logoutBtn').addEventListener('click', () => {
@@ -288,13 +319,27 @@
     }
 
     async function saveApi(endpoint, data) {
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-admin-password': token },
-        body: JSON.stringify(data)
-      });
-      if (res.status === 401) { alert("Session expired."); document.getElementById('logoutBtn').click(); return false; }
-      return res.ok;
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-admin-password': token },
+          body: JSON.stringify(data)
+        });
+        if (res.status === 401) {
+          alert("Session expired or invalid admin password. Please log in again.");
+          document.getElementById('logoutBtn').click();
+          return false;
+        }
+        if (!res.ok) {
+          alert("Failed to save changes (Server error " + res.status + ").");
+          return false;
+        }
+        return true;
+      } catch (err) {
+        console.error("Save error:", err);
+        alert("Network error: Could not reach the server to save changes.");
+        return false;
+      }
     }
 
     // --- KNOWLEDGE BASE ---
@@ -349,7 +394,6 @@
     async function uploadFile(file) {
       const fd = new FormData();
       fd.append('file', file);
-      // We pass the password in the body since it's FormData, or via headers. Our server looks for it in headers or body.
       fd.append('x-admin-password', token);
       
       const res = await fetch('/api/upload', {
@@ -357,6 +401,11 @@
         headers: { 'x-admin-password': token },
         body: fd
       });
+      if (res.status === 401) {
+        alert("Session expired or invalid admin password. Please log in again.");
+        document.getElementById('logoutBtn').click();
+        throw new Error("Unauthorized");
+      }
       if (!res.ok) throw new Error("Upload failed");
       const data = await res.json();
       return data.url;

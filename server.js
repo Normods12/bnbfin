@@ -6,7 +6,7 @@ const multer = require('multer');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
-const ADMIN_PW = 'BnBAdmin@2024#Secure'; // Hardcoded simple password
+const ADMIN_PW = process.env.ADMIN_PW || 'BnBAdmin@2024#Secure'; // Admin password (supports env var or default)
 
 // Middleware
 app.use(cors());
@@ -51,6 +51,14 @@ function requireAdmin(req, res, next) {
         res.status(401).json({ error: 'Unauthorized. Incorrect password.' });
     }
 }
+
+// Auth Verification Endpoints
+app.get('/api/admin/verify', requireAdmin, (req, res) => {
+    res.json({ success: true, message: 'Authenticated' });
+});
+app.post('/api/admin/verify', requireAdmin, (req, res) => {
+    res.json({ success: true, message: 'Authenticated' });
+});
 
 // --- FILE UPLOAD (MULTER) ---
 const storage = multer.diskStorage({
